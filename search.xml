@@ -271,8 +271,6 @@
           
           <category> html </category>
           
-          <category> 计算机网络 </category>
-          
       </categories>
       
       
@@ -302,9 +300,9 @@
           
           <category> 开源平台 </category>
           
-          <category> GitHub </category>
-          
           <category> Hexo插件 </category>
+          
+          <category> GitHub </category>
           
           <category> gitee </category>
           
