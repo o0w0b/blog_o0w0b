@@ -22,9 +22,9 @@
       
         <tags>
             
-            <tag> 开源平台 </tag>
-            
             <tag> 网站搭建 </tag>
+            
+            <tag> 开源平台 </tag>
             
             <tag> Cloudflare </tag>
             
@@ -53,9 +53,9 @@
       
         <tags>
             
-            <tag> 开源平台 </tag>
-            
             <tag> 网站搭建 </tag>
+            
+            <tag> 开源平台 </tag>
             
             <tag> Koyeb </tag>
             
@@ -97,7 +97,7 @@
       <link href="/2024/09/07/genshin-impact/"/>
       <url>/2024/09/07/genshin-impact/</url>
       
-        <content type="html"><![CDATA[<p><code>查看效果：</code></p><div class='liushen-tag-link'><a class="tag-Link" target="_blank" href=" https://genshin.o0w0b.top">    <div class="tag-link-tips">✅来自本站，请放心点击跳转</div>    <div class="tag-link-bottom">        <div class="tag-link-left" style="background-image: url(https://gitee.com/o0w0b/typora_pic/raw/master/img/favicon.png);"></div>        <div class="tag-link-right">            <div class="tag-link-title">原神！启动！</div>            <div class="tag-link-sitename"> o0w0b</div>        </div>        <i class="fa-solid fa-angle-right"></i>    </div>    </a></div><p><code>项目的开源地址:</code></p><div class='liushen-tag-link'><a class="tag-Link" target="_blank" href=" https://github.com/gamemcu/www-genshin">    <div class="tag-link-tips">✅来自本站，请放心点击跳转</div>    <div class="tag-link-bottom">        <div class="tag-link-left" style="background-image: url(https://www.faviconextractor.com/favicon/github.com);"></div>        <div class="tag-link-right">            <div class="tag-link-title">原神启动</div>            <div class="tag-link-sitename"> github@gamemcu</div>        </div>        <i class="fa-solid fa-angle-right"></i>    </div>    </a></div><h2 id="将项目下载到本地"><a class="markdownIt-Anchor" href="#将项目下载到本地"></a> 将项目下载到本地</h2><p>点击上方的开源地址, 将源码下载到本地</p><h2 id="安装项目用到的包"><a class="markdownIt-Anchor" href="#安装项目用到的包"></a> 安装项目用到的包</h2><h3 id="查看"><a class="markdownIt-Anchor" href="#查看"></a> 查看</h3><p>打开项目根目录下的<code>vite.config.ts</code>文件查看</p><h3 id="安装"><a class="markdownIt-Anchor" href="#安装"></a> 安装</h3><p>在项目的根目录打开终端, 运行下面的命令行(package-name替换为包的名字)</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i package-name</span><br></pre></td></tr></table></figure><h2 id="构建网页"><a class="markdownIt-Anchor" href="#构建网页"></a> 构建网页</h2><h3 id="构建前要修改的部分"><a class="markdownIt-Anchor" href="#构建前要修改的部分"></a> 构建前要修改的部分</h3><p>直接构建的话, 由于打包出来的js文件比较大, 会有大小超过限制的警告, 可以通过分块打包和更改大小限制的方法解决</p><p>方法可以参考</p><div class='liushen-tag-link'><a class="tag-Link" target="_blank" href=" https://developer.aliyun.com/article/1308207">    <div class="tag-link-tips">✅来自本站，请放心点击跳转</div>    <div class="tag-link-bottom">        <div class="tag-link-left" style="background-image: url(https://imgbed.o0w0b.top/file/1739369188876_url_icon.png);"></div>        <div class="tag-link-right">            <div class="tag-link-title">【Vue3】vite打包报错：块的大小超过限制 - Some chunks are larger than 500kb after minification</div>            <div class="tag-link-sitename"> 阿里云开发者社区 (aliyun.com)</div>        </div>        <i class="fa-solid fa-angle-right"></i>    </div>    </a></div><div class='liushen-tag-link'><a class="tag-Link" target="_blank" href=" https://blog.csdn.net/sinat_36728518/article/details/123112966">    <div class="tag-link-tips">✅来自本站，请放心点击跳转</div>    <div class="tag-link-bottom">        <div class="tag-link-left" style="background-image: url(https://imgbed.o0w0b.top/file/1739369906670_csdn_icon.jpeg);"></div>        <div class="tag-link-right">            <div class="tag-link-title">【Vue3】vite打包报错：块的大小超过限制 - Some chunks are larger than 500kb after minification_some chunks are larger than 500 kbs after minifica</div>            <div class="tag-link-sitename"> CSDN</div>        </div>        <i class="fa-solid fa-angle-right"></i>    </div>    </a></div><h3 id="构建方法"><a class="markdownIt-Anchor" href="#构建方法"></a> 构建方法</h3><p>方法可以参考</p><div class='liushen-tag-link'><a class="tag-Link" target="_blank" href=" https://vitejs.cn/vite3-cn/guide/static-deploy.html#building-the-app">    <div class="tag-link-tips">✅来自本站，请放心点击跳转</div>    <div class="tag-link-bottom">        <div class="tag-link-left" style="background-image: url(https://imgbed.o0w0b.top/file/1739369188876_url_icon.png);"></div>        <div class="tag-link-right">            <div class="tag-link-title">部署静态站点 | Vite 官方中文文档</div>            <div class="tag-link-sitename"> vitejs.cn</div>        </div>        <i class="fa-solid fa-angle-right"></i>    </div>    </a></div><h4 id="解决报错"><a class="markdownIt-Anchor" href="#解决报错"></a> 解决报错</h4><p>如果构建时, 出现关于<code>ShaderTest.ts</code>文件中没找到<code>xviewer</code>和<code>cameraCenter</code>的报错, 解决办法如下</p><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 第二行后面的部分</span></span><br><span class="line"><span class="keyword">from</span> <span class="string">&quot;../libs/xviewer&quot;</span>;</span><br><span class="line"><span class="comment">// 替换为</span></span><br><span class="line"><span class="keyword">from</span> <span class="string">&quot;../../libs/xviewer&quot;</span>;</span><br></pre></td></tr></table></figure><p>在第二行后面另起一行添加</p><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; cameraCenter &#125; <span class="keyword">from</span> <span class="string">&quot;./ForwardCamera&quot;</span>;</span><br></pre></td></tr></table></figure><h3 id="网页的构建位置"><a class="markdownIt-Anchor" href="#网页的构建位置"></a> 网页的构建位置</h3><p>成功构建后, 项目根目录中<code>dist</code>文件夹里面的内容就是构建出来的网页</p><h3 id="题外话"><a class="markdownIt-Anchor" href="#题外话"></a> 题外话</h3><p>关于<code>WebGL</code></p><blockquote><p>WebGL全称叫做Web Graphics Library，它是JavaScrint API、用于在任何兼容的Web浏览器中演染交互式的3D图形，并且无需使用插件。它基于 OpenGL ES 2.0(一个用于嵌入式系统的图形库)，并与其他 Web 标准完全集成，使开发者能够利用 GPU 加速图形处理直接在网页上实现复杂的图形效果。</p></blockquote><p>关于<code>three.js</code></p><blockquote><p>Three.js 是一个基于 WebGL 封装运行的JavaScript库，用于在网页上创建和显示3D图形。使得开发者能够更容易地构建3D场景，并实现复杂的视觉效果。</p></blockquote>]]></content>
+        <content type="html"><![CDATA[<p><code>查看效果：</code></p><div class='liushen-tag-link'><a class="tag-Link" target="_blank" href=" https://ysqd.o0w0b.top">    <div class="tag-link-tips">✅来自本站，请放心点击跳转</div>    <div class="tag-link-bottom">        <div class="tag-link-left" style="background-image: url(https://gitee.com/o0w0b/typora_pic/raw/master/img/favicon.png);"></div>        <div class="tag-link-right">            <div class="tag-link-title">原神！启动！</div>            <div class="tag-link-sitename"> o0w0b</div>        </div>        <i class="fa-solid fa-angle-right"></i>    </div>    </a></div><p><code>项目的开源地址:</code></p><div class='liushen-tag-link'><a class="tag-Link" target="_blank" href=" https://github.com/gamemcu/www-genshin">    <div class="tag-link-tips">✅来自本站，请放心点击跳转</div>    <div class="tag-link-bottom">        <div class="tag-link-left" style="background-image: url(https://www.faviconextractor.com/favicon/github.com);"></div>        <div class="tag-link-right">            <div class="tag-link-title">原神启动</div>            <div class="tag-link-sitename"> github@gamemcu</div>        </div>        <i class="fa-solid fa-angle-right"></i>    </div>    </a></div><h2 id="将项目下载到本地"><a class="markdownIt-Anchor" href="#将项目下载到本地"></a> 将项目下载到本地</h2><p>点击上方的开源地址, 将源码下载到本地</p><h2 id="安装项目用到的包"><a class="markdownIt-Anchor" href="#安装项目用到的包"></a> 安装项目用到的包</h2><h3 id="查看"><a class="markdownIt-Anchor" href="#查看"></a> 查看</h3><p>打开项目根目录下的<code>vite.config.ts</code>文件查看</p><h3 id="安装"><a class="markdownIt-Anchor" href="#安装"></a> 安装</h3><p>在项目的根目录打开终端, 运行下面的命令行(package-name替换为包的名字)</p><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">npm i package-name</span><br></pre></td></tr></table></figure><h2 id="构建网页"><a class="markdownIt-Anchor" href="#构建网页"></a> 构建网页</h2><h3 id="构建前要修改的部分"><a class="markdownIt-Anchor" href="#构建前要修改的部分"></a> 构建前要修改的部分</h3><p>直接构建的话, 由于打包出来的js文件比较大, 会有大小超过限制的警告, 可以通过分块打包和更改大小限制的方法解决</p><p>方法可以参考</p><div class='liushen-tag-link'><a class="tag-Link" target="_blank" href=" https://developer.aliyun.com/article/1308207">    <div class="tag-link-tips">✅来自本站，请放心点击跳转</div>    <div class="tag-link-bottom">        <div class="tag-link-left" style="background-image: url(https://imgbed.o0w0b.top/file/1739369188876_url_icon.png);"></div>        <div class="tag-link-right">            <div class="tag-link-title">【Vue3】vite打包报错：块的大小超过限制 - Some chunks are larger than 500kb after minification</div>            <div class="tag-link-sitename"> 阿里云开发者社区 (aliyun.com)</div>        </div>        <i class="fa-solid fa-angle-right"></i>    </div>    </a></div><div class='liushen-tag-link'><a class="tag-Link" target="_blank" href=" https://blog.csdn.net/sinat_36728518/article/details/123112966">    <div class="tag-link-tips">✅来自本站，请放心点击跳转</div>    <div class="tag-link-bottom">        <div class="tag-link-left" style="background-image: url(https://imgbed.o0w0b.top/file/1739369906670_csdn_icon.jpeg);"></div>        <div class="tag-link-right">            <div class="tag-link-title">【Vue3】vite打包报错：块的大小超过限制 - Some chunks are larger than 500kb after minification_some chunks are larger than 500 kbs after minifica</div>            <div class="tag-link-sitename"> CSDN</div>        </div>        <i class="fa-solid fa-angle-right"></i>    </div>    </a></div><h3 id="构建方法"><a class="markdownIt-Anchor" href="#构建方法"></a> 构建方法</h3><p>方法可以参考</p><div class='liushen-tag-link'><a class="tag-Link" target="_blank" href=" https://vitejs.cn/vite3-cn/guide/static-deploy.html#building-the-app">    <div class="tag-link-tips">✅来自本站，请放心点击跳转</div>    <div class="tag-link-bottom">        <div class="tag-link-left" style="background-image: url(https://imgbed.o0w0b.top/file/1739369188876_url_icon.png);"></div>        <div class="tag-link-right">            <div class="tag-link-title">部署静态站点 | Vite 官方中文文档</div>            <div class="tag-link-sitename"> vitejs.cn</div>        </div>        <i class="fa-solid fa-angle-right"></i>    </div>    </a></div><h4 id="解决报错"><a class="markdownIt-Anchor" href="#解决报错"></a> 解决报错</h4><p>如果构建时, 出现关于<code>ShaderTest.ts</code>文件中没找到<code>xviewer</code>和<code>cameraCenter</code>的报错, 解决办法如下</p><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="comment">// 第二行后面的部分</span></span><br><span class="line"><span class="keyword">from</span> <span class="string">&quot;../libs/xviewer&quot;</span>;</span><br><span class="line"><span class="comment">// 替换为</span></span><br><span class="line"><span class="keyword">from</span> <span class="string">&quot;../../libs/xviewer&quot;</span>;</span><br></pre></td></tr></table></figure><p>在第二行后面另起一行添加</p><figure class="highlight javascript"><table><tr><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; cameraCenter &#125; <span class="keyword">from</span> <span class="string">&quot;./ForwardCamera&quot;</span>;</span><br></pre></td></tr></table></figure><h3 id="网页的构建位置"><a class="markdownIt-Anchor" href="#网页的构建位置"></a> 网页的构建位置</h3><p>成功构建后, 项目根目录中<code>dist</code>文件夹里面的内容就是构建出来的网页</p><h3 id="题外话"><a class="markdownIt-Anchor" href="#题外话"></a> 题外话</h3><p>关于<code>WebGL</code></p><blockquote><p>WebGL全称叫做Web Graphics Library，它是JavaScrint API、用于在任何兼容的Web浏览器中演染交互式的3D图形，并且无需使用插件。它基于 OpenGL ES 2.0(一个用于嵌入式系统的图形库)，并与其他 Web 标准完全集成，使开发者能够利用 GPU 加速图形处理直接在网页上实现复杂的图形效果。</p></blockquote><p>关于<code>three.js</code></p><blockquote><p>Three.js 是一个基于 WebGL 封装运行的JavaScript库，用于在网页上创建和显示3D图形。使得开发者能够更容易地构建3D场景，并实现复杂的视觉效果。</p></blockquote>]]></content>
       
       
       <categories>
@@ -111,9 +111,9 @@
       
         <tags>
             
-            <tag> 开源平台 </tag>
-            
             <tag> 网站搭建 </tag>
+            
+            <tag> 开源平台 </tag>
             
         </tags>
       
@@ -197,22 +197,22 @@
       
       <categories>
           
-          <category> Hexo框架 </category>
-          
           <category> 开源平台 </category>
           
-          <category> gitee </category>
+          <category> Hexo框架 </category>
           
           <category> GitHub </category>
+          
+          <category> gitee </category>
           
       </categories>
       
       
         <tags>
             
-            <tag> 开源平台 </tag>
-            
             <tag> 网站搭建 </tag>
+            
+            <tag> 开源平台 </tag>
             
             <tag> Vercel </tag>
             
@@ -296,13 +296,13 @@
       
       <categories>
           
-          <category> Hexo框架 </category>
-          
           <category> 开源平台 </category>
           
-          <category> 网站前端 </category>
+          <category> Hexo框架 </category>
           
           <category> GitHub </category>
+          
+          <category> 网站前端 </category>
           
           <category> html </category>
           
@@ -311,9 +311,9 @@
       
         <tags>
             
-            <tag> 开源平台 </tag>
-            
             <tag> 网站搭建 </tag>
+            
+            <tag> 开源平台 </tag>
             
         </tags>
       
@@ -331,15 +331,15 @@
       
       <categories>
           
+          <category> 开源平台 </category>
+          
           <category> Hexo框架 </category>
           
-          <category> 开源平台 </category>
+          <category> GitHub </category>
           
           <category> Hexo插件 </category>
           
           <category> gitee </category>
-          
-          <category> GitHub </category>
           
           <category> hexo-deployer-git </category>
           
@@ -350,9 +350,9 @@
       
         <tags>
             
-            <tag> 开源平台 </tag>
-            
             <tag> 网站搭建 </tag>
+            
+            <tag> 开源平台 </tag>
             
             <tag> Git </tag>
             
