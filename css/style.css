@@ -344,3 +344,9 @@
     color: rgba(188, 188, 188) !important;
     /* 设置为白色 */
 }
+
+/* 调整双栏显示时的页码位置（翻页按钮居中） */
+#pagination {
+    width: 100%;
+    margin: auto;
+}
