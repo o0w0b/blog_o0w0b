@@ -3104,16 +3104,16 @@ figure.highlight pre .javascript .function {
   -webkit-line-clamp: 2;
   word-break: break-word;
 }
-.flink .flink-desc {
+.navigation-widget .flink .flink-desc {
   margin: 0.2rem 0 0.5rem;
 }
-.flink .flink-list {
+.navigation-widget .flink .flink-list {
   overflow: auto;
   text-align: center;
   padding: 0;
   margin: 1rem -6px 0 -6px;
 }
-.flink-list-item {
+.navigation-widget .flink-list-item {
   position: relative;
   float: left;
   overflow: hidden;
@@ -3128,7 +3128,7 @@ figure.highlight pre .javascript .function {
   -ms-transition: 0.3s ease-in-out;
   transition: 0.3s ease-in-out;
 }
-.flink-list-item a {
+.navigation-widget .flink-list-item a {
   display: -webkit-box;
   display: -moz-box;
   display: -webkit-flex;
@@ -3139,10 +3139,10 @@ figure.highlight pre .javascript .function {
   color: var(--Jay-fontcolor);
   text-decoration: none;
 }
-.flink-list-item a:hover {
+.navigation-widget .flink-list-item a:hover {
   background: none;
 }
-.flink-list-item a img {
+.navigation-widget .flink-list-item a img {
   border-radius: 32px;
   margin: 15px 20px 15px 15px;
   min-width: 60px;
@@ -3155,7 +3155,7 @@ figure.highlight pre .javascript .function {
   background: var(--Jay-background);
   pointer-events: none;
 }
-.flink-list-item:hover a img {
+.navigation-widget .flink-list-item:hover a img {
   width: 0;
   height: 0;
   opacity: 0;
@@ -3170,14 +3170,14 @@ figure.highlight pre .javascript .function {
   -ms-transition: 0.6s;
   transition: 0.6s;
 }
-.flink-item-info {
+.navigation-widget .flink-item-info {
   max-width: 136px;
   overflow: hidden;
 }
-.flink-list-item:hover .flink-item-info {
+.navigation-widget .flink-list-item:hover .flink-item-info {
   max-width: 100%;
 }
-.flink-item-name {
+.navigation-widget .flink-item-name {
   text-align: left;
   font-size: 19px;
   font-weight: 700;
@@ -3187,10 +3187,10 @@ figure.highlight pre .javascript .function {
   text-overflow: ellipsis;
   color: var(--Jay-fontcolor);
 }
-.flink-list-item:hover a .flink-item-name {
+.navigation-widget .flink-list-item:hover a .flink-item-name {
   color: var(--Jay-white);
 }
-.flink-item-desc {
+.navigation-widget .flink-item-desc {
   white-space: normal;
   padding: 5px 10px 16px 0;
   color: var(--Jay-fontcolor);
@@ -3206,12 +3206,12 @@ figure.highlight pre .javascript .function {
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2;
 }
-.flink-list-item:hover a .flink-item-desc {
+.navigation-widget .flink-list-item:hover a .flink-item-desc {
   color: var(--Jay-white);
   overflow: inherit;
   width: 100%;
 }
-.flink.volantis .site-card-group {
+.navigation-widget .flink.volantis .site-card-group {
   display: -webkit-box;
   display: -moz-box;
   display: -webkit-flex;
@@ -3238,7 +3238,7 @@ figure.highlight pre .javascript .function {
   -webkit-align-items: stretch;
   align-items: stretch;
 }
-.flink.volantis .site-card {
+.navigation-widget .flink.volantis .site-card {
   margin: 8px;
   width: calc(100% / 4 - 16px);
   display: block;
@@ -3246,21 +3246,21 @@ figure.highlight pre .javascript .function {
   height: 100%;
 }
 @media screen and (min-width: 2048px) {
-  .flink.volantis .site-card {
+  .navigation-widget .flink.volantis .site-card {
     width: calc(100% / 5 - 16px);
   }
 }
 @media screen and (max-width: 768px) {
-  .flink.volantis .site-card {
+  .navigation-widget .flink.volantis .site-card {
     width: calc(100% / 3 - 16px);
   }
 }
 @media screen and (max-width: 500px) {
-  .flink.volantis .site-card {
+  .navigation-widget .flink.volantis .site-card {
     width: calc(100% / 2 - 16px);
   }
 }
-.flink.volantis .site-card .img {
+.navigation-widget .flink.volantis .site-card .img {
   width: 100%;
   height: 120px;
   overflow: hidden;
@@ -3269,7 +3269,7 @@ figure.highlight pre .javascript .function {
   box-shadow: 0 1px 2px rgba(0,0,0,0.2);
   background: #f6f6f6;
 }
-.flink.volantis .site-card .img img {
+.navigation-widget .flink.volantis .site-card .img img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -3279,10 +3279,10 @@ figure.highlight pre .javascript .function {
   -ms-transition: -ms-transform 2s ease;
   transition: transform 2s ease;
 }
-.flink.volantis .site-card .info {
+.navigation-widget .flink.volantis .site-card .info {
   margin-top: 8px;
 }
-.flink.volantis .site-card .info img {
+.navigation-widget .flink.volantis .site-card .info img {
   width: 32px;
   height: 32px;
   border-radius: 16px;
@@ -3290,10 +3290,10 @@ figure.highlight pre .javascript .function {
   margin-right: 8px;
   margin-top: 2px;
 }
-.flink.volantis .site-card .info span {
+.navigation-widget .flink.volantis .site-card .info span {
   display: block;
 }
-.flink.volantis .site-card .info .title {
+.navigation-widget .flink.volantis .site-card .info .title {
   font-weight: 600;
   font-size: $fontsize-list;
   color: #444;
@@ -3302,7 +3302,7 @@ figure.highlight pre .javascript .function {
   overflow: hidden;
   -webkit-line-clamp: 1;
 }
-.flink.volantis .site-card .info .desc {
+.navigation-widget .flink.volantis .site-card .info .desc {
   font-size: $fontsize-footnote;
   line-height: 1.2;
   color: #888;
@@ -3311,14 +3311,14 @@ figure.highlight pre .javascript .function {
   overflow: hidden;
   -webkit-line-clamp: 2;
 }
-.flink.volantis .site-card:hover .img {
+.navigation-widget .flink.volantis .site-card:hover .img {
   -webkit-box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
-.flink.volantis .site-card:hover .info .title {
+.navigation-widget .flink.volantis .site-card:hover .info .title {
   color: #ff5722;
 }
-.flink.flexcard .flink-list > a {
+.navigation-widget .flink.flexcard .flink-list > a {
   width: calc(25% - 15px);
   height: 130px;
   position: relative;
@@ -3335,21 +3335,21 @@ figure.highlight pre .javascript .function {
   -webkit-box-shadow: 0 14px 38px rgba(0,0,0,0.08), 0 3px 8px rgba(0,0,0,0.06);
   box-shadow: 0 14px 38px rgba(0,0,0,0.08), 0 3px 8px rgba(0,0,0,0.06);
 }
-.flink.flexcard .flink-list > a:hover .info {
+.navigation-widget .flink.flexcard .flink-list > a:hover .info {
   -webkit-transform: translateY(-100%);
   -moz-transform: translateY(-100%);
   -o-transform: translateY(-100%);
   -ms-transform: translateY(-100%);
   transform: translateY(-100%);
 }
-.flink.flexcard .flink-list > a:hover .wrapper img {
+.navigation-widget .flink.flexcard .flink-list > a:hover .wrapper img {
   -webkit-transform: scale(1.2);
   -moz-transform: scale(1.2);
   -o-transform: scale(1.2);
   -ms-transform: scale(1.2);
   transform: scale(1.2);
 }
-.flink.flexcard .flink-list > a:hover:before {
+.navigation-widget .flink.flexcard .flink-list > a:hover:before {
   position: fixed;
   width: inherit;
   margin: auto;
@@ -3365,7 +3365,7 @@ figure.highlight pre .javascript .function {
   padding: 10px;
   background-color: rgba(73,177,245,0.8);
 }
-.flink.flexcard .flink-list .cover {
+.navigation-widget .flink.flexcard .flink-list .cover {
   width: 100%;
   -webkit-transition: -webkit-transform 0.5s ease-out;
   -moz-transition: -moz-transform 0.5s ease-out;
@@ -3373,20 +3373,20 @@ figure.highlight pre .javascript .function {
   -ms-transition: -ms-transform 0.5s ease-out;
   transition: transform 0.5s ease-out;
 }
-.flink.flexcard .flink-list .wrapper {
+.navigation-widget .flink.flexcard .flink-list .wrapper {
   position: relative;
 }
-.flink.flexcard .flink-list .wrapper .fadeIn {
+.navigation-widget .flink.flexcard .flink-list .wrapper .fadeIn {
   -webkit-animation: coverIn 0.8s ease-out forwards;
   -moz-animation: coverIn 0.8s ease-out forwards;
   -o-animation: coverIn 0.8s ease-out forwards;
   -ms-animation: coverIn 0.8s ease-out forwards;
   animation: coverIn 0.8s ease-out forwards;
 }
-.flink.flexcard .flink-list .wrapper img {
+.navigation-widget .flink.flexcard .flink-list .wrapper img {
   height: 130px;
 }
-.flink.flexcard .flink-list .info {
+.navigation-widget .flink.flexcard .flink-list .info {
   display: -webkit-box;
   display: -moz-box;
   display: -webkit-flex;
@@ -3422,7 +3422,7 @@ figure.highlight pre .javascript .function {
   -ms-transition: -ms-transform 0.5s cubic-bezier(0.6, 0.2, 0.1, 1);
   transition: transform 0.5s cubic-bezier(0.6, 0.2, 0.1, 1);
 }
-.flink.flexcard .flink-list .info img {
+.navigation-widget .flink.flexcard .flink-list .info img {
   width: 66px;
   height: 66px;
   border-radius: 50%;
@@ -3431,7 +3431,7 @@ figure.highlight pre .javascript .function {
   position: relative;
   top: 22px;
 }
-.flink.flexcard .flink-list .info span {
+.navigation-widget .flink.flexcard .flink-list .info span {
   padding: 20px 10% 60px 10%;
   font-size: 16px;
   width: 100%;
@@ -3444,12 +3444,12 @@ figure.highlight pre .javascript .function {
   text-overflow: ellipsis;
 }
 @media screen and (max-width: 1024px) {
-  .flink.flexcard .flink-list > a {
+  .navigation-widget .flink.flexcard .flink-list > a {
     width: calc(33.33333% - 15px);
   }
 }
 @media screen and (max-width: 600px) {
-  .flink.flexcard .flink-list > a {
+  .navigation-widget .flink.flexcard .flink-list > a {
     width: calc(50% - 15px);
   }
 }
