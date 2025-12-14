@@ -1,0 +1,118 @@
+/* 全局隐藏默认鼠标 */
+* {
+    cursor: none !important;
+}
+
+/* 主题为浅色模式 */
+html[data-theme="light"] {
+    --cursor-color: rgba(0, 0, 0, 1);
+    --cursor-background-color: rgba(0, 0, 0, 0.45);
+    --cursor-click-color: rgba(200, 200, 200, 0.4);
+}
+
+/* 主题为深色模式 */
+html[data-theme="dark"] {
+    --cursor-color: rgba(255, 255, 255, 1);
+    --cursor-background-color: rgba(255, 255, 255, 0.5);
+    --cursor-click-color: rgba(200, 200, 200, 0.2);
+}
+
+#cursor {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 32px;
+    height: 32px;
+    opacity: 0;
+    clip-path: polygon(50% 0%,
+            80% 70%,
+            50% 100%,
+            20% 70%);
+    background: var(--cursor-background-color);
+    backdrop-filter: blur(0.7px);
+    -webkit-backdrop-filter: blur(0.7px);
+    pointer-events: none;
+    transition:
+        width 0.15s ease,
+        height 0.15s ease,
+        border-color 0.15s ease,
+        box-shadow 0.15s ease;
+    will-change: transform;
+    z-index: 99999;
+}
+
+#cursor::after {
+    content: "";
+    position: absolute;
+    top: 5px;
+    /* 边框宽度 */
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    background: var(--cursor-color);
+    /* 边框颜色 */
+    z-index: -1;
+    /* 比主元素稍大的相同形状 */
+    clip-path: polygon(50% 0%,
+            80% 70%,
+            50% 100%,
+            20% 70%);
+}
+
+/* 悬停元素时 */
+#cursor.hover {
+    background: rgba(39, 157, 241, 0.7);
+}
+
+/* 鼠标点击动画 */
+.CursorClick {
+    position: fixed;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+/* 外层波纹 */
+.CursorClick::before,
+.CursorClick::after {
+    content: '';
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border: 2px solid var(--cursor-click-color);
+    border-radius: 50%;
+    background: transparent;
+    transform: translate(-50%, -50%) scale(0);
+    animation: ripple 1s ease-out forwards;
+}
+
+/* 延迟让多层波纹连续扩散 */
+.CursorClick::after {
+    animation-delay: 0.2s;
+}
+
+/* 波纹动画 */
+@keyframes ripple {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0.7;
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 0.4;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(2);
+        opacity: 0;
+    }
+}
+
+/* 移动端禁用光标 */
+@media (hover: none) {
+    #cursor {
+        display: none;
+    }
+}
