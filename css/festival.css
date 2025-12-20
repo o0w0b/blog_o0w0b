@@ -1,0 +1,151 @@
+﻿/* 
+ * festival.css
+ * 公祭日，重要节日配置
+ * 浅色 / 深色模式
+ */
+
+
+/* ================= 公共基础样式 ================= */
+
+.swal2-popup {
+    border-radius: 14px;
+    transform: translateY(-2px);
+}
+
+.swal2-title {
+    font-weight: 500;
+}
+
+.swal2-html-container {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+
+/* ================= 🎂 生日（birthday） ================= */
+.swal2-popup.birthday {
+    box-shadow:
+        0 0 10px rgba(0, 0, 0, 0.2),
+        0 0 24px rgba(255, 105, 180, 0.35);
+}
+
+/* 夜间模式 */
+[data-theme="dark"] .swal2-popup.birthday {
+    box-shadow:
+        0 0 12px rgba(0, 0, 0, 0.6),
+        0 0 20px rgba(255, 105, 180, 0.25);
+}
+
+.swal2-popup.birthday .swal2-title {
+    letter-spacing: 1.5px;
+    font-weight: 600;
+}
+
+.swal2-popup.birthday .swal2-html-container {
+    line-height: 1.6;
+}
+
+
+/* ================= 🎆 新春（spring） ================= */
+
+.swal2-popup.spring {
+    box-shadow:
+        0 0 10px rgba(0, 0, 0, 0.2),
+        0 0 26px rgba(214, 40, 40, 0.35);
+}
+
+.swal2-popup.spring .swal2-title {
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+/* 夜间模式 */
+[data-theme="dark"] .swal2-popup.spring {
+    box-shadow:
+        0 0 12px rgba(0, 0, 0, 0.6),
+        0 0 22px rgba(214, 40, 40, 0.22);
+}
+
+
+/* ================= 🏮 元宵（lantern） ================= */
+
+.swal2-popup.lantern {
+    box-shadow:
+        0 0 10px rgba(0, 0, 0, 0.2),
+        0 0 24px rgba(255, 153, 51, 0.35);
+}
+
+.swal2-popup.lantern .swal2-title {
+    letter-spacing: 1.5px;
+}
+
+/* 夜间模式 */
+[data-theme="dark"] .swal2-popup.lantern {
+    box-shadow:
+        0 0 12px rgba(0, 0, 0, 0.6),
+        0 0 20px rgba(255, 153, 51, 0.25);
+}
+
+
+/* ================= 🌕 中秋（midautumn） ================= */
+
+.swal2-popup.midautumn {
+    box-shadow:
+        0 0 10px rgba(0, 0, 0, 0.2),
+        0 0 26px rgba(255, 215, 120, 0.4);
+}
+
+.swal2-popup.midautumn .swal2-title {
+    letter-spacing: 1px;
+}
+
+/* 夜间模式 */
+[data-theme="dark"] .swal2-popup.midautumn {
+    box-shadow:
+        0 0 12px rgba(0, 0, 0, 0.6),
+        0 0 22px rgba(255, 215, 120, 0.25);
+}
+
+
+/* ================= 🚣 端午（dragonboat） ================= */
+
+.swal2-popup.dragonboat {
+    box-shadow:
+        0 0 10px rgba(0, 0, 0, 0.2),
+        0 0 22px rgba(60, 179, 113, 0.35);
+}
+
+/* 夜间模式 */
+[data-theme="dark"] .swal2-popup.dragonboat {
+    box-shadow:
+        0 0 12px rgba(0, 0, 0, 0.6),
+        0 0 20px rgba(60, 179, 113, 0.25);
+}
+
+
+/* ================= 🎉 其他节日（festival） ================= */
+
+.swal2-popup.festival {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+/* 夜间模式 */
+[data-theme="dark"] .swal2-popup.festival {
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.55);
+}
+
+
+/* ================= 🕯️ 公祭日（memorial） ================= */
+
+.swal2-popup.memorial {
+    box-shadow: 0 0 12px rgba(0, 0, 0, 0.85);
+}
+
+.swal2-popup.memorial .swal2-title {
+    letter-spacing: 1px;
+}
+
+/* 夜间模式 */
+[data-theme="dark"] .swal2-popup.memorial {
+    box-shadow: 0 0 14px rgba(0, 0, 0, 0.95);
+}

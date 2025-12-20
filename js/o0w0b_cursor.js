@@ -40,7 +40,7 @@ document.addEventListener("click", () => {
 });
 
 /* 悬停状态交互 */
-const hoverSelectors = `a, button, img, input, textarea, .copy-button, .fullpage-button, .expand, 
+const hoverSelectors = `a, button, img, input, textarea, .copy-button, .code-expand-btn, .fullpage-button, .expand, 
                         .scroll-down-effects, #footer-wrap, #pagination .page-number, #site-name, #nav .site-page, 
                         .cursor-hover, .switch-btn, .switch-btn, .gt-user-inner, .gt-ico, .gt-user-name, 
                         .gt-btn, .vbtn, svg, .at_button`;
