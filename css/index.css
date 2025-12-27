@@ -4889,13 +4889,6 @@ figure.highlight pre .javascript .function {
   background-position: bottom;
   background-size: cover;
 }
-#footer:before {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-color: var(--mark-bg);
-  content: '';
-}
 #footer > * {
   position: relative;
   color: var(--light-grey);
@@ -4983,6 +4976,18 @@ figure.highlight pre .javascript .function {
   padding: 40px 20px;
   width: 100%;
   text-align: center;
+}
+#footer .footer-other a {
+  color: inherit;
+  text-decoration: none;
+  -webkit-transition: color 0.3s;
+  -moz-transition: color 0.3s;
+  -o-transition: color 0.3s;
+  -ms-transition: color 0.3s;
+  transition: color 0.3s;
+}
+#footer .footer-other a:hover {
+  color: #ff6ec7;
 }
 #footer .footer-other .framework-info {
   display: block;
