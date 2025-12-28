@@ -45,8 +45,10 @@ function footer() {
         });
     }
 
-    // 水面颜色
-    const WATER_COLOR = 'rgba(0, 150, 255, 0.3)';
+    // === 颜色设置 ===
+    const WATER_TOP_COLOR = 'rgba(210, 235, 255, 0.35)';   // 浅水
+    const WATER_MIDDLE_COLOR = 'rgba(140, 200, 240, 0.45)'; // 中水
+    const WATER_BOTTOM_COLOR = 'rgba(70, 130, 180, 0.55)';   // 深水
     // 鱼体背部颜色
     const FISH_BODY_TOP_COLOR = '#ff6ec7';
     // 鱼体腹部颜色
@@ -168,17 +170,81 @@ function footer() {
             render: function () {
                 requestAnimationFrame(this.render);
                 this.controlStatus();
+
                 this.context.clearRect(0, 0, this.width, this.height);
-                this.context.fillStyle = WATER_COLOR;
-                for (var i = 0, count = this.fishes.length; i < count; i++) this.fishes[i].render(this.context);
+
+                // ===== 水面渐变 =====
+                const gradient_water = this.context.createLinearGradient(
+                    0,
+                    this.reverse ? this.height : 0,
+                    0,
+                    this.reverse ? 0 : this.height
+                );
+
+                gradient_water.addColorStop(0, WATER_TOP_COLOR);
+                gradient_water.addColorStop(0.5, WATER_MIDDLE_COLOR);
+                gradient_water.addColorStop(1, WATER_BOTTOM_COLOR);
+
+                this.context.fillStyle = gradient_water;
+                // ===== 画鱼 =====
+                for (let i = 0; i < this.fishes.length; i++) {
+                    this.fishes[i].render(this.context);
+                }
+
+                // ===== 画水面 =====
                 this.context.save();
                 this.context.globalCompositeOperation = 'xor';
                 this.context.beginPath();
                 this.context.moveTo(0, this.reverse ? 0 : this.height);
-                for (var i = 0, count = this.points.length; i < count; i++) this.points[i].render(this.context);
+
+                for (let i = 0; i < this.points.length; i++) {
+                    this.points[i].render(this.context);
+                }
+
                 this.context.lineTo(this.width, this.reverse ? 0 : this.height);
                 this.context.closePath();
                 this.context.fill();
+                this.context.restore();
+
+                // === 水面阳光高光（叠加层）===
+                this.context.save();
+                this.context.globalCompositeOperation = 'lighter';
+
+                // 水面高度
+                const surfaceY = this.height * this.INIT_HEIGHT_RATE;
+
+                // 轻微闪动
+                const shimmer = Math.sin(Date.now() * 0.0015) * 8;
+
+                // 垂直渐变（决定“分层次光照”）
+                const gradient = this.context.createLinearGradient(
+                    0,
+                    surfaceY - 30 + shimmer,
+                    0,
+                    surfaceY + 30 + shimmer
+                );
+
+                gradient.addColorStop(0, 'rgba(255,255,255,0)');
+                gradient.addColorStop(0.35, 'rgba(255,255,255,0.12)');
+                gradient.addColorStop(0.5, 'rgba(255,255,255,0.25)');
+                gradient.addColorStop(0.65, 'rgba(255,255,255,0.12)');
+                gradient.addColorStop(1, 'rgba(255,255,255,0)');
+
+                this.context.fillStyle = gradient;
+
+                // 沿水面画「一整条路径」
+                this.context.beginPath();
+                this.context.moveTo(0, this.reverse ? 0 : this.height);
+
+                for (let i = 0; i < this.points.length; i++) {
+                    const p = this.points[i];
+                    this.context.lineTo(p.x, this.height - p.height);
+                }
+
+                this.context.lineTo(this.width, this.reverse ? 0 : this.height);
+                this.context.closePath();
+                this.context.fill();
+
                 this.context.restore();
             }
         };
