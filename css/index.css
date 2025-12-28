@@ -4796,6 +4796,86 @@ figure.highlight pre .javascript .function {
     transform: scale(0.7);
   }
 }
+#aside-content .card-widget.card-welcome {
+  padding: 8px;
+}
+#aside-content .card-widget.card-welcome .item-headline {
+  margin: 12px 16px 0 16px;
+}
+#aside-content .card-widget.card-welcome .item-content {
+  margin: 0 16px 10px 16px;
+}
+#aside-content .card-widget.card-welcome #welcome-info {
+  text-align: center;
+  background-color: var(--card-bg);
+  border-radius: 12px;
+  padding: 16px;
+  margin: 8px;
+  border: 2px solid var(--default-bg-color);
+}
+#aside-content .card-widget.card-welcome #welcome-info .error-message {
+  height: 200px;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -o-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+}
+#aside-content .card-widget.card-welcome #welcome-info .error-message p {
+  text-align: center;
+}
+#aside-content .card-widget.card-welcome #welcome-info .error-message p .emoji {
+  font-size: 40px;
+}
+#aside-content .card-widget.card-welcome #welcome-info .error-message p .text {
+  font-size: 16px;
+  color: var(--text-color);
+}
+#aside-content .card-widget.card-welcome #welcome-info p {
+  margin: 0;
+}
+#aside-content .card-widget.card-welcome #welcome-info .user-location {
+  font-size: 16px;
+  color: var(--default-bg-color);
+  font-weight: bold;
+}
+#aside-content .card-widget.card-welcome #welcome-info .distance {
+  font-size: 16px;
+  color: var(--default-bg-color);
+  font-weight: bold;
+}
+#aside-content .card-widget.card-welcome #welcome-info .ip-address {
+  filter: blur(5px);
+  font-size: 16px;
+  color: var(--default-bg-color);
+  -webkit-transition: filter 0.5s;
+  -moz-transition: filter 0.5s;
+  -o-transition: filter 0.5s;
+  -ms-transition: filter 0.5s;
+  transition: filter 0.5s;
+}
+#aside-content .card-widget.card-welcome #welcome-info .ip-address:hover {
+  filter: none;
+}
+#aside-content .card-widget.card-welcome #welcome-info .time-greeting {
+  font-size: 15px;
+  color: var(--text-color);
+  font-weight: bold;
+  margin-top: 8px;
+}
 #post-comment .comment-head {
   margin-bottom: 20px;
 }
