@@ -1,4 +1,3 @@
-// 初始化
 function footer() {
     const footer = document.getElementById('footer');
     if (!footer) return;
@@ -53,8 +52,8 @@ function footer() {
     const FISH_BODY_TOP_COLOR = '#ff6ec7';
     // 鱼体腹部颜色
     const FISH_BODY_BOTTOM_COLOR = '#ffd166';
-    // 鱼鳍颜色
-    const FISH_FIN_COLOR = 'rgba(255, 255, 255, 0.7)';
+    // 鱼鳍颜色（只存 rgb）
+    const FISH_FIN_COLOR = '255, 255, 255';
     // 鱼尾颜色
     const FISH_TAIL_COLOR = 'rgba(255, 128, 0, 0.8)';
 
@@ -174,18 +173,18 @@ function footer() {
                 this.context.clearRect(0, 0, this.width, this.height);
 
                 // ===== 水面渐变 =====
-                const gradient_water = this.context.createLinearGradient(
+                const water_gradient = this.context.createLinearGradient(
                     0,
                     this.reverse ? this.height : 0,
                     0,
                     this.reverse ? 0 : this.height
                 );
 
-                gradient_water.addColorStop(0, WATER_TOP_COLOR);
-                gradient_water.addColorStop(0.5, WATER_MIDDLE_COLOR);
-                gradient_water.addColorStop(1, WATER_BOTTOM_COLOR);
+                water_gradient.addColorStop(0, WATER_TOP_COLOR);
+                water_gradient.addColorStop(0.5, WATER_MIDDLE_COLOR);
+                water_gradient.addColorStop(1, WATER_BOTTOM_COLOR);
 
-                this.context.fillStyle = gradient_water;
+                this.context.fillStyle = water_gradient;
                 // ===== 画鱼 =====
                 for (let i = 0; i < this.fishes.length; i++) {
                     this.fishes[i].render(this.context);
@@ -326,7 +325,7 @@ function footer() {
                 this.isOut = !this.isOut;
                 this.ay *= -1;
             },
-            controlStatus: function (context) {
+            controlStatus: function () {
                 this.previousY = this.y;
                 this.x += this.vx;
                 this.y += this.vy;
@@ -383,13 +382,17 @@ function footer() {
                 context.save();
                 context.translate(40, 0);
                 context.scale(0.9 + 0.2 * Math.sin(this.theta), 1);
+                const tailGradient = context.createLinearGradient(0, 0, 22, 0);
+                tailGradient.addColorStop(0, FISH_TAIL_COLOR);
+                tailGradient.addColorStop(0.6, 'rgba(255,255,255,0.4)');
+                tailGradient.addColorStop(1, 'rgba(255,255,255,0)');
                 context.beginPath();
                 context.moveTo(0, 0);
                 context.quadraticCurveTo(5, 10, 20, 8);
                 context.quadraticCurveTo(12, 5, 10, 0);
                 context.quadraticCurveTo(12, -5, 20, -8);
                 context.quadraticCurveTo(5, -10, 0, 0);
-                context.fillStyle = FISH_TAIL_COLOR;
+                context.fillStyle = tailGradient;
                 context.fill();
                 context.restore();
 
@@ -400,16 +403,20 @@ function footer() {
                 context.beginPath();
 
                 if (this.renderer.reverse) {
-                    context.moveTo(5, 0);
-                    context.bezierCurveTo(10, 10, 10, 30, 0, 40);
-                    context.bezierCurveTo(-12, 25, -8, 10, 0, 0);
+                    context.moveTo(4, 0);
+                    context.bezierCurveTo(8, 8, 8, 18, 0, 24);
+                    context.bezierCurveTo(-7, 15, -5, 6, 0, 0);
                 } else {
-                    context.moveTo(-5, 0);
-                    context.bezierCurveTo(-10, -10, -10, -30, 0, -40);
-                    context.bezierCurveTo(12, -25, 8, -10, 0, 0);
+                    context.moveTo(-4, 0);
+                    context.bezierCurveTo(-8, -8, -8, -18, 0, -24);
+                    context.bezierCurveTo(7, -15, 5, -6, 0, 0);
                 }
                 context.closePath();
-                context.fillStyle = FISH_FIN_COLOR;
+                const finGradient = context.createLinearGradient(0, 0, 0, this.renderer.reverse ? 24 : -24);
+                finGradient.addColorStop(0, `rgba(${FISH_FIN_COLOR}, 0.9)`);
+                finGradient.addColorStop(0.6, `rgba(${FISH_FIN_COLOR}, 0.45)`);
+                finGradient.addColorStop(1, `rgba(${FISH_FIN_COLOR}, 0.2)`);
+                context.fillStyle = finGradient;
                 context.fill();
                 context.restore();
                 context.restore();
