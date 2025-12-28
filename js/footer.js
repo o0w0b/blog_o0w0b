@@ -66,11 +66,11 @@ function footer() {
             THRESHOLD: 50,
             init: function () { this.setParameters(); this.reconstructMethods(); this.setup(); this.bindEvent(); this.render(); },
             setParameters: function () {
-                this.$window = window;
-                this.$container = document.getElementById('jsi-flying-fish-container');
-                this.$canvas = document.createElement('canvas');
-                this.context = this.$canvas.getContext('2d');
-                this.$container.appendChild(this.$canvas);
+                this._window = window;
+                this._container = document.getElementById('jsi-flying-fish-container');
+                this._canvas = document.createElement('canvas');
+                this.context = this._canvas.getContext('2d');
+                this._container.appendChild(this._canvas);
                 this.points = [];
                 this.fishes = [];
                 this.watchIds = [];
@@ -99,11 +99,11 @@ function footer() {
                 this.fishes.length = 0;
                 this.watchIds.length = 0;
                 this.intervalCount = this.MAX_INTERVAL_COUNT;
-                this.width = this.$container.offsetWidth;
-                this.height = this.$container.offsetHeight;
+                this.width = this._container.offsetWidth;
+                this.height = this._container.offsetHeight;
                 this.fishCount = this.FISH_COUNT * this.width / 500 * this.height / 500;
-                this.$canvas.width = this.width;
-                this.$canvas.height = this.height;
+                this._canvas.width = this.width;
+                this._canvas.height = this.height;
                 this.reverse = false;
                 this.fishes.push(new FISH(this));
                 this.createSurfacePoints();
@@ -125,14 +125,14 @@ function footer() {
             },
             bindEvent: function () {
                 window.addEventListener('resize', this.watchWindowSize);
-                if (this.$container) {
-                    this.$container.addEventListener('mouseenter', this.startEpicenter);
-                    this.$container.addEventListener('mousemove', this.moveEpicenter);
-                    this.$container.addEventListener('click', this.reverseVertical);
+                if (this._container) {
+                    this._container.addEventListener('mouseenter', this.startEpicenter);
+                    this._container.addEventListener('mousemove', this.moveEpicenter);
+                    this._container.addEventListener('click', this.reverseVertical);
                 }
             },
             getAxis: function (event) {
-                var rect = this.$container.getBoundingClientRect();
+                var rect = this._container.getBoundingClientRect();
                 return {
                     x: event.clientX - rect.left + window.scrollX,
                     y: event.clientY - rect.top + window.scrollY
@@ -351,10 +351,18 @@ function footer() {
             }
         };
 
+        // 防止重复初始化
+        if (window._fishInited) return;
+        window._fishInited = true;
         // 自动初始化
-        window.addEventListener('DOMContentLoaded', function () { RENDERER.init(); });
+        RENDERER.init();
     })();
 }
 
 // 初始化
 document.addEventListener('DOMContentLoaded', footer);
+document.addEventListener('pjax:complete', function () {
+    // PJAX 后 DOM 变了，允许重新初始化
+    window._fishInited = false;
+    footer();
+});
