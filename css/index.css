@@ -4797,7 +4797,7 @@ figure.highlight pre .javascript .function {
   }
 }
 #aside-content .card-widget.card-welcome {
-  padding: 8px;
+  padding: 16px;
 }
 #aside-content .card-widget.card-welcome .item-headline {
   margin: 12px 16px 0 16px;
@@ -4808,10 +4808,6 @@ figure.highlight pre .javascript .function {
 #aside-content .card-widget.card-welcome #welcome-info {
   text-align: center;
   background-color: var(--card-bg);
-  border-radius: 12px;
-  padding: 16px;
-  margin: 8px;
-  border: 2px solid var(--default-bg-color);
 }
 #aside-content .card-widget.card-welcome #welcome-info .error-message {
   height: 200px;

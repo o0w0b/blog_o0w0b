@@ -1,6 +1,6 @@
 // 使用 fetch 从 IP 定位 API 获取用户位置
 function fetchIpLocation() {
-    return fetch("http://ip-api.com/json/?lang=zh-CN")
+    return fetch("https://ip-api.o0w0b.top/?lang=zh-CN")
         .then(response => response.json())
         .then(data => {
             return {
@@ -264,10 +264,10 @@ function showWelcome(ipLocation) {
 
     if (welcomeInfoElement) {
         welcomeInfoElement.innerHTML = `
-        <p>Hey~ 来自 <b><span class="user-location">${pos}</span></b> 的来访者！😝</p>
+        <p>Hey~ 来自 <span class="user-location">${pos}</span> 的来访者！😝</p>
         <p>${posdesc} 🏞️</p>
-        <p>目前距博主约 <b><span class="distance">${dist}</span></b> 公里！</p>
-        <p>网络IP为：<b><span class="ip-address">${ip}</span></b></p>
+        <p>目前距博主约 <span class="distance">${dist}</span> 公里！</p>
+        <p>网络IP为：<span class="ip-address">${ip}</span></p>
         <p class="time-greeting">${timeChange}</p>
     `;
     } else {
