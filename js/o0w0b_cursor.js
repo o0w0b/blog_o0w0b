@@ -54,4 +54,4 @@ document.addEventListener("mouseover", (e) => {
 });
 
 /* false 禁用右键 */
-document.oncontextmenu = () => true;
+document.oncontextmenu = () => false;
