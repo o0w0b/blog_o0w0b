@@ -1,0 +1,374 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>为 Butterfly 主题添加“诗词推荐-侧边栏卡片” | o0w0b の Blog</title><meta name="author" content="o0w0b"><meta name="copyright" content="o0w0b"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content="调用今日诗词 API 显示推荐诗词的侧边栏卡片">
+<meta property="og:type" content="article">
+<meta property="og:title" content="为 Butterfly 主题添加“诗词推荐-侧边栏卡片”">
+<meta property="og:url" content="https://blog.o0w0b.top/posts/8e44b064/index.html">
+<meta property="og:site_name" content="o0w0b の Blog">
+<meta property="og:description" content="调用今日诗词 API 显示推荐诗词的侧边栏卡片">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://img.o0w0b.top/cover?6cb0c5f8-1f0a-495c-835a-c5e883cb4963">
+<meta property="article:published_time" content="2025-12-30T15:02:01.000Z">
+<meta property="article:modified_time" content="2025-12-30T15:22:48.657Z">
+<meta property="article:author" content="o0w0b">
+<meta property="article:tag" content="API">
+<meta property="article:tag" content="Butterfly侧边栏卡片">
+<meta property="article:tag" content="Hexo">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://img.o0w0b.top/cover?6cb0c5f8-1f0a-495c-835a-c5e883cb4963"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "为 Butterfly 主题添加“诗词推荐-侧边栏卡片”",
+  "url": "https://blog.o0w0b.top/posts/8e44b064/",
+  "image": "https://img.o0w0b.top/cover?6cb0c5f8-1f0a-495c-835a-c5e883cb4963",
+  "datePublished": "2025-12-30T15:02:01.000Z",
+  "dateModified": "2025-12-30T15:22:48.657Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "o0w0b",
+      "url": "https://blog.o0w0b.top"
+    }
+  ]
+}</script><link rel="shortcut icon" href="https://imgbed.o0w0b.top/file/1766886546010_favicon.png"><link rel="canonical" href="https://blog.o0w0b.top/posts/8e44b064/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!true && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          const hour = new Date().getHours()
+          const isNight = hour <= 6 || hour >= 18
+          if (theme === undefined) isNight ? activateDarkMode() : activateLightMode()
+          else theme === 'light' ? activateLightMode() : activateDarkMode()
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.json","preload":true,"top_n_per_article":1,"unescape":false,"pagination":{"enable":false,"hitsPerPage":8},"languages":{"hits_empty":"未找到符合您查询的内容：${query}","hits_stats":"共找到 ${hits} 篇文章"}},
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简"},
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":200,"highlightFullpage":true,"highlightMacStyle":true},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"已切换为繁体中文","cht_to_chs":"已切换为简体中文","day_to_night":"已切换为深色模式","night_to_day":"已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#1f1f1f","position":"bottom-left"},
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: true,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '为 Butterfly 主题添加“诗词推荐-侧边栏卡片”',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><link rel="stylesheet" href="/css/PaperPlaneCursor.css"><!-- hexo injector head_end start -->
+<link rel="stylesheet" href="/css/festival.css">
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://imgbed.o0w0b.top/file/1764253158821_paimon.jpg" onerror="this.onerror=null;this.src='https://gitee.com/o0w0b/typora_pic/raw/master/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-compass"></i><span> 页面</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/hanabi/"><i class="fa-fw fas fa-expand"></i><span> 花火</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://netdisk.o0w0b.top"><i class="fa-fw fas fa-cloud"></i><span> 网盘</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://imgbed.o0w0b.top"><i class="fa-fw fas fa-image"></i><span> 图床</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://ittools.o0w0b.top"><i class="fa-fw fas fa-screwdriver-wrench"></i><span> 工具</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/shuoshuo/"><i class="fa-fw fas fa-comment"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://ysqd.o0w0b.top"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://img.o0w0b.top/cover?6cb0c5f8-1f0a-495c-835a-c5e883cb4963);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">o0w0b の Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">为 Butterfly 主题添加“诗词推荐-侧边栏卡片”</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-compass"></i><span> 页面</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/hanabi/"><i class="fa-fw fas fa-expand"></i><span> 花火</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://netdisk.o0w0b.top"><i class="fa-fw fas fa-cloud"></i><span> 网盘</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://imgbed.o0w0b.top"><i class="fa-fw fas fa-image"></i><span> 图床</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://ittools.o0w0b.top"><i class="fa-fw fas fa-screwdriver-wrench"></i><span> 工具</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/shuoshuo/"><i class="fa-fw fas fa-comment"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://ysqd.o0w0b.top"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">为 Butterfly 主题添加“诗词推荐-侧边栏卡片”</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-12-30T15:02:01.000Z" title="发表于 2025-12-30 23:02:01">2025-12-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-12-30T15:22:48.657Z" title="更新于 2025-12-30 23:22:48">2025-12-30</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Butterfly%E9%AD%94%E6%94%B9%E6%95%99%E7%A8%8B/">Butterfly魔改教程</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">871</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><div id="post-outdate-notice" data="{&quot;limitDay&quot;:365,&quot;messagePrev&quot;:&quot;已经过了&quot;,&quot;messageNext&quot;:&quot;天自上次更新，文章内容可能已过时。&quot;,&quot;postUpdate&quot;:&quot;2025-12-30 23:22:48&quot;}" hidden></div><h2 id="效果预览"><a href="#效果预览" class="headerlink" title="效果预览"></a>效果预览</h2><p>与本站首页的“诗词推荐-侧边栏卡片“同款</p>
+<h2 id="添加方法"><a href="#添加方法" class="headerlink" title="添加方法"></a>添加方法</h2><h3 id="创建页面文件"><a href="#创建页面文件" class="headerlink" title="创建页面文件"></a>创建页面文件</h3><p>在<code>[blogroot]/themes/butterfly/layout/includes/widget</code>中新建<code>card_poem.pug</code>文件，并添加如下内容</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">#card-poem.card-widget</span><br><span class="line">    #poem_sentence</span><br><span class="line">    #poem_info</span><br><span class="line">        #poem_author</span><br><span class="line">        #poem_title</span><br><span class="line">script(src=&#x27;/js/jinrishici.js&#x27;, charset=&#x27;utf-8&#x27;)</span><br><span class="line">script(type=&#x27;text/javascript&#x27;).</span><br><span class="line">  jinrishici.load(function(result) &#123;</span><br><span class="line">    var sentence = document.querySelector(&quot;#poem_sentence&quot;)</span><br><span class="line">    var author = document.querySelector(&quot;#poem_author&quot;)</span><br><span class="line">    var title = document.querySelector(&quot;#poem_title&quot;)</span><br><span class="line"></span><br><span class="line">    //- 名句</span><br><span class="line">    var sentenceText = result.data.content</span><br><span class="line">    sentenceText = sentenceText.substr(0, sentenceText.length - 1);</span><br><span class="line"></span><br><span class="line">    //- 全文</span><br><span class="line">    var fullText = result.data.origin.content.join(&#x27;\n&#x27;)</span><br><span class="line"></span><br><span class="line">    //- 默认显示名句</span><br><span class="line">    sentence.innerHTML = sentenceText</span><br><span class="line"></span><br><span class="line">    //- mouse hover 显示全文</span><br><span class="line">    sentence.addEventListener(&#x27;mouseenter&#x27;, function () &#123;</span><br><span class="line">      sentence.innerText = fullText</span><br><span class="line">    &#125;)</span><br><span class="line">    sentence.addEventListener(&#x27;mouseleave&#x27;, function () &#123;</span><br><span class="line">      sentence.innerText = sentenceText</span><br><span class="line">    &#125;)</span><br><span class="line">    </span><br><span class="line">    author.innerHTML = &#x27;（&#x27; + result.data.origin.dynasty + &#x27;）&#x27; + result.data.origin.author</span><br><span class="line">    title.innerHTML = &#x27;《 &#x27; + result.data.origin.title + &#x27; 》&#x27;</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="引入页面文件"><a href="#引入页面文件" class="headerlink" title="引入页面文件"></a>引入页面文件</h3><p>将该结构插入到对应的位置，可以在当前文件夹<code>[blogroot]/themes/butterfly/layout/includes/widget</code>中的<code>index.pug</code>找到对应结构，如下：</p>
+<ul>
+<li>修改前</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">else</span><br><span class="line">  //- page</span><br><span class="line">  !=partial(&#x27;includes/widget/card_author&#x27;, &#123;&#125;, &#123;cache: true&#125;)</span><br><span class="line">  !=partial(&#x27;includes/widget/card_announcement&#x27;, &#123;&#125;, &#123;cache: true&#125;)</span><br><span class="line">  !=partial(&#x27;includes/widget/card_top_self&#x27;, &#123;&#125;, &#123;cache: true&#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>修改后</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">else</span><br><span class="line">  //- page</span><br><span class="line">  !=partial(&#x27;includes/widget/card_author&#x27;, &#123;&#125;, &#123;cache: true&#125;)</span><br><span class="line">  !=partial(&#x27;includes/widget/card_announcement&#x27;, &#123;&#125;, &#123;cache: true&#125;)</span><br><span class="line">  !=partial(&#x27;includes/widget/card_poem&#x27;, &#123;&#125;, &#123;cache: true&#125;)</span><br><span class="line">  !=partial(&#x27;includes/widget/card_top_self&#x27;, &#123;&#125;, &#123;cache: true&#125;)</span><br></pre></td></tr></table></figure>
+<div class="note info flat"><p>插入位置可以根据顺序自行调整</p>
+</div>
+<h3 id="创建脚本文件"><a href="#创建脚本文件" class="headerlink" title="创建脚本文件"></a>创建脚本文件</h3><p>在<code>[blogroot]/source/js</code>中新建<code>jinrishici.js</code>文件，并添加如下内容</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line">!<span class="keyword">function</span> (<span class="params"><span class="variable language_">window</span></span>) &#123;</span><br><span class="line">    <span class="keyword">var</span> onReadyCallback,</span><br><span class="line">        jinrishici = &#123;&#125;,</span><br><span class="line">        <span class="variable constant_">TOKEN_KEY</span> = <span class="string">&quot;jinrishici-token&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 检测页面中是否存在诗句容器</span></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">hasSentenceElement</span>(<span class="params"></span>) &#123;</span><br><span class="line">        <span class="keyword">return</span> (</span><br><span class="line">            <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;jinrishici-sentence&quot;</span>) ||</span><br><span class="line">            <span class="variable language_">document</span>.<span class="title function_">getElementsByClassName</span>(<span class="string">&quot;jinrishici-sentence&quot;</span>).<span class="property">length</span> !== <span class="number">0</span></span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 自动填充诗句</span></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">autoRenderSentence</span>(<span class="params"></span>) &#123;</span><br><span class="line">        jinrishici.<span class="title function_">load</span>(<span class="keyword">function</span> (<span class="params">response</span>) &#123;</span><br><span class="line">            <span class="keyword">var</span> sentenceById = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">&quot;jinrishici-sentence&quot;</span>),</span><br><span class="line">                sentenceByClass = <span class="variable language_">document</span>.<span class="title function_">getElementsByClassName</span>(<span class="string">&quot;jinrishici-sentence&quot;</span>);</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (sentenceById) &#123;</span><br><span class="line">                sentenceById.<span class="property">innerText</span> = response.<span class="property">data</span>.<span class="property">content</span>;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> (sentenceByClass.<span class="property">length</span> !== <span class="number">0</span>) &#123;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; sentenceByClass.<span class="property">length</span>; i++) &#123;</span><br><span class="line">                    sentenceByClass[i].<span class="property">innerText</span> = response.<span class="property">data</span>.<span class="property">content</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 发起 API 请求</span></span><br><span class="line">    <span class="keyword">function</span> <span class="title function_">requestApi</span>(<span class="params">callback, url</span>) &#123;</span><br><span class="line">        <span class="keyword">var</span> xhr = <span class="keyword">new</span> <span class="title class_">XMLHttpRequest</span>();</span><br><span class="line">        xhr.<span class="title function_">open</span>(<span class="string">&quot;get&quot;</span>, url);</span><br><span class="line">        xhr.<span class="property">withCredentials</span> = <span class="literal">true</span>;</span><br><span class="line">        xhr.<span class="title function_">send</span>();</span><br><span class="line"></span><br><span class="line">        xhr.<span class="property">onreadystatechange</span> = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">            <span class="keyword">if</span> (xhr.<span class="property">readyState</span> === <span class="number">4</span>) &#123;</span><br><span class="line">                <span class="keyword">var</span> result = <span class="title class_">JSON</span>.<span class="title function_">parse</span>(xhr.<span class="property">responseText</span>);</span><br><span class="line">                <span class="keyword">if</span> (result.<span class="property">status</span> === <span class="string">&quot;success&quot;</span>) &#123;</span><br><span class="line">                    <span class="title function_">callback</span>(result);</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    <span class="variable language_">console</span>.<span class="title function_">error</span>(</span><br><span class="line">                        <span class="string">&quot;今日诗词API加载失败，错误原因：&quot;</span> + result.<span class="property">errMessage</span></span><br><span class="line">                    );</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 加载诗词数据</span></span><br><span class="line">    jinrishici.<span class="property">load</span> = <span class="keyword">function</span> (<span class="params">callback</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span> (<span class="variable language_">window</span>.<span class="property">localStorage</span> &amp;&amp; <span class="variable language_">window</span>.<span class="property">localStorage</span>.<span class="title function_">getItem</span>(<span class="variable constant_">TOKEN_KEY</span>)) &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="title function_">requestApi</span>(</span><br><span class="line">                callback,</span><br><span class="line">                <span class="string">&quot;https://v2.jinrishici.com/one.json?client=browser-sdk/1.2&amp;X-User-Token=&quot;</span> +</span><br><span class="line">                <span class="built_in">encodeURIComponent</span>(<span class="variable language_">window</span>.<span class="property">localStorage</span>.<span class="title function_">getItem</span>(<span class="variable constant_">TOKEN_KEY</span>))</span><br><span class="line">            );</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="title function_">requestApi</span>(<span class="keyword">function</span> (<span class="params">response</span>) &#123;</span><br><span class="line">                <span class="variable language_">window</span>.<span class="property">localStorage</span>.<span class="title function_">setItem</span>(<span class="variable constant_">TOKEN_KEY</span>, response.<span class="property">token</span>);</span><br><span class="line">                <span class="title function_">callback</span>(response);</span><br><span class="line">            &#125;, <span class="string">&quot;https://v2.jinrishici.com/one.json?client=browser-sdk/1.2&quot;</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 暴露到全局</span></span><br><span class="line">    <span class="variable language_">window</span>.<span class="property">jinrishici</span> = jinrishici;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// DOM 就绪处理</span></span><br><span class="line">    <span class="keyword">if</span> (<span class="title function_">hasSentenceElement</span>()) &#123;</span><br><span class="line">        <span class="title function_">autoRenderSentence</span>();</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        onReadyCallback = <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">            <span class="title function_">hasSentenceElement</span>() &amp;&amp; <span class="title function_">autoRenderSentence</span>();</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> (<span class="variable language_">document</span>.<span class="property">readyState</span> !== <span class="string">&quot;loading&quot;</span>) &#123;</span><br><span class="line">            <span class="title function_">onReadyCallback</span>();</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (<span class="variable language_">document</span>.<span class="property">addEventListener</span>) &#123;</span><br><span class="line">            <span class="variable language_">document</span>.<span class="title function_">addEventListener</span>(<span class="string">&quot;DOMContentLoaded&quot;</span>, onReadyCallback);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="variable language_">document</span>.<span class="title function_">attachEvent</span>(<span class="string">&quot;onreadystatechange&quot;</span>, <span class="keyword">function</span> (<span class="params"></span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (<span class="variable language_">document</span>.<span class="property">readyState</span> === <span class="string">&quot;complete&quot;</span>) &#123;</span><br><span class="line">                    <span class="title function_">onReadyCallback</span>();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;(<span class="variable language_">window</span>);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="创建样式文件"><a href="#创建样式文件" class="headerlink" title="创建样式文件"></a>创建样式文件</h3><p>在<code>[blogroot]/themes/source/css/_layout</code>中新建<code>card-poem.styl</code>文件，并添加如下内容</p>
+<figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 诗词推荐卡片整体 */</span></span><br><span class="line"><span class="selector-id">#card-poem</span><span class="selector-class">.card-widget</span></span><br><span class="line">  <span class="attribute">display</span>: flex</span><br><span class="line">  <span class="attribute">flex-direction</span>: column</span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">0.6rem</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 诗句内容 */</span></span><br><span class="line"><span class="selector-id">#poem_sentence</span></span><br><span class="line">  <span class="attribute">text-align</span>: center</span><br><span class="line">  <span class="attribute">font-family</span>: <span class="string">&quot;Songti SC&quot;</span>, <span class="string">&quot;STSong&quot;</span>, <span class="string">&quot;SimSun&quot;</span>, serif</span><br><span class="line">  <span class="attribute">white-space</span>: pre-line</span><br><span class="line">  <span class="attribute">letter-spacing</span>: <span class="number">0.03em</span></span><br><span class="line">  <span class="attribute">line-height</span>: <span class="number">1.6</span></span><br><span class="line">  <span class="attribute">padding</span>: <span class="number">0.8rem</span> <span class="number">0.6rem</span></span><br><span class="line">  <span class="attribute">margin-bottom</span>: <span class="number">0.3rem</span></span><br><span class="line">  <span class="attribute">border-radius</span>: <span class="number">8px</span></span><br><span class="line">  <span class="attribute">background</span>: <span class="built_in">var</span>(--card-bg)</span><br><span class="line">  <span class="attribute">color</span>: <span class="built_in">var</span>(--default-bg-color)</span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">1rem</span></span><br><span class="line">  <span class="attribute">min-height</span>: <span class="number">60px</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/* 底部信息容器 */</span></span><br><span class="line"><span class="selector-id">#poem_info</span></span><br><span class="line">  <span class="attribute">display</span>: flex</span><br><span class="line">  <span class="attribute">justify-content</span>: center</span><br><span class="line">  <span class="attribute">align-items</span>: center</span><br><span class="line">  <span class="attribute">gap</span>: <span class="number">0.5rem</span></span><br><span class="line">  <span class="attribute">flex-wrap</span>: wrap</span><br><span class="line">  <span class="attribute">margin-top</span>: <span class="number">0.1rem</span></span><br><span class="line">  <span class="attribute">letter-spacing</span>: <span class="number">0em</span></span><br><span class="line">  <span class="attribute">color</span>: <span class="built_in">var</span>(--text-color)</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 诗名 */</span></span><br><span class="line"><span class="selector-id">#poem_title</span></span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">0.85rem</span></span><br><span class="line">  <span class="attribute">font-weight</span>: <span class="number">600</span></span><br><span class="line">  <span class="attribute">order</span>: <span class="number">0</span></span><br><span class="line">  <span class="attribute">color</span>: <span class="built_in">var</span>(--text-color)</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 作者 + 朝代 */</span></span><br><span class="line"><span class="selector-id">#poem_author</span></span><br><span class="line">  <span class="attribute">font-size</span>: <span class="number">0.75rem</span></span><br><span class="line">  <span class="attribute">opacity</span>: <span class="number">0.85</span></span><br><span class="line">  <span class="attribute">order</span>: <span class="number">1</span></span><br><span class="line">  <span class="attribute">white-space</span>: nowrap</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Hexo/">Hexo</a><a class="post-meta__tags" href="/tags/Butterfly%E4%BE%A7%E8%BE%B9%E6%A0%8F%E5%8D%A1%E7%89%87/">Butterfly侧边栏卡片</a><a class="post-meta__tags" href="/tags/API/">API</a></div><div class="post-share"><div class="social-share" data-image="https://img.o0w0b.top/cover?6cb0c5f8-1f0a-495c-835a-c5e883cb4963" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/posts/60d1ebc5/" title="为 Butterfly 主题添加“欢迎来访者-侧边栏卡片”"><img class="cover" src="https://img.o0w0b.top/cover?b2655a6a-96af-4cc1-87c7-65b583f89540" onerror="onerror=null;src='https://gitee.com/o0w0b/typora_pic/raw/master/img/load_failed.png'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">为 Butterfly 主题添加“欢迎来访者-侧边栏卡片”</div></div><div class="info-2"><div class="info-item-1">这是一个根据访问者 IP 和本地时间，显示欢迎信息、城市/国家特色描述及问候的侧边栏卡片</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/posts/60d1ebc5/" title="为 Butterfly 主题添加“欢迎来访者-侧边栏卡片”"><img class="cover" src="https://img.o0w0b.top/cover?b2655a6a-96af-4cc1-87c7-65b583f89540" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="fas fa-history fa-fw"></i> 2025-12-30</div><div class="info-item-2">为 Butterfly 主题添加“欢迎来访者-侧边栏卡片”</div></div><div class="info-2"><div class="info-item-1">这是一个根据访问者 IP 和本地时间，显示欢迎信息、城市/国家特色描述及问候的侧边栏卡片</div></div></div></a><a class="pagination-related" href="/posts/e2310553/" title="在 Butterfly 主题的页脚添加游动的鱼"><img class="cover" src="https://img.o0w0b.top/cover?f8b7a698-5b43-4766-8615-448b1431213b" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="fas fa-history fa-fw"></i> 2025-12-28</div><div class="info-item-2">在 Butterfly 主题的页脚添加游动的鱼</div></div><div class="info-2"><div class="info-item-1">在博客页脚添加游动的鱼效果</div></div></div></a><a class="pagination-related" href="/posts/272d24dd/" title="为 Butterfly 主题添加音乐页面和全局吸底 APlayer 播放器"><img class="cover" src="https://img.o0w0b.top/cover?88af0d77-a267-4de9-b6b6-8fdb7709e60a" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="fas fa-history fa-fw"></i> 2025-12-28</div><div class="info-item-2">为 Butterfly 主题添加音乐页面和全局吸底 APlayer 播放器</div></div><div class="info-2"><div class="info-item-1">本文介绍hexo-tag-aplayer插件的安装和使用</div></div></div></a><a class="pagination-related" href="/posts/a9f206cb/" title="Hexo | Butterfly 使用自定义光标"><img class="cover" src="https://img.o0w0b.top/cover?98c49e6e-0c9b-40e2-9ea9-af64729b09fb" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="fas fa-history fa-fw"></i> 2025-12-30</div><div class="info-item-2">Hexo | Butterfly 使用自定义光标</div></div><div class="info-2"><div class="info-item-1">本文介绍了两种方式更换博客的光标</div></div></div></a><a class="pagination-related" href="/posts/e71dc10/" title="为 Butterfly 主题添加新的页面类型，导航页面"><img class="cover" src="https://img.o0w0b.top/cover?1aef13ca-7b13-44fb-be0a-85e771349d8f" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="fas fa-history fa-fw"></i> 2025-12-28</div><div class="info-item-2">为 Butterfly 主题添加新的页面类型，导航页面</div></div><div class="info-2"><div class="info-item-1">本文通过举添加导航页面类型的例子，介绍为主题添加新的页面类型的方法</div></div></div></a><a class="pagination-related" href="/posts/30c14d36/" title="Hexo | Butterfly 主题 标签外挂"><img class="cover" src="https://img.o0w0b.top/cover?7b8b91e3-5182-490c-8e03-96b4430d9785" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="fas fa-history fa-fw"></i> 2025-12-29</div><div class="info-item-2">Hexo | Butterfly 主题 标签外挂</div></div><div class="info-2"><div class="info-item-1">本文介绍多个Butterfly主题的标签外挂</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="https://imgbed.o0w0b.top/file/1764253158821_paimon.jpg" onerror="this.onerror=null;this.src='https://gitee.com/o0w0b/typora_pic/raw/master/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">o0w0b</div><div class="author-info-description">「Ctrl+C、Ctrl+V」好き</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">20</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/o0w0b"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="mailto:2362760448@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://github.com/o0w0b" target="_blank" title="GitHub"><i class="fab fa-github"></i></a><a class="social-icon" href="https://www.bilibili.com/" target="_blank" title="BiliBili"><i class="fab fa-bilibili"></i></a><a class="social-icon" href="/navigation" target="_blank" title="网站导航"><i class="fas fa-layer-group"></i></a><a class="social-icon" href="/eject" target="_blank" title="OvO"><i class="fas fa-eject"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%88%E6%9E%9C%E9%A2%84%E8%A7%88"><span class="toc-number">1.</span> <span class="toc-text">效果预览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E6%96%B9%E6%B3%95"><span class="toc-number">2.</span> <span class="toc-text">添加方法</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E9%A1%B5%E9%9D%A2%E6%96%87%E4%BB%B6"><span class="toc-number">2.1.</span> <span class="toc-text">创建页面文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%95%E5%85%A5%E9%A1%B5%E9%9D%A2%E6%96%87%E4%BB%B6"><span class="toc-number">2.2.</span> <span class="toc-text">引入页面文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E8%84%9A%E6%9C%AC%E6%96%87%E4%BB%B6"><span class="toc-number">2.3.</span> <span class="toc-text">创建脚本文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA%E6%A0%B7%E5%BC%8F%E6%96%87%E4%BB%B6"><span class="toc-number">2.4.</span> <span class="toc-text">创建样式文件</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2022 - 2025 By o0w0b</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.3</a></span></div><div class="footer_custom_text"><div id="runningTime"></div>
+<script>
+  function updateTime() {
+    var start = new Date("2024/09/01 22:33:11");
+    var now = new Date();
+
+    var years = now.getFullYear() - start.getFullYear();
+    var anniversary = new Date(start);
+    anniversary.setFullYear(start.getFullYear() + years);
+    if (now < anniversary) {
+      years--;
+      anniversary.setFullYear(start.getFullYear() + years);
+    }
+
+    var diff = now - anniversary;
+    var dayMs = 24 * 60 * 60 * 1000;
+    var hourMs = 60 * 60 * 1000;
+    var minMs = 60 * 1000;
+
+    var days = Math.floor(diff / dayMs);
+    diff %= dayMs;
+    var hours = Math.floor(diff / hourMs);
+    diff %= hourMs;
+    var mins = Math.floor(diff / minMs);
+    diff %= minMs;
+    var secs = Math.floor(diff / 1000);
+
+    document.getElementById("runningTime").innerHTML =
+      `<span class="runningTxt">本站已运行：${years} 年 ${days} 天 ${hours} 小时 ${mins} 分 ${secs} 秒</span>`;
+  }
+
+  updateTime();
+  setInterval(updateTime, 1000);
+</script>
+</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div class="js-pjax"><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="fas fa-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="fas fa-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="fas fa-arrow-rotate-right"></i></div><div class="rightMenu-item" id="menu-top"><i class="fas fa-arrow-up"></i></div></div><div class="rightMenu-group rightMenuPost"><div class="rightMenu-item" id="menu-reading"><i class="fas fa-book"></i><span>沉浸阅读</span></div><div class="rightMenu-item" id="menu-postlink"><i class="fas fa-external-link"></i><span>分享本文</span></div></div><div class="rightMenu-group rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="fas fa-copy"></i><span>复制内容</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="fas fa-clipboard"></i><span>粘贴内容</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="fas fa-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-newwindow"><i class="far fa-window-restore"></i><span>新标签页中打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="fas fa-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copylinkimg"><i class="fas fa-link"></i><span>复制图片地址</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="fas fa-window-restore"></i><span>新标签页中打开</span></div></div><div class="rightMenu-group rightMenuOther"><div class="rightMenu-item" id="menu-darkmode"><i class="fas fa-circle-half-stroke"></i><span>显示模式</span></div><a class="rightMenu-item" id="menu-translate"><i class="fas fa-earth-asia"></i><span>繁简转换</span></a><div class="rightMenu-item" id="menu-asidehide"><i class="fas fa-arrows-left-right-to-line"></i><span>边栏控制</span></div></div></div><div id="rightMenu-mask"></div></div><div><script src="https://cdn.jsdelivr.net/npm/hexo-theme-butterfly/source/js/utils.min.js"></script><script src="https://cdn.jsdelivr.net/npm/hexo-theme-butterfly/source/js/main.min.js"></script><script src="https://cdn.jsdelivr.net/npm/hexo-theme-butterfly/source/js/tw_cn.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox/fancybox.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><script src="https://cdn.jsdelivr.net/npm/node-snackbar/dist/snackbar.min.js"></script><div class="js-pjax"><script>(() => {
+  const runMermaid = ele => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    ele.forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const config = mermaidSrc.dataset.config ? JSON.parse(mermaidSrc.dataset.config) : {}
+      if (!config.theme) {
+        config.theme = theme
+      }
+      const mermaidThemeConfig = `%%{init: ${JSON.stringify(config)}}%%\n`
+      const mermaidID = `mermaid-${index}`
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+      const renderMermaid = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      // mermaid v9 and v10 compatibility
+      typeof renderFn === 'string' ? renderMermaid(renderFn) : renderFn.then(({ svg }) => renderMermaid(svg))
+    })
+  }
+
+  const codeToMermaid = () => {
+    const codeMermaidEle = document.querySelectorAll('pre > code.mermaid')
+    if (codeMermaidEle.length === 0) return
+
+    codeMermaidEle.forEach(ele => {
+      const preEle = document.createElement('pre')
+      preEle.className = 'mermaid-src'
+      preEle.hidden = true
+      preEle.textContent = ele.textContent
+      const newEle = document.createElement('div')
+      newEle.className = 'mermaid-wrap'
+      newEle.appendChild(preEle)
+      ele.parentNode.replaceWith(newEle)
+    })
+  }
+
+  const loadMermaid = () => {
+    if (true) codeToMermaid()
+    const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+    if ($mermaid.length === 0) return
+
+    const runMermaidFn = () => runMermaid($mermaid)
+    btf.addGlobalFn('themeChange', runMermaidFn, 'mermaid')
+    window.loadMermaid ? runMermaidFn() : btf.getScript('https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js').then(runMermaidFn)
+  }
+
+  btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><script src="/js/universe.js"></script><script src="/js/rightmenu.js"></script><script src="/js/footer.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer-vite@1.0.4/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer-vite@1.0.4/dist/APlayer.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/metingjs/dist/Meting.min.js"></script><script>(() => {
+  const destroyAplayer = () => {
+    if (window.aplayers) {
+      for (let i = 0; i < window.aplayers.length; i++) {
+        if (!window.aplayers[i].options.fixed) {
+          window.aplayers[i].destroy()
+        }
+      }
+    }
+  }
+
+  const runMetingJS = () => {
+    typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+  }
+
+  btf.addGlobalFn('pjaxSend', destroyAplayer, 'destroyAplayer')
+  btf.addGlobalFn('pjaxComplete', loadMeting, 'runMetingJS')
+})()</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
+  const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+  window.pjax = new Pjax({
+    elements: 'a:not([target="_blank"]):not([href="/music/"])',
+    selectors: pjaxSelectors,
+    cacheBust: false,
+    analytics: false,
+    scrollRestoration: false
+  })
+
+  const triggerPjaxFn = (val) => {
+    if (!val) return
+    Object.values(val).forEach(fn => {
+      try {
+        fn()
+      } catch (err) {
+        console.debug('Pjax callback failed:', err)
+      }
+    })
+  }
+
+  document.addEventListener('pjax:send', () => {
+    // removeEventListener
+    btf.removeGlobalFnEvent('pjaxSendOnce')
+    btf.removeGlobalFnEvent('themeChange')
+
+    // reset readmode
+    const $bodyClassList = document.body.classList
+    if ($bodyClassList.contains('read-mode')) $bodyClassList.remove('read-mode')
+
+    triggerPjaxFn(window.globalFn.pjaxSend)
+  })
+
+  document.addEventListener('pjax:complete', () => {
+    btf.removeGlobalFnEvent('pjaxCompleteOnce')
+    document.querySelectorAll('script[data-pjax]').forEach(item => {
+      const newScript = document.createElement('script')
+      const content = item.text || item.textContent || item.innerHTML || ""
+      Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+      newScript.appendChild(document.createTextNode(content))
+      item.parentNode.replaceChild(newScript, item)
+    })
+
+    triggerPjaxFn(window.globalFn.pjaxComplete)
+  })
+
+  document.addEventListener('pjax:error', e => {
+    if (e.request.status === 404) {
+      true
+        ? pjax.loadUrl('/404.html')
+        : window.location.href = e.request.responseURL
+    }
+  })
+})</script><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><i class="fas fa-spinner fa-pulse" id="loading-status" hidden="hidden"></i><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="text-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据加载中</span></div><div class="local-search-input"><input placeholder="搜索文章" type="text"/></div><hr/><div id="local-search-results"></div><div class="ais-Pagination" id="local-search-pagination" style="display:none;"><ul class="ais-Pagination-list"></ul></div><div id="local-search-stats"></div></div><div id="search-mask"></div><script src="https://cdn.jsdelivr.net/npm/hexo-theme-butterfly/source/js/search/local-search.min.js"></script></div></div><script>(function () {
+  // 拦截任何后续点击
+  document.addEventListener('click', function (e) {
+    var link = e.target.closest('a');
+    if (!link) return;
+    if (e.ctrlKey || e.metaKey || e.shiftKey || e.button === 1) return; // 忽略新标签/中键
+    if (link.origin !== location.origin) return;                       // 只处理同域
+    var fromMusic = location.pathname.startsWith('/music/');
+    var toMusic   = link.pathname.startsWith('/music/');
+    if (fromMusic && !toMusic) {        // 真正离开 music
+      e.preventDefault();
+      window.location.href = link.href; // 强制整页刷新
+    }
+  });
+})();</script><!-- hexo injector body_end start --><script>window.hexo_festival_config={"enable":true,"display_mode":"page","birthday":{"enable":true,"month":11,"day":20}};</script>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.26.10/dist/sweetalert2.all.min.js"></script>
+<script src="/js/lunar.js"></script>
+<script src="/js/festival.js"></script>
+<!-- hexo injector body_end end -->
+    <div class="aplayer no-destroy"
+         data-id="7419903487"
+         data-server="netease"
+         data-type="playlist"
+         data-fixed="true"
+         data-mini="true"
+         data-autoplay="true">
+    </div>
+  
+</body></html>

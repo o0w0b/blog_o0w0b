@@ -1,84 +1,90 @@
-!function (e) {
-    var n,
-        t = {},
-        o = "jinrishici-token";
+!function (window) {
+    var onReadyCallback,
+        jinrishici = {},
+        TOKEN_KEY = "jinrishici-token";
 
-    function i() {
+    // 检测页面中是否存在诗句容器
+    function hasSentenceElement() {
         return (
             document.getElementById("jinrishici-sentence") ||
             document.getElementsByClassName("jinrishici-sentence").length !== 0
         );
     }
 
-    function c() {
-        t.load(function (e) {
-            var n = document.getElementById("jinrishici-sentence"),
-                t = document.getElementsByClassName("jinrishici-sentence");
+    // 自动填充诗句
+    function autoRenderSentence() {
+        jinrishici.load(function (response) {
+            var sentenceById = document.getElementById("jinrishici-sentence"),
+                sentenceByClass = document.getElementsByClassName("jinrishici-sentence");
 
-            if (n) {
-                n.innerText = e.data.content;
+            if (sentenceById) {
+                sentenceById.innerText = response.data.content;
             }
 
-            if (t.length !== 0) {
-                for (var o = 0; o < t.length; o++) {
-                    t[o].innerText = e.data.content;
+            if (sentenceByClass.length !== 0) {
+                for (var i = 0; i < sentenceByClass.length; i++) {
+                    sentenceByClass[i].innerText = response.data.content;
                 }
             }
         });
     }
 
-    function r(e, n) {
-        var t = new XMLHttpRequest();
-        t.open("get", n);
-        t.withCredentials = true;
-        t.send();
+    // 发起 API 请求
+    function requestApi(callback, url) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("get", url);
+        xhr.withCredentials = true;
+        xhr.send();
 
-        t.onreadystatechange = function () {
-            if (t.readyState === 4) {
-                var o = JSON.parse(t.responseText);
-                if (o.status === "success") {
-                    e(o);
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState === 4) {
+                var result = JSON.parse(xhr.responseText);
+                if (result.status === "success") {
+                    callback(result);
                 } else {
                     console.error(
-                        "今日诗词API加载失败，错误原因：" + o.errMessage
+                        "今日诗词API加载失败，错误原因：" + result.errMessage
                     );
                 }
             }
         };
     }
 
-    t.load = function (n) {
-        if (e.localStorage && e.localStorage.getItem(o)) {
-            return r(
-                n,
+    // 加载诗词数据
+    jinrishici.load = function (callback) {
+        if (window.localStorage && window.localStorage.getItem(TOKEN_KEY)) {
+            return requestApi(
+                callback,
                 "https://v2.jinrishici.com/one.json?client=browser-sdk/1.2&X-User-Token=" +
-                encodeURIComponent(e.localStorage.getItem(o))
+                encodeURIComponent(window.localStorage.getItem(TOKEN_KEY))
             );
         } else {
-            return r(function (t) {
-                e.localStorage.setItem(o, t.token);
-                n(t);
+            return requestApi(function (response) {
+                window.localStorage.setItem(TOKEN_KEY, response.token);
+                callback(response);
             }, "https://v2.jinrishici.com/one.json?client=browser-sdk/1.2");
         }
     };
 
-    e.jinrishici = t;
+    // 暴露到全局
+    window.jinrishici = jinrishici;
 
-    if (i()) {
-        c();
+    // DOM 就绪处理
+    if (hasSentenceElement()) {
+        autoRenderSentence();
     } else {
-        n = function () {
-            i() && c();
+        onReadyCallback = function () {
+            hasSentenceElement() && autoRenderSentence();
         };
 
         if (document.readyState !== "loading") {
-            n();
+            onReadyCallback();
         } else if (document.addEventListener) {
-            document.addEventListener("DOMContentLoaded", n);
+            document.addEventListener("DOMContentLoaded", onReadyCallback);
         } else {
             document.attachEvent("onreadystatechange", function () {
                 if (document.readyState === "complete") {
-                    n();
+                    onReadyCallback();
                 }
             });
         }
