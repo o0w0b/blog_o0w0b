@@ -4796,7 +4796,13 @@ figure.highlight pre .javascript .function {
     transform: scale(0.7);
   }
 }
-#card-poem.card-widget {
+[data-theme=light] {
+  --poem-bg: rgba(230,230,235,0.8);
+}
+[data-theme=dark] {
+  --poem-bg: rgba(25,35,60,0.8);
+}
+#aside-content #card-poem.card-widget {
   display: -webkit-box;
   display: -moz-box;
   display: -webkit-flex;
@@ -4811,20 +4817,20 @@ figure.highlight pre .javascript .function {
   flex-direction: column;
   padding: 0.6rem;
 }
-#poem_sentence {
+#aside-content #poem_sentence {
   text-align: center;
   font-family: "Songti SC", "STSong", "SimSun", serif;
   white-space: pre-line;
   letter-spacing: 0.03em;
   line-height: 1.6;
-  padding: 0.8rem 0.6rem;
+  padding: 0.6rem 0.6rem;
   border-radius: 8px;
-  background: var(--card-bg);
+  background: var(--poem-bg);
   color: var(--default-bg-color);
   font-size: 1rem;
   min-height: 60px;
 }
-#poem_info {
+#aside-content #poem_info {
   display: -webkit-box;
   display: -moz-box;
   display: -webkit-flex;
@@ -4854,7 +4860,7 @@ figure.highlight pre .javascript .function {
   letter-spacing: 0em;
   color: var(--text-color);
 }
-#poem_title {
+#aside-content #poem_title {
   font-size: 0.85rem;
   font-weight: 600;
   -webkit-box-ordinal-group: 0;
@@ -4865,7 +4871,7 @@ figure.highlight pre .javascript .function {
   order: 0;
   color: var(--text-color);
 }
-#poem_author {
+#aside-content #poem_author {
   font-size: 0.75rem;
   opacity: 0.85;
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=85)";
@@ -4876,20 +4882,28 @@ figure.highlight pre .javascript .function {
   -ms-flex-order: 1;
   -webkit-order: 1;
   order: 1;
-  white-space: nowrap;
+  white-space: pre-line;
+}
+[data-theme=light] {
+  --welcome-bg: rgba(230,230,235,0.8);
+}
+[data-theme=dark] {
+  --welcome-bg: rgba(25,35,60,0.8);
 }
 #aside-content .card-widget.card-welcome {
-  padding: 16px;
+  padding: 20px 24px;
 }
 #aside-content .card-widget.card-welcome .item-headline {
-  margin: 12px 16px 0 16px;
+  margin: 0px;
 }
 #aside-content .card-widget.card-welcome .item-content {
-  margin: 0 16px 10px 16px;
+  margin: 0px;
 }
 #aside-content .card-widget.card-welcome #welcome-info {
   text-align: center;
-  background-color: var(--card-bg);
+  background-color: var(--welcome-bg);
+  border-radius: 8px;
+  padding: 12px;
 }
 #aside-content .card-widget.card-welcome #welcome-info .error-message {
   height: 200px;
@@ -4923,7 +4937,7 @@ figure.highlight pre .javascript .function {
   color: var(--text-color);
 }
 #aside-content .card-widget.card-welcome #welcome-info p {
-  margin: 0;
+  margin: 0px;
 }
 #aside-content .card-widget.card-welcome #welcome-info .user-location {
   font-size: 16px;

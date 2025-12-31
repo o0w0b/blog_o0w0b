@@ -1,0 +1,67 @@
+/* ========== 公共渐变背景 ========== */
+:root {
+    --light-gradient: linear-gradient(-45deg, rgba(245, 245, 245, 0.6), rgba(230, 230, 230, 0.4), rgba(215, 215, 215, 0.4), rgba(245, 245, 245, 0.6));
+    --dark-gradient: linear-gradient(-45deg, rgba(5, 10, 25, 0.6), rgba(15, 25, 50, 0.4), rgba(30, 40, 70, 0.4), rgba(5, 10, 25, 0.6));
+}
+
+/* ========== 侧边栏卡片通用样式 ========== */
+#aside-content>.card-widget,
+#aside-content>.sticky_layout>.card-widget,
+#aside-content>#card-poem.card-widget {
+    position: relative;
+    z-index: 1;
+    background: var(--light-gradient);
+    /* 模糊效果 */
+    /* backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); */
+}
+
+/* ========== 文章、分类、时间轴页面通用样式 ========== */
+.layout>#post,
+.layout>#page,
+.layout>#archive,
+.layout>#category,
+.layout>#tag {
+    background: var(--light-gradient);
+    /* 模糊效果 */
+    /* backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); */
+}
+
+/* ========== 首页文章预览 ========== */
+#recent-posts>.recent-post-items>.recent-post-item {
+    background: var(--light-gradient);
+    /* 模糊效果 */
+    /* backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px); */
+}
+
+/* ========== 深色主题 ========== */
+[data-theme=dark] {
+
+    /* 侧边栏卡片 */
+    #aside-content>.card-widget,
+    #aside-content>.sticky_layout>.card-widget,
+    #aside-content>#card-poem.card-widget {
+        background: var(--dark-gradient);
+    }
+
+    /* 页面主体 */
+    .layout>#post,
+    .layout>#page,
+    .layout>#archive,
+    .layout>#category,
+    .layout>#tag {
+        background: var(--dark-gradient);
+    }
+
+    /* 首页文章预览 */
+    #recent-posts>.recent-post-items>.recent-post-item {
+        background: var(--dark-gradient);
+    }
+
+    /* 社交按钮 */
+    .social-icon i {
+        color: rgba(188, 188, 188) !important;
+    }
+}
