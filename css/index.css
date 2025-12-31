@@ -4523,14 +4523,19 @@ figure.highlight pre .javascript .function {
 #aside-content .card-announcement .item-headline i {
   color: #f00;
 }
-.avatar-img {
+.card-info-avatar {
+  display: inline-block;
+  position: relative;
+}
+.card-info-avatar .avatar-img {
   overflow: hidden;
   margin: 0 auto;
   width: 110px;
   height: 110px;
   border-radius: 70px;
+  border: 1px solid #d0d7de;
 }
-.avatar-img img {
+.card-info-avatar .avatar-img img {
   width: 100%;
   height: 100%;
   -webkit-transition: filter 375ms ease-in 0.2s, -webkit-transform 0.3s;
@@ -4540,12 +4545,69 @@ figure.highlight pre .javascript .function {
   transition: filter 375ms ease-in 0.2s, transform 0.3s;
   object-fit: cover;
 }
-.avatar-img img:hover {
-  -webkit-transform: rotate(360deg);
-  -moz-transform: rotate(360deg);
-  -o-transform: rotate(360deg);
-  -ms-transform: rotate(360deg);
-  transform: rotate(360deg);
+.card-info-avatar .author-status-box {
+  position: absolute;
+  bottom: 0;
+  left: calc(100% - 28px);
+  width: 28px;
+  height: 28px;
+  border: 1px solid #d0d7de;
+  border-radius: 2em;
+  background-color: rgba(248,248,248,0.973);
+  -webkit-transition: 0.4s;
+  -moz-transition: 0.4s;
+  -o-transition: 0.4s;
+  -ms-transition: 0.4s;
+  transition: 0.4s;
+}
+.card-info-avatar .author-status-box .author-status {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: box;
+  display: flex;
+  -webkit-box-align: center;
+  -moz-box-align: center;
+  -o-box-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -moz-box-pack: center;
+  -o-box-pack: center;
+  -ms-flex-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  height: 28px;
+  padding: 0 5px;
+}
+.card-info-avatar .author-status-box .author-status span {
+  width: 28px;
+  font-size: 12px;
+  height: 100%;
+  overflow: hidden;
+  -o-text-overflow: ellipsis;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  -webkit-transition: 0.4s;
+  -moz-transition: 0.4s;
+  -o-transition: 0.4s;
+  -ms-transition: 0.4s;
+  transition: 0.4s;
+}
+.card-info-avatar .author-status-box:hover {
+  width: 80px;
+}
+.card-info-avatar .author-status-box:hover .author-status span {
+  width: 100px;
+}
+[data-theme="dark"] .card-info-avatar .avatar-img {
+  border: 1px solid #5c6060;
+}
+[data-theme="dark"] .card-info-avatar .author-status-box {
+  background-color: rgba(34,34,34,0.949);
+  border: 1px solid #5c6060;
 }
 .site-data {
   display: table;

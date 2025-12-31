@@ -11,7 +11,7 @@ function fetchIpLocation() {
                     city: data.city,         // 城市
                     district: data.district, // 区
                     lat: data.lat,           // 纬度
-                    lng: data.lon            // 经度
+                    lon: data.lon            // 经度
                 }
             };
         })
@@ -22,12 +22,12 @@ function fetchIpLocation() {
 }
 
 // 计算两点距离函数（用 Haversine）
-function getDistance(lng1, lat1, lng2, lat2) {
+function getDistance(lon1, lat1, lon2, lat2) {
     function toRad(d) { return d * Math.PI / 180; }
     const R = 6371; // 地球半径 km
     const dLat = toRad(lat2 - lat1);
-    const dLng = toRad(lng2 - lng1);
-    const a = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLng / 2) ** 2;
+    const dLon = toRad(lon2 - lon1);
+    const a = Math.sin(dLat / 2) ** 2 + Math.cos(toRad(lat1)) * Math.cos(toRad(lat2)) * Math.sin(dLon / 2) ** 2;
     const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
     return (R * c).toFixed(2); // 返回保留两位小数的公里数
 }
@@ -39,7 +39,9 @@ function showWelcome(ipLocation) {
         return;
     }
 
-    let dist = getDistance(126.904, 37.0849, ipLocation.data.lng, ipLocation.data.lat);
+    let lon = ipLocation.data.lon;
+    let lat = ipLocation.data.lat;
+    let dist = getDistance(126.904, 37.0849, lon, lat);
     let pos = ipLocation.data.country;
     let ip = ipLocation.ip;
     let posdesc;
@@ -266,8 +268,9 @@ function showWelcome(ipLocation) {
         welcomeInfoElement.innerHTML = `
         <p>Hey~ 来自 <span class="user-location">${pos}</span> 的来访者！😝</p>
         <p>${posdesc} 🏞️</p>
-        <p>目前距博主约 <span class="distance">${dist}</span> 公里！</p>
-        <p>网络IP为：<span class="ip-address">${ip}</span></p>
+        <!-- <p>目前距博主约 <span class="distance">${dist}</span> 公里！</p> -->
+        <p>经度：<span class="distance">${lon}</span><br>纬度：<span class="distance">${lat}</span></p>
+        <p>网络IP：<span class="ip-address">${ip}</span></p>
         <p class="time-greeting">${timeChange}</p>
     `;
     } else {
