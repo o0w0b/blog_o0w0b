@@ -12,8 +12,8 @@
     z-index: 1;
     background: var(--light-gradient);
     /* 模糊效果 */
-    /* backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px); */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 /* ========== 文章、分类、时间轴页面通用样式 ========== */
@@ -24,16 +24,16 @@
 .layout>#tag {
     background: var(--light-gradient);
     /* 模糊效果 */
-    /* backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px); */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 /* ========== 首页文章预览 ========== */
 #recent-posts>.recent-post-items>.recent-post-item {
     background: var(--light-gradient);
     /* 模糊效果 */
-    /* backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px); */
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 /* ========== 深色主题 ========== */
