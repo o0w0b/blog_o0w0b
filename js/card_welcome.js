@@ -270,7 +270,7 @@ function showWelcome(ipLocation) {
         <p>${posdesc} 🏞️</p>
         <!-- <p>目前距博主约 <span class="distance">${dist}</span> 公里！</p> -->
         <p>经度：<span class="distance">${lon}</span><br>纬度：<span class="distance">${lat}</span></p>
-        <p>网络IP：<span class="ip-address">${ip}</span></p>
+        <p>网络 IP：<span class="ip-address">${ip}</span></p>
         <p class="time-greeting">${timeChange}</p>
     `;
     } else {
