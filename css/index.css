@@ -4573,23 +4573,34 @@ figure.highlight pre .javascript .function {
   -ms-flex-align: center;
   -webkit-align-items: center;
   align-items: center;
-  -webkit-box-pack: center;
-  -moz-box-pack: center;
-  -o-box-pack: center;
-  -ms-flex-pack: center;
-  -webkit-justify-content: center;
-  justify-content: center;
+  -webkit-box-pack: start;
+  -moz-box-pack: start;
+  -o-box-pack: start;
+  -ms-flex-pack: start;
+  -webkit-justify-content: flex-start;
+  justify-content: flex-start;
   height: 28px;
   padding: 0 5px;
 }
-.card-info-avatar .author-status-box .author-status span {
+.card-info-avatar .author-status-box .author-status img {
+  width: 18px;
+  height: 18px;
+  padding: 0 2px 2px 0;
+}
+.card-info-avatar .author-status-box .author-status .emoji {
+  display: none;
+  padding-bottom: 6px;
+}
+.card-info-avatar .author-status-box .author-status .text {
   width: 28px;
-  font-size: 12px;
+  font-size: 0.85em;
   height: 100%;
   overflow: hidden;
+  padding-left: 2px;
   -o-text-overflow: ellipsis;
   text-overflow: ellipsis;
   white-space: nowrap;
+  text-align: left;
   -webkit-transition: 0.4s;
   -moz-transition: 0.4s;
   -o-transition: 0.4s;
@@ -4597,10 +4608,10 @@ figure.highlight pre .javascript .function {
   transition: 0.4s;
 }
 .card-info-avatar .author-status-box:hover {
-  width: 80px;
+  width: 94px;
 }
-.card-info-avatar .author-status-box:hover .author-status span {
-  width: 100px;
+.card-info-avatar .author-status-box:hover .author-status .text {
+  width: 94px;
 }
 [data-theme="dark"] .card-info-avatar .avatar-img {
   border: 1px solid #5c6060;
