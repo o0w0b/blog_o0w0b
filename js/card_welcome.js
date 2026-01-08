@@ -266,11 +266,11 @@ function showWelcome(ipLocation) {
 
     if (welcomeInfoElement) {
         welcomeInfoElement.innerHTML = `
-        <p>Hey~ 来自 <span class="user-location">${pos}</span> 的来访者！😝</p>
-        <p>${posdesc} 🏞️</p>
-        <!-- <p>目前距博主约 <span class="distance">${dist}</span> 公里！</p> -->
+        <p>你好呀~ 来自 <span class="user-location">${pos}</span> 的来访者！😝</p>
+        <!-- <p>${posdesc} 🏞️</p>
+        <p>目前距博主约 <span class="distance">${dist}</span> 公里！</p>
         <p>经度：<span class="distance">${lon}</span><br>纬度：<span class="distance">${lat}</span></p>
-        <p>网络 IP：<span class="ip-address">${ip}</span></p>
+        <p>网络 IP：<span class="ip-address">${ip}</span></p> -->
         <p class="time-greeting">${timeChange}</p>
     `;
     } else {
