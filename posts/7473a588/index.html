@@ -5,18 +5,18 @@
 <meta property="og:site_name" content="o0w0b の Blog">
 <meta property="og:description" content="介绍了Vite中分包打包的配置方法和文件的输出路径、命名规则">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img.o0w0b.top/cover?a8b6796a-6a9a-4398-8e1d-76acbef496a9">
+<meta property="og:image" content="https://img.o0w0b.top/cover?7b80eed8-9fce-4897-8ea1-173e028fe5b3">
 <meta property="article:published_time" content="2024-09-09T07:28:31.000Z">
 <meta property="article:modified_time" content="2025-12-28T05:32:58.290Z">
 <meta property="article:author" content="o0w0b">
 <meta property="article:tag" content="Vite">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img.o0w0b.top/cover?a8b6796a-6a9a-4398-8e1d-76acbef496a9"><script type="application/ld+json">{
+<meta name="twitter:image" content="https://img.o0w0b.top/cover?7b80eed8-9fce-4897-8ea1-173e028fe5b3"><script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": "Vite 工具配置 rollupOptions 分包打包的方法",
   "url": "https://blog.o0w0b.top/posts/7473a588/",
-  "image": "https://img.o0w0b.top/cover?a8b6796a-6a9a-4398-8e1d-76acbef496a9",
+  "image": "https://img.o0w0b.top/cover?7b80eed8-9fce-4897-8ea1-173e028fe5b3",
   "datePublished": "2024-09-09T07:28:31.000Z",
   "dateModified": "2025-12-28T05:32:58.290Z",
   "author": [
@@ -164,7 +164,7 @@
   pageType: 'post'
 }</script><link rel="stylesheet" href="/css/theme-gradient.css"><link rel="stylesheet" href="/css/PaperPlaneCursor.css"><!-- hexo injector head_end start -->
 <link rel="stylesheet" href="/css/festival.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://imgbed.o0w0b.top/file/1766886546010_favicon.png" onerror="this.onerror=null;this.src='https://gitee.com/o0w0b/typora_pic/raw/master/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-compass"></i><span> 页面</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/hanabi/"><i class="fa-fw fas fa-bahai"></i><span> 花火</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://share.o0w0b.top"><i class="fa-fw fas fa-layer-group"></i><span> 分享</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://netdisk.o0w0b.top"><i class="fa-fw fas fa-cloud"></i><span> 网盘</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://imgbed.o0w0b.top"><i class="fa-fw fas fa-image"></i><span> 图床</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://ittools.o0w0b.top"><i class="fa-fw fas fa-screwdriver-wrench"></i><span> 工具</span></a></li></ul></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-link"></i><span> Link</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-lines-leaning"></i><span> 链接</span></a></li><li><a class="site-page child" href="/navigation/"><i class="fa-fw fas fa-signs-post"></i><span> 导航</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/shuoshuo/"><i class="fa-fw fas fa-comment"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://ysqd.o0w0b.top"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://img.o0w0b.top/cover?a8b6796a-6a9a-4398-8e1d-76acbef496a9);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">o0w0b の Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">Vite 工具配置 rollupOptions 分包打包的方法</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-compass"></i><span> 页面</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/hanabi/"><i class="fa-fw fas fa-bahai"></i><span> 花火</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://share.o0w0b.top"><i class="fa-fw fas fa-layer-group"></i><span> 分享</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://netdisk.o0w0b.top"><i class="fa-fw fas fa-cloud"></i><span> 网盘</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://imgbed.o0w0b.top"><i class="fa-fw fas fa-image"></i><span> 图床</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://ittools.o0w0b.top"><i class="fa-fw fas fa-screwdriver-wrench"></i><span> 工具</span></a></li></ul></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-link"></i><span> Link</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-lines-leaning"></i><span> 链接</span></a></li><li><a class="site-page child" href="/navigation/"><i class="fa-fw fas fa-signs-post"></i><span> 导航</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/shuoshuo/"><i class="fa-fw fas fa-comment"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://ysqd.o0w0b.top"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Vite 工具配置 rollupOptions 分包打包的方法</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-09-09T07:28:31.000Z" title="发表于 2024-09-09 15:28:31">2024-09-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-12-28T05:32:58.290Z" title="更新于 2025-12-28 13:32:58">2025-12-28</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/">入门教程</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">1.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><div id="post-outdate-notice" data="{&quot;limitDay&quot;:365,&quot;messagePrev&quot;:&quot;已经过了&quot;,&quot;messageNext&quot;:&quot;天自上次更新，文章内容可能已过时。&quot;,&quot;postUpdate&quot;:&quot;2025-12-28 13:32:58&quot;}" hidden></div><h1 id="分包的好处"><a href="#分包的好处" class="headerlink" title="分包的好处"></a>分包的好处</h1><ol>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://imgbed.o0w0b.top/file/1766886546010_favicon.png" onerror="this.onerror=null;this.src='https://gitee.com/o0w0b/typora_pic/raw/master/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-compass"></i><span> 页面</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/hanabi/"><i class="fa-fw fas fa-bahai"></i><span> 花火</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://share.o0w0b.top"><i class="fa-fw fas fa-layer-group"></i><span> 分享</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://netdisk.o0w0b.top"><i class="fa-fw fas fa-cloud"></i><span> 网盘</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://imgbed.o0w0b.top"><i class="fa-fw fas fa-image"></i><span> 图床</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://ittools.o0w0b.top"><i class="fa-fw fas fa-screwdriver-wrench"></i><span> 工具</span></a></li></ul></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-link"></i><span> Link</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-lines-leaning"></i><span> 链接</span></a></li><li><a class="site-page child" href="/navigation/"><i class="fa-fw fas fa-signs-post"></i><span> 导航</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/shuoshuo/"><i class="fa-fw fas fa-comment"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://ysqd.o0w0b.top"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://img.o0w0b.top/cover?7b80eed8-9fce-4897-8ea1-173e028fe5b3);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">o0w0b の Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">Vite 工具配置 rollupOptions 分包打包的方法</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-compass"></i><span> 页面</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/hanabi/"><i class="fa-fw fas fa-bahai"></i><span> 花火</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://share.o0w0b.top"><i class="fa-fw fas fa-layer-group"></i><span> 分享</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://netdisk.o0w0b.top"><i class="fa-fw fas fa-cloud"></i><span> 网盘</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://imgbed.o0w0b.top"><i class="fa-fw fas fa-image"></i><span> 图床</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://ittools.o0w0b.top"><i class="fa-fw fas fa-screwdriver-wrench"></i><span> 工具</span></a></li></ul></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-link"></i><span> Link</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-lines-leaning"></i><span> 链接</span></a></li><li><a class="site-page child" href="/navigation/"><i class="fa-fw fas fa-signs-post"></i><span> 导航</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/shuoshuo/"><i class="fa-fw fas fa-comment"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://ysqd.o0w0b.top"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">Vite 工具配置 rollupOptions 分包打包的方法</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2024-09-09T07:28:31.000Z" title="发表于 2024-09-09 15:28:31">2024-09-09</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-12-28T05:32:58.290Z" title="更新于 2025-12-28 13:32:58">2025-12-28</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%85%A5%E9%97%A8%E6%95%99%E7%A8%8B/">入门教程</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">1.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>4分钟</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><div id="post-outdate-notice" data="{&quot;limitDay&quot;:365,&quot;messagePrev&quot;:&quot;已经过了&quot;,&quot;messageNext&quot;:&quot;天自上次更新，文章内容可能已过时。&quot;,&quot;postUpdate&quot;:&quot;2025-12-28 13:32:58&quot;}" hidden></div><h1 id="分包的好处"><a href="#分包的好处" class="headerlink" title="分包的好处"></a>分包的好处</h1><ol>
 <li>打包后有时会存在个别文件较大的情况, 这会导致依赖模块加载时变慢, 所以就需要将大的包分开</li>
 <li>引入的模块通常没有改动, 改动多的是自己的代码, 可以把不会经常改动的部分单独分包出来, 避免每次打包所有的文件都会改动</li>
 </ol>
@@ -214,157 +214,55 @@
 </blockquote>
 <h2 id="entryFileNames"><a href="#entryFileNames" class="headerlink" title="entryFileNames"></a>entryFileNames</h2><p>打包好的入口文件通常放在输出文件夹下的根目录</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">entryFileNames</span>: <span class="string">&#x27;[name].js&#x27;</span></span><br></pre></td></tr></table></figure>
-</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Vite/">Vite</a></div><div class="post-share"><div class="social-share" data-image="https://img.o0w0b.top/cover?a8b6796a-6a9a-4398-8e1d-76acbef496a9" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/posts/d5e2cb53/" title="markdown 的使用说明（2）"><img class="cover" src="https://img.o0w0b.top/cover?9bfdd628-d3ce-4818-98fb-7ab889c91055" onerror="onerror=null;src='https://gitee.com/o0w0b/typora_pic/raw/master/img/load_failed.png'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">markdown 的使用说明（2）</div></div><div class="info-2"><div class="info-item-1">这篇文章详细地记录了markdown的数学公式部分</div></div></div></a><a class="pagination-related" href="/posts/2ad8ecff/" title="使用 Cloudflare Pages + Telegram Bot 搭建图片存储网站"><img class="cover" src="https://img.o0w0b.top/cover?39063077-e22a-4a28-bfbf-cc5928a8168f" onerror="onerror=null;src='https://gitee.com/o0w0b/typora_pic/raw/master/img/load_failed.png'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">使用 Cloudflare Pages + Telegram Bot 搭建图片存储网站</div></div><div class="info-2"><div class="info-item-1">可以免费、快捷搭建的图片存储网站</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="card-info-avatar"><div class="avatar-img"><img src="https://imgbed.o0w0b.top/file/1766886546010_favicon.png" onerror="this.onerror=null;this.src='https://gitee.com/o0w0b/typora_pic/raw/master/img/friend_404.gif'" alt="avatar"/></div><div class="author-status-box"><div class="author-status"><img src="https://imgbed.o0w0b.top/file/1767234183911_hoshino.png" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"/><div class="emoji">🍀</div><div class="text">2026-01-08</div></div></div></div><div class="author-info-name">o0w0b</div><div class="author-info-description">「Ctrl+C、Ctrl+V」好き</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/o0w0b"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://o0w0b.top" target="_blank" title="主页"><i class="fas fa-paper-plane"></i></a><a class="social-icon" href="mailto:2362760448@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://github.com/o0w0b" target="_blank" title="GitHub"><i class="fab fa-github"></i></a><a class="social-icon" href="https://www.bilibili.com/" target="_blank" title="哔哩哔哩"><i class="fab fa-bilibili"></i></a><a class="social-icon" href="/eject" target="_blank" title="弹出"><i class="fas fa-eject"></i></a></div></div><div class="card-widget"><div class="item-headline"><i class="fas fa-cloud-sun-rain"></i><span>天气</span></div><div class="item-content"><div id="ww_cd9876cff7274" v="1.3" loc="auto"
-    a='{"t":"horizontal","lang":"zh","sl_lpl":1,"ids":[],"font":"Arial","sl_ics":"one_a","sl_sot":"celsius","cl_bkg":"#FFFFFF00","cl_font":"#FFFFFF","cl_cloud":"#FFFFFF","cl_persp":"#81D4FA","cl_sun":"#FFC107","cl_moon":"#FFC107","cl_thund":"#FF5722","sl_tof":"7"}'>
-    <a href="https://weatherwidget.org/zh/" id="ww_cd9876cff7274_u" target="_blank">天气插件</a>
-</div>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Vite/">Vite</a></div><div class="post-share"><div class="social-share" data-image="https://img.o0w0b.top/cover?7b80eed8-9fce-4897-8ea1-173e028fe5b3" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/posts/d5e2cb53/" title="markdown 的使用说明（2）"><img class="cover" src="https://img.o0w0b.top/cover?62150eed-ab41-4bee-b9c6-f3632e0149c1" onerror="onerror=null;src='https://gitee.com/o0w0b/typora_pic/raw/master/img/load_failed.png'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">markdown 的使用说明（2）</div></div><div class="info-2"><div class="info-item-1">这篇文章详细地记录了markdown的数学公式部分</div></div></div></a><a class="pagination-related" href="/posts/2ad8ecff/" title="使用 Cloudflare Pages + Telegram Bot 搭建图片存储网站"><img class="cover" src="https://img.o0w0b.top/cover?9fad043d-a1b6-45d8-a666-6d207ce1afcd" onerror="onerror=null;src='https://gitee.com/o0w0b/typora_pic/raw/master/img/load_failed.png'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">使用 Cloudflare Pages + Telegram Bot 搭建图片存储网站</div></div><div class="info-2"><div class="info-item-1">可以免费、快捷搭建的图片存储网站</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="card-info-avatar"><div class="avatar-img"><img src="https://imgbed.o0w0b.top/file/1766886546010_favicon.png" onerror="this.onerror=null;this.src='https://gitee.com/o0w0b/typora_pic/raw/master/img/friend_404.gif'" alt="avatar"/></div><div class="author-status-box"><div class="author-status"><img src="https://imgbed.o0w0b.top/file/1767234183911_hoshino.png" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"/><div class="emoji">🍀</div><div class="text">2026-01-10</div></div></div></div><div class="author-info-name">o0w0b</div><div class="author-info-description">「Ctrl+C、Ctrl+V」好き</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">22</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">16</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/o0w0b"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://o0w0b.top" target="_blank" title="主页"><i class="fas fa-paper-plane"></i></a><a class="social-icon" href="mailto:2362760448@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://github.com/o0w0b" target="_blank" title="GitHub"><i class="fab fa-github"></i></a><a class="social-icon" href="https://www.bilibili.com/" target="_blank" title="哔哩哔哩"><i class="fab fa-bilibili"></i></a><a class="social-icon" href="/eject" target="_blank" title="弹出"><i class="fas fa-eject"></i></a></div></div><div class="card-widget"><div class="item-headline"><i class="fas fa-cloud-sun-rain"></i><span>天气</span></div><div class="item-content"><style>
+  html[data-theme="light"] {
+    --weather-color: rgb(0, 0, 0);
+  }
 
-<style>
-    #ww_cd9876cff7274.loading {
-        pointer-events: none;
-        /* 禁止连点 */
-        opacity: 0.6;
-        cursor: wait;
-    }
+  html[data-theme="dark"] {
+    --weather-color: rgb(255, 255, 255);
+  }
+
+  .eapp-weather-detail-weatherName,
+  .eapp-weather-detail-locationName,
+  .eapp-weather-detail-currentTemp,
+  .eapp-weather-forecast-item-date,
+  .eapp-weather-forecast-detail-value,
+  .eapp-weather-daily-item-date,
+  .eapp-weather-daily-item-max,
+  .eapp-weather-daily-item-day {
+    color: var(--weather-color);
+  }
+
+  .eapp-weather-daily-item-min {
+    color: var(--weather-color);
+    opacity: 0.5;
+  }
+
+  .eapp-weather-detail-location svg,
+  .eapp-weather-forecast-icon svg,
+  .eapp-weather-forecast-arrow svg {
+    fill: var(--weather-color);
+  }
+
+  .eapp-weather-forecast-prev,
+  .eapp-weather-forecast-next {
+    background: none !important;
+  }
 </style>
-
+<div class="elfsight-app-5f752ad6-2d53-4cc0-9396-d68b4efe33be" data-elfsight-app-lazy></div>
+<script src="https://elfsightcdn.com/platform.js" async></script>
 <script>
-    (async function () {
+  const observer = new MutationObserver(() => {
+    document
+      .querySelectorAll('a[href*="elfsight.com"]')
+      .forEach(el => el.remove());
+  });
 
-        const widgetId = 'ww_cd9876cff7274';
-        const widgetEl = document.getElementById(widgetId);
-        const originalConfig = JSON.parse(widgetEl.getAttribute('a'));
-
-        let isLoading = false;
-        let changed = false;
-
-        /* ---------- 请求工具 ---------- */
-
-        async function requestGet(url) {
-            const res = await fetch(url, { credentials: 'omit' });
-            if (!res.ok) throw new Error(res.statusText);
-            return res.text();
-        }
-
-        async function requestPost(url, params) {
-            const res = await fetch(url, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: params
-            });
-            if (!res.ok) throw new Error(res.statusText);
-            return res.text();
-        }
-
-        /* ---------- 参数构建 ---------- */
-
-        function buildParams(id, ip, gen) {
-            const el = document.getElementById(id);
-            const link = document.getElementById(id + '_u');
-
-            const v = el.getAttribute('v');
-            const a = el.getAttribute('a');
-            const l = el.getAttribute('loc');
-            const u = link ? link.href + '|||' + link.innerHTML : '';
-            const ub = gen === 1 ? '' : el.innerHTML;
-
-            return new URLSearchParams({
-                v, a, l, u, ub,
-                i: ip || '',
-                g: gen,
-                id
-            }).toString();
-        }
-
-        /* ---------- 渲染 ---------- */
-
-        function renderWidget(data, id) {
-            if (!data || !data.a) return;
-
-            const box = document.getElementById(id);
-
-            if (data.a.html) box.innerHTML = data.a.html;
-            if (data.a.style) box.style.cssText = data.a.style;
-
-            if (data.a.jsCode) {
-                const s = document.createElement('script');
-                s.textContent = data.a.jsCode;
-                document.head.appendChild(s);
-            }
-
-            if (data.a.ub) {
-                const info = document.getElementById(id + '_info_box_inner');
-                if (info) info.innerHTML = data.a.ub;
-            }
-        }
-
-        /* ---------- Promise 化核心 ---------- */
-
-        async function updateWidget(id, gen = 0) {
-            const el = document.getElementById(id);
-            if (!el) return;
-
-            let ip = '';
-
-            try {
-                if (el.getAttribute('loc') === 'auto') {
-                    ip = await requestGet('https://ip2.weatherwidget.org/');
-                }
-
-                const params = buildParams(id, ip, gen);
-                const raw = await requestPost(
-                    'https://app3.weatherwidget.org/data/',
-                    params
-                );
-
-                const data = JSON.parse(raw);
-                renderWidget(data, id);
-
-            } catch (err) {
-                console.error('Weather widget error:', err);
-                throw err; // 🔑 必须抛出，外层才能解锁
-            }
-        }
-
-        /* ---------- 初始化 ---------- */
-
-        updateWidget(widgetId, 0);
-
-        /* ---------- 点击切换（带锁） ---------- */
-
-        widgetEl.addEventListener('click', async () => {
-            if (isLoading) return;
-
-            isLoading = true;
-            widgetEl.classList.add('loading');
-
-            changed = !changed;
-
-            const cfg = changed
-                ? (() => {
-                    const c = { ...originalConfig };
-                    c.t = 'responsive';
-                    return c;
-                })()
-                : originalConfig;
-
-            widgetEl.setAttribute('a', JSON.stringify(cfg));
-
-            try {
-                await updateWidget(widgetId, 1);
-            } catch (e) {
-                // 失败回滚
-                changed = !changed;
-                widgetEl.setAttribute('a', JSON.stringify(originalConfig));
-            } finally {
-                isLoading = false;
-                widgetEl.classList.remove('loading');
-            }
-        });
-
-    })();
+  observer.observe(document.body, {
+    childList: true,
+    subtree: true
+  });
 </script>
 </div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%86%E5%8C%85%E7%9A%84%E5%A5%BD%E5%A4%84"><span class="toc-number">1.</span> <span class="toc-text">分包的好处</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%85%8D%E7%BD%AErollupOptions"><span class="toc-number">2.</span> <span class="toc-text">配置rollupOptions</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#output%E4%B8%AD%E5%9F%BA%E6%9C%AC%E7%9A%84%E9%85%8D%E7%BD%AE%E9%80%89%E9%A1%B9"><span class="toc-number">3.</span> <span class="toc-text">output中基本的配置选项</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#manualChunks"><span class="toc-number">3.1.</span> <span class="toc-text">manualChunks</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%91%E6%83%B3%E6%8A%8Amodel-1%E6%A8%A1%E5%9D%97%E5%92%8Cmodel-2%E6%A8%A1%E5%9D%97%E6%89%93%E5%8C%85%E6%88%90%E5%8F%ABname%E7%9A%84%E6%96%87%E4%BB%B6%E5%8F%AF%E4%BB%A5%E8%BF%99%E4%B9%88%E5%86%99"><span class="toc-number">3.1.1.</span> <span class="toc-text">我想把model_1模块和model_2模块打包成叫name的文件可以这么写</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BD%93%E7%84%B6%E4%B9%9F%E5%8F%AF%E4%BB%A5%E5%8D%95%E7%8B%AC%E6%89%93%E5%8C%85%E6%88%90name-1%E5%92%8Cname-2"><span class="toc-number">3.1.2.</span> <span class="toc-text">当然也可以单独打包成name_1和name_2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%86%E5%9C%A8node-modules%E6%96%87%E4%BB%B6%E5%A4%B9%E9%87%8C%E4%B8%94%E8%A2%AB%E5%AF%BC%E5%85%A5%E7%9A%84%E6%A8%A1%E5%9D%97%E6%89%93%E5%8C%85"><span class="toc-number">3.1.3.</span> <span class="toc-text">将在node_modules文件夹里且被导入的模块打包</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%93%E5%8C%85%E6%88%90%E5%8D%95%E4%B8%AA-%E5%8F%ABname%E7%9A%84%E5%8C%85"><span class="toc-number">3.1.3.1.</span> <span class="toc-text">打包成单个, 叫name的包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8D%E5%90%8C%E7%9A%84%E6%A8%A1%E5%9D%97%E5%8D%95%E7%8B%AC%E6%89%93%E5%8C%85"><span class="toc-number">3.1.3.2.</span> <span class="toc-text">不同的模块单独打包</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%86%E5%88%AB%E6%89%93%E5%8C%85module-1%E5%92%8Cmodule-2%E5%85%B6%E4%BB%96%E7%9A%84%E6%A8%A1%E5%9D%97%E5%92%8C%E5%85%A5%E5%8F%A3%E6%96%87%E4%BB%B6%E6%89%93%E5%8C%85"><span class="toc-number">3.1.3.3.</span> <span class="toc-text">分别打包module_1和module_2其他的模块和入口文件打包</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#chunkFileNames"><span class="toc-number">3.2.</span> <span class="toc-text">chunkFileNames</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%86%E5%88%86%E5%A5%BD%E7%9A%84%E5%8C%85%E7%9B%B4%E6%8E%A5%E8%BE%93%E5%87%BA%E5%88%B0%E7%9B%B8%E5%90%8C%E8%B7%AF%E5%BE%84%E4%B8%8B"><span class="toc-number">3.2.1.</span> <span class="toc-text">将分好的包直接输出到相同路径下</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%B9%E6%8D%AE%E5%8C%85%E7%9A%84%E8%B7%AF%E5%BE%84%E5%92%8C%E5%90%8D%E7%A7%B0%E8%BE%93%E5%87%BA%E5%88%B0%E4%B8%8D%E5%90%8C%E8%B7%AF%E5%BE%84%E4%B8%8B"><span class="toc-number">3.2.2.</span> <span class="toc-text">根据包的路径和名称输出到不同路径下</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#assetFileNames"><span class="toc-number">3.3.</span> <span class="toc-text">assetFileNames</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#entryFileNames"><span class="toc-number">3.4.</span> <span class="toc-text">entryFileNames</span></a></li></ol></li></ol></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2022 - 2026 By o0w0b</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.3</a></span></div><div class="footer_custom_text"><div id="runningTime"></div>
 <script>
