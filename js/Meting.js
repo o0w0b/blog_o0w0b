@@ -2,7 +2,7 @@ console.log(`${'\n'} %c MetingJS v1.2.0 %c https://github.com/metowolf/MetingJS 
 
 let aplayers = [];
 let loadMeting = () => {
-    let api = 'https://api.injahow.cn/meting/?server=:server&type=:type&id=:id&r=:r';
+    let api = 'https://meting.o0w0b.top/api?server=:server&type=:type&id=:id&r=:r';
     if (typeof meting_api !== 'undefined') api = meting_api;
 
     for (let i = 0; i < aplayers.length; i++) {
