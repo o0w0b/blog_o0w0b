@@ -1,28 +1,60 @@
-// 使用 fetch 从 IP 定位 API 获取用户位置
-function fetchIpLocation() {
-    return fetch("https://ip-api.o0w0b.top/?lang=zh-CN")
-        .then(response => response.json())
-        .then(data => {
-            return {
-                ip: data.query,              // IP 地址
-                data: {
-                    country: data.country,   // 国家
-                    prov: data.regionName,   // 省/州
-                    city: data.city,         // 城市
-                    district: data.district, // 区
-                    lat: data.lat,           // 纬度
-                    lon: data.lon            // 经度
-                }
-            };
-        })
-        .catch(err => {
-            console.error("获取 IP 定位失败：", err);
-            return null;
+// 获取用户位置（优先 GPS，其次 IP）
+async function getLocationSmart() {
+    let lat = null;
+    let lon = null;
+
+    try {
+        const pos = await new Promise((resolve, reject) => {
+            navigator.geolocation.getCurrentPosition(resolve, reject);
         });
+
+        lat = pos.coords.latitude;
+        lon = pos.coords.longitude;
+
+    } catch (e) {
+        console.warn("GPS失败，切换IP定位", e);
+    }
+
+    let addr = {};
+    let geoData = {};
+
+    if (lat !== null && lon !== null) {
+        try {
+            const geoRes = await fetch(
+                `https://loc-api.o0w0b.top/?lat=${lat}&lon=${lon}`
+            );
+
+            geoData = await geoRes.json();
+            addr = geoData.address || {};
+        } catch (e) {
+            console.warn("Nominatim失败", e);
+        }
+    }
+
+    let ipData = null;
+    try {
+        const ipRes = await fetch("https://ip-api.o0w0b.top/?lang=zh-CN");
+        ipData = await ipRes.json();
+    } catch (e) {
+        console.warn("IP定位失败", e);
+    }
+
+    return {
+        source: lat ? "gps" : "ip",
+        ip: ipData?.ip || "未知",
+        data: {
+            country: addr.country || ipData?.country || "未知",
+            prov: addr.state || addr.province || addr.region || ipData?.region || "未知",
+            city: addr.city || addr.town || addr.village || addr.region || ipData?.city || "未知",
+            district: addr.district || addr.borough || addr.state_district || addr.city_district || addr.county || addr.suburb || "",
+            lat: geoData.lat || ipData?.latitude || "未知",
+            lon: geoData.lon || ipData?.longitude || "未知"
+        }
+    };
 }
 
 // 计算两点距离函数（用 Haversine）
-function getDistance(lon1, lat1, lon2, lat2) {
+function getDistance(lat1, lon1, lat2, lon2) {
     function toRad(d) { return d * Math.PI / 180; }
     const R = 6371; // 地球半径 km
     const dLat = toRad(lat2 - lat1);
@@ -33,21 +65,21 @@ function getDistance(lon1, lat1, lon2, lat2) {
 }
 
 // 显示欢迎信息
-function showWelcome(ipLocation) {
-    if (!ipLocation || !ipLocation.data) {
-        console.error('ipLocation data is not available.');
+function showWelcome(location) {
+    if (!location || !location.data) {
+        console.error('location data is not available.');
         return;
     }
 
-    let lon = ipLocation.data.lon;
-    let lat = ipLocation.data.lat;
-    let dist = getDistance(126.904, 37.0849, lon, lat);
-    let pos = ipLocation.data.country;
-    let ip = ipLocation.ip;
+    let lon = location.data.lon;
+    let lat = location.data.lat;
+    let dist = getDistance(lat, lon, -90, 0);
+    let pos = location.data.prov + " " + location.data.city + " " + location.data.district;
+    let ip = location.ip;
     let posdesc;
 
     // 以下的代码需要根据新API返回的结果进行相应的调整
-    switch (ipLocation.data.country) {
+    switch (location.data.country) {
         case "日本":
             posdesc = "こんにちは！<br>日本樱花盛开，景色如画";
             break;
@@ -73,11 +105,12 @@ function showWelcome(ipLocation) {
             posdesc = "Hey! <br>加拿大枫叶红遍，湖光山色宜人";
             break;
         case "韩国":
+        case "大韩民国":
+        case "韩国 / 南韓":
             posdesc = "안녕하세요! <br>韩国泡菜、辣炒年糕色香味俱全";
             break;
         case "中国":
-            pos = ipLocation.data.prov + " " + ipLocation.data.city + " " + ipLocation.data.district;
-            switch (ipLocation.data.prov) {
+            switch (location.data.prov) {
                 case "北京市":
                     posdesc = "北京故宫庄严，天安门广场宏伟";
                     break;
@@ -106,7 +139,7 @@ function showWelcome(ipLocation) {
                     posdesc = "上海外滩璀璨，高楼林立";
                     break;
                 case "江苏省":
-                    switch (ipLocation.data.city) {
+                    switch (location.data.city) {
                         case "南京市":
                             posdesc = "南京古都，秦淮河夜色迷人";
                             break;
@@ -119,7 +152,7 @@ function showWelcome(ipLocation) {
                     }
                     break;
                 case "浙江省":
-                    switch (ipLocation.data.city) {
+                    switch (location.data.city) {
                         case "杭州市":
                             posdesc = "杭州西湖烟雨，山水如画";
                             break;
@@ -129,7 +162,7 @@ function showWelcome(ipLocation) {
                     }
                     break;
                 case "河南省":
-                    switch (ipLocation.data.city) {
+                    switch (location.data.city) {
                         case "郑州市":
                             posdesc = "郑州古今交融，城中绿地广阔";
                             break;
@@ -166,7 +199,7 @@ function showWelcome(ipLocation) {
                     posdesc = "山东泰山雄伟，沿海城市风光美";
                     break;
                 case "湖北省":
-                    switch (ipLocation.data.city) {
+                    switch (location.data.city) {
                         case "黄冈市":
                             posdesc = "黄冈江河交错，山水相依";
                             break;
@@ -182,7 +215,7 @@ function showWelcome(ipLocation) {
                     posdesc = "湖南岳麓山秀美，江河湖泊环绕";
                     break;
                 case "广东省":
-                    switch (ipLocation.data.city) {
+                    switch (location.data.city) {
                         case "广州市":
                             posdesc = "广州珠江两岸，城市天际线壮观";
                             break;
@@ -266,10 +299,10 @@ function showWelcome(ipLocation) {
 
     if (welcomeInfoElement) {
         welcomeInfoElement.innerHTML = `
-        <p>你好呀~ 来自 <span class="user-location">${pos}</span> 的来访者！😝</p>
-        <!-- <p>${posdesc} 🏞️</p>
-        <p>目前距博主约 <span class="distance">${dist}</span> 公里！</p>
-        <p>经度：<span class="distance">${lon}</span><br>纬度：<span class="distance">${lat}</span></p>
+        <p>Hey~ 来自 <span class="user-location">${pos}</span> 的来访者！😝</p>
+        <p>${posdesc} 🏞️</p>
+        <!-- <p>目前距南极企鹅约 <span class="distance">${dist}</span> 公里！</p>
+        <p>纬度：<span class="distance">${lat}</span><br>经度：<span class="distance">${lon}</span></p>
         <p>网络 IP：<span class="ip-address">${ip}</span></p> -->
         <p class="time-greeting">${timeChange}</p>
     `;
@@ -285,19 +318,19 @@ function isWelcomeInfoAvailable() {
 }
 
 // Pjax 完成后调用的处理函数
-function handlePjaxComplete(ipLocation) {
+function handlePjaxComplete(location) {
     if (isWelcomeInfoAvailable()) {
-        showWelcome(ipLocation);
+        showWelcome(location);
     }
 }
 
 // 加载时调用
 function onLoad() {
-    fetchIpLocation().then(ipLocation => {
+    getLocationSmart().then(location => {
         if (isWelcomeInfoAvailable()) {
-            showWelcome(ipLocation);
+            showWelcome(location);
         }
-        document.addEventListener("pjax:complete", () => handlePjaxComplete(ipLocation));
+        document.addEventListener("pjax:complete", () => handlePjaxComplete(location));
     });
 }
 
