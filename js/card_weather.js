@@ -2,10 +2,12 @@
 
 let hourlyPage = 0;
 
-let ITEMS_PER_PAGE = 12;
-const DAILY_DAYS = 6;
+let ITEMS_NUM = 8; // 小时预报总数量，实际显示数量由ITEMS_PER_PAGE控制
+let ITEMS_PER_PAGE = 4; // 每页显示的小时预报最大数量，实际显示数量根据窗口宽度动态计算
+const DAILY_DAYS = 6; // 每日预报的最大天数，包含当天
 
 let hourlyData = [];
+let timezoneOffset = 0;
 
 // =========================
 // Meteocons icon
@@ -49,34 +51,56 @@ function getWeatherIcon(
 }
 
 // =========================
+// 天气严重程度评分（0-100）
+// =========================
+
+function getWeatherSeverity(id) {
+    if (id >= 900 && id <= 906) return 100;
+    if (id === 781) return 95;
+    if (id === 771) return 90;
+    if (id === 762) return 88;
+    if (id === 602) return 85;
+    if (id === 504) return 80;
+    if (id === 503) return 78;
+    if (id === 502 || id === 622) return 75;
+    if (id === 511) return 70;
+    if (id === 501) return 65;
+    if (id === 621) return 60;
+    if (id === 500) return 55;
+    if (id >= 520 && id <= 531) return 50;
+    if (id >= 300 && id <= 321) return 40;
+    if (id >= 200 && id <= 232) return 35;
+    if (id === 600 || id === 601) return 30;
+    if (id >= 701 && id <= 761) return 25;
+    if (id === 804) return 15;
+    if (id === 803) return 12;
+    if (id === 802) return 10;
+    if (id === 801) return 8;
+    if (id === 800) return 5;
+    return 0;
+}
+
+// =========================
 // 时间格式化
 // =========================
 
-function formatHour(dt) {
+function formatHour(dt, tz = 0) {
 
-    const d = new Date(dt * 1000);
+    const d = new Date((dt + tz) * 1000);
 
-    return `${String(d.getHours()).padStart(2, "0")}:00`;
+    return `${String(d.getUTCHours()).padStart(2, "0")}:00`;
 
 }
 
-function formatDate(dt) {
+function formatDate(dt, tz = 0) {
 
-    const d = new Date(dt * 1000);
+    const d = new Date((dt + tz) * 1000);
 
-    const weekdays = [
-        "星期日",
-        "星期一",
-        "星期二",
-        "星期三",
-        "星期四",
-        "星期五",
-        "星期六"
-    ];
+    const weekdays = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
 
     return {
-        date: `${d.getMonth() + 1}月${d.getDate()}日`,
-        week: weekdays[d.getDay()]
+        date: `${d.getUTCMonth() + 1}月${d.getUTCDate()}日`,
+        week: weekdays[d.getUTCDay()]
     };
 
 }
@@ -120,11 +144,11 @@ function renderHourly() {
         <div class="hour-item">
 
             <div class="hour-time">
-                ${formatHour(item.dt)}
+                ${formatHour(item.dt, timezoneOffset)}
             </div>
 
             <div class="hour-icon">
-                ${getWeatherIcon(item.weather[0].id, item.weather[0].icon, item.weather[0].description)}
+                ${getWeatherIcon(item.weather[0].id, item.weather[0].icon, `${item.weather[0].description}、${Math.round(item.pop * 100)}%`)}
             </div>
 
             <div class="hour-temp">
@@ -249,7 +273,7 @@ async function loadWeather(location) {
         // =========================
 
         hourlyData =
-            forecast.list.slice(0, 12);
+            forecast.list.slice(0, ITEMS_NUM);
 
         // =========================
         // daily
@@ -257,37 +281,70 @@ async function loadWeather(location) {
 
         const dailyMap = new Map();
 
+        timezoneOffset = forecast.city.timezone;
+
         forecast.list.forEach(item => {
-
-            const d =
-                new Date(item.dt * 1000);
-
-            const key =
-                `${d.getMonth()}-${d.getDate()}`;
+            const localDt = (item.dt + timezoneOffset) * 1000;
+            const d = new Date(localDt);
+            const key = `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}-${String(d.getUTCDate()).padStart(2, '0')}`;
 
             if (!dailyMap.has(key)) {
-
                 dailyMap.set(key, {
                     dt: item.dt,
-                    id: item.weather[0].id,
-                    icon: item.weather[0].icon,
-                    description: item.weather[0].description,
-                    temps: []
+                    temps: [],
+                    weatherList: []
                 });
-
             }
 
-            dailyMap
-                .get(key)
-                .temps
-                .push(item.main.temp);
-
+            const day = dailyMap.get(key);
+            day.temps.push(item.main.temp);
+            day.weatherList.push({
+                id: item.weather[0].id,
+                icon: item.weather[0].icon,
+                pop: item.pop,
+                description: item.weather[0].description,
+                hour: d.getUTCHours()
+            });
         });
 
-        const daily =
-            Array.from(
-                dailyMap.values()
-            ).slice(0, DAILY_DAYS);
+        const daily = Array.from(dailyMap.values())
+            .slice(0, DAILY_DAYS)
+            .filter(day => day.temps.length >= 1)
+            .map(day => {
+                const worstWeather = day.weatherList.reduce((worst, current) => {
+                    return getWeatherSeverity(current.id) > getWeatherSeverity(worst.id) ? current : worst;
+                });
+
+                // 修正白天黑夜图标
+                let icon = worstWeather.icon;
+                const isActuallyNight = worstWeather.hour < 6 || worstWeather.hour >= 18;
+                if (isActuallyNight && icon.endsWith('d')) {
+                    icon = icon.slice(0, -1) + 'n';
+                } else if (!isActuallyNight && icon.endsWith('n')) {
+                    icon = icon.slice(0, -1) + 'd';
+                }
+
+                // 时段范围处理
+                const startHourNum = worstWeather.hour;
+                const endHourNum = startHourNum + 3;
+                const startHour = String(startHourNum).padStart(2, '0') + ':00';
+                const endHour = endHourNum >= 24
+                    ? String(endHourNum - 24).padStart(2, '0') + ':00'
+                    : String(endHourNum).padStart(2, '0') + ':00';
+                const worstTime = endHourNum >= 24
+                    ? `${startHour}~${endHour}(次日)`
+                    : `${startHour}~${endHour}`;
+
+                return {
+                    dt: day.dt,
+                    temps: day.temps,
+                    id: worstWeather.id,
+                    icon: icon,
+                    worstWeatherTime: worstTime,
+                    pop: Math.round(worstWeather.pop * 100),
+                    description: worstWeather.description
+                };
+            });
 
         // =========================
         // render
@@ -342,8 +399,8 @@ async function loadWeather(location) {
                                 </svg>
 
                                 <span>
-                                    ${(current.wind.speed * 3.6).toFixed(1)}
-                                    公里/小时
+                                    ${(current.wind.speed).toFixed(1)}
+                                    米/秒
                                 </span>
 
                             </div>
@@ -412,7 +469,7 @@ async function loadWeather(location) {
                 ${daily.map((day, index) => {
 
             const f =
-                formatDate(day.dt);
+                formatDate(day.dt, timezoneOffset);
 
             const max =
                 Math.round(
@@ -440,7 +497,7 @@ async function loadWeather(location) {
                             </div>
 
                             <div class="daily-icon">
-                                ${getWeatherIcon(day.id, day.icon, day.description)}
+                                ${getWeatherIcon(day.id, day.icon, `${day.description} - ${day.worstWeatherTime}、${day.pop}%`)}
                             </div>
 
                             <div class="daily-temps">
