@@ -43,7 +43,7 @@ function getWeatherIcon(
             src="https://cdn.meteocons.com/3.0.0-next.10/svg/fill/${iconName}.svg"
             alt="${description}"
             title="${description}"
-            class="weather-icon"
+            class="ow-icon"
             loading="lazy"
         />
     `;
