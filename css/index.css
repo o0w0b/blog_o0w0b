@@ -5002,9 +5002,6 @@ figure.highlight pre .javascript .function {
   color: var(--text-highlight-color);
   margin-top: 4px;
 }
-.card-weather .temp-unit {
-  font-size: 40px;
-}
 .card-weather .weather-left {
   display: -webkit-box;
   display: -moz-box;
@@ -5369,13 +5366,7 @@ figure.highlight pre .javascript .function {
 }
 @media screen and (max-width: 768px) {
   .card-weather .hourly-col {
-    width: 150px;
-  }
-  .card-weather .temp-big {
-    font-size: 36px;
-  }
-  .card-weather .temp-unit {
-    font-size: 30px;
+    width: 200px;
   }
 }
 @-moz-keyframes weather-spin {

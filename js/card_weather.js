@@ -289,13 +289,7 @@ async function loadWeather(location) {
                     </div>
 
                     <div class="temp-big">
-
-                        ${Math.round(current.main.temp)}
-
-                        <span class="temp-unit">
-                            °C
-                        </span>
-
+                        ${Math.round(current.main.temp)}°C
                     </div>
 
                 </div>
@@ -536,13 +530,13 @@ document.addEventListener(
     initWeather
 );
 
-window.addEventListener(
-    "resize",
-    () => {
+let lastWidth = window.innerWidth;
 
-        updateHourlyItemsPerPage();
+window.addEventListener("resize", () => {
+    const currentWidth = window.innerWidth;
+    if (currentWidth === lastWidth) return; // 宽度没变，不处理
+    lastWidth = currentWidth;
 
-        renderHourly();
-
-    }
-);
+    updateHourlyItemsPerPage();
+    renderHourly();
+});
