@@ -8,23 +8,44 @@ const DAILY_DAYS = 6;
 let hourlyData = [];
 
 // =========================
-// OpenWeather icon
+// Meteocons icon
 // =========================
 
-function getWeatherIcon(iconCode) {
+function getWeatherIcon(
+    weatherId,
+    iconCode,
+    description = ''
+) {
+
+    const entry =
+        window.WEATHER_ICON_MAP[
+        String(weatherId)
+        ];
+
+    if (!entry) {
+
+        return '';
+
+    }
+
+    const isNight =
+        iconCode.endsWith('n');
+
+    const iconName =
+        isNight
+            ? entry.night
+            : entry.day;
 
     return `
         <img
-            src="https://openweathermap.org/img/wn/${iconCode}.png"
-            srcset="
-                https://openweathermap.org/img/wn/${iconCode}.png 1x,
-                https://openweathermap.org/img/wn/${iconCode}@2x.png 2x
-            "
-            alt="weather"
-            class="ow-icon"
+            src="https://cdn.meteocons.com/3.0.0-next.10/svg/fill/${iconName}.svg"
+            alt="${description}"
+            title="${description}"
+            class="weather-icon"
             loading="lazy"
         />
     `;
+
 }
 
 // =========================
@@ -103,7 +124,7 @@ function renderHourly() {
             </div>
 
             <div class="hour-icon">
-                ${getWeatherIcon(item.weather[0].icon)}
+                ${getWeatherIcon(item.weather[0].id, item.weather[0].icon, item.weather[0].description)}
             </div>
 
             <div class="hour-temp">
@@ -248,7 +269,9 @@ async function loadWeather(location) {
 
                 dailyMap.set(key, {
                     dt: item.dt,
+                    id: item.weather[0].id,
                     icon: item.weather[0].icon,
+                    description: item.weather[0].description,
                     temps: []
                 });
 
@@ -297,7 +320,7 @@ async function loadWeather(location) {
                 <div class="weather-right">
 
                     <div class="weather-icon-large">
-                        ${getWeatherIcon(current.weather[0].icon)}
+                        ${getWeatherIcon(current.weather[0].id, current.weather[0].icon, current.weather[0].description)}
                     </div>
 
                     <div class="weather-desc">
@@ -417,7 +440,7 @@ async function loadWeather(location) {
                             </div>
 
                             <div class="daily-icon">
-                                ${getWeatherIcon(day.icon)}
+                                ${getWeatherIcon(day.id, day.icon, day.description)}
                             </div>
 
                             <div class="daily-temps">
