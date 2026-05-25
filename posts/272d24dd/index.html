@@ -5,21 +5,21 @@
 <meta property="og:site_name" content="o0w0b の Blog">
 <meta property="og:description" content="本文介绍hexo-tag-aplayer插件的安装和使用">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://img.o0w0b.top/cover?5daec988-5f49-4761-95a3-1e5df33fa38b">
+<meta property="og:image" content="https://img.o0w0b.top/cover?fbd843df-55a4-4b46-a12d-6f4cdef0d91e">
 <meta property="article:published_time" content="2025-11-30T08:34:16.000Z">
-<meta property="article:modified_time" content="2025-12-28T05:31:08.386Z">
+<meta property="article:modified_time" content="2026-05-25T13:32:25.190Z">
 <meta property="article:author" content="o0w0b">
 <meta property="article:tag" content="Hexo">
 <meta property="article:tag" content="插件推荐">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://img.o0w0b.top/cover?5daec988-5f49-4761-95a3-1e5df33fa38b"><script type="application/ld+json">{
+<meta name="twitter:image" content="https://img.o0w0b.top/cover?fbd843df-55a4-4b46-a12d-6f4cdef0d91e"><script type="application/ld+json">{
   "@context": "https://schema.org",
   "@type": "BlogPosting",
   "headline": "为 Butterfly 主题添加音乐页面和全局吸底 APlayer 播放器",
   "url": "https://blog.o0w0b.top/posts/272d24dd/",
-  "image": "https://img.o0w0b.top/cover?5daec988-5f49-4761-95a3-1e5df33fa38b",
+  "image": "https://img.o0w0b.top/cover?fbd843df-55a4-4b46-a12d-6f4cdef0d91e",
   "datePublished": "2025-11-30T08:34:16.000Z",
-  "dateModified": "2025-12-28T05:31:08.386Z",
+  "dateModified": "2026-05-25T13:32:25.190Z",
   "author": [
     {
       "@type": "Person",
@@ -165,8 +165,19 @@
   pageType: 'post'
 }</script><link rel="stylesheet" href="/css/theme-gradient.css"><link rel="stylesheet" href="/css/PaperPlaneCursor.css"><!-- hexo injector head_end start -->
 <link rel="stylesheet" href="/css/festival.css">
-<!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://imgbed.o0w0b.top/file/1766886546010_favicon.png" onerror="this.onerror=null;this.src='https://gitee.com/o0w0b/typora_pic/raw/master/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-compass"></i><span> 页面</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/hanabi/"><i class="fa-fw fas fa-bahai"></i><span> 花火</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://share.o0w0b.top"><i class="fa-fw fas fa-layer-group"></i><span> 分享</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://netdisk.o0w0b.top"><i class="fa-fw fas fa-cloud"></i><span> 网盘</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://imgbed.o0w0b.top"><i class="fa-fw fas fa-image"></i><span> 图床</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://ittools.o0w0b.top"><i class="fa-fw fas fa-screwdriver-wrench"></i><span> 工具</span></a></li></ul></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-link"></i><span> Link</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-lines-leaning"></i><span> 链接</span></a></li><li><a class="site-page child" href="/navigation/"><i class="fa-fw fas fa-signs-post"></i><span> 导航</span></a></li></ul></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-network-wired"></i><span> 路由器</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/posts/c1af679/"><i class="fa-fw fas fa-wifi"></i><span> 主路由</span></a></li><li><a class="site-page child" href="/posts/1d668335/"><i class="fa-fw fas fa-wifi"></i><span> 旁路由</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/shuoshuo/"><i class="fa-fw fas fa-comment"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://ysqd.o0w0b.top"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://img.o0w0b.top/cover?5daec988-5f49-4761-95a3-1e5df33fa38b);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">o0w0b の Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">为 Butterfly 主题添加音乐页面和全局吸底 APlayer 播放器</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-compass"></i><span> 页面</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/hanabi/"><i class="fa-fw fas fa-bahai"></i><span> 花火</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://share.o0w0b.top"><i class="fa-fw fas fa-layer-group"></i><span> 分享</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://netdisk.o0w0b.top"><i class="fa-fw fas fa-cloud"></i><span> 网盘</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://imgbed.o0w0b.top"><i class="fa-fw fas fa-image"></i><span> 图床</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://ittools.o0w0b.top"><i class="fa-fw fas fa-screwdriver-wrench"></i><span> 工具</span></a></li></ul></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-link"></i><span> Link</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-lines-leaning"></i><span> 链接</span></a></li><li><a class="site-page child" href="/navigation/"><i class="fa-fw fas fa-signs-post"></i><span> 导航</span></a></li></ul></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-network-wired"></i><span> 路由器</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/posts/c1af679/"><i class="fa-fw fas fa-wifi"></i><span> 主路由</span></a></li><li><a class="site-page child" href="/posts/1d668335/"><i class="fa-fw fas fa-wifi"></i><span> 旁路由</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/shuoshuo/"><i class="fa-fw fas fa-comment"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://ysqd.o0w0b.top"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">为 Butterfly 主题添加音乐页面和全局吸底 APlayer 播放器</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-11-30T08:34:16.000Z" title="发表于 2025-11-30 16:34:16">2025-11-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-12-28T05:31:08.386Z" title="更新于 2025-12-28 13:31:08">2025-12-28</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Hexo%E6%8F%92%E4%BB%B6/">Hexo插件</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Hexo%E6%8F%92%E4%BB%B6/Butterfly%E9%AD%94%E6%94%B9%E6%95%99%E7%A8%8B/">Butterfly魔改教程</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>8分钟</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><div id="post-outdate-notice" data="{&quot;limitDay&quot;:365,&quot;messagePrev&quot;:&quot;已经过了&quot;,&quot;messageNext&quot;:&quot;天自上次更新，文章内容可能已过时。&quot;,&quot;postUpdate&quot;:&quot;2025-12-28 13:31:08&quot;}" hidden></div><h2 id="hexo-tag-aplayer插件的安装和配置"><a href="#hexo-tag-aplayer插件的安装和配置" class="headerlink" title="hexo-tag-aplayer插件的安装和配置"></a>hexo-tag-aplayer插件的安装和配置</h2><h3 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h3><p>执行命令</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save hexo-tag-aplayer</span><br></pre></td></tr></table></figure>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 8.1.1"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="https://imgbed.o0w0b.top/file/1766886546010_favicon.png" onerror="this.onerror=null;this.src='https://gitee.com/o0w0b/typora_pic/raw/master/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-compass"></i><span> 页面</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/hanabi/"><i class="fa-fw fas fa-bahai"></i><span> 花火</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://share.o0w0b.top"><i class="fa-fw fas fa-layer-group"></i><span> 分享</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://netdisk.o0w0b.top"><i class="fa-fw fas fa-cloud"></i><span> 网盘</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://imgbed.o0w0b.top"><i class="fa-fw fas fa-image"></i><span> 图床</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://ittools.o0w0b.top"><i class="fa-fw fas fa-screwdriver-wrench"></i><span> 工具</span></a></li></ul></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-link"></i><span> Link</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-lines-leaning"></i><span> 链接</span></a></li><li><a class="site-page child" href="/navigation/"><i class="fa-fw fas fa-signs-post"></i><span> 导航</span></a></li></ul></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-network-wired"></i><span> 路由器</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/posts/c1af679/"><i class="fa-fw fas fa-wifi"></i><span> 主路由</span></a></li><li><a class="site-page child" href="/posts/1d668335/"><i class="fa-fw fas fa-wifi"></i><span> 旁路由</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/shuoshuo/"><i class="fa-fw fas fa-comment"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://ysqd.o0w0b.top"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url(https://img.o0w0b.top/cover?fbd843df-55a4-4b46-a12d-6f4cdef0d91e);"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">o0w0b の Blog</span></a><a class="nav-page-title" href="/"><span class="site-name">为 Butterfly 主题添加音乐页面和全局吸底 APlayer 播放器</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div id="search-button"><span class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></span></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-compass"></i><span> 页面</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></li><li><a class="site-page child" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></li><li><a class="site-page child" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></li></ul></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-list"></i><span> List</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/hanabi/"><i class="fa-fw fas fa-bahai"></i><span> 花火</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://share.o0w0b.top"><i class="fa-fw fas fa-layer-group"></i><span> 分享</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://netdisk.o0w0b.top"><i class="fa-fw fas fa-cloud"></i><span> 网盘</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://imgbed.o0w0b.top"><i class="fa-fw fas fa-image"></i><span> 图床</span></a></li><li><a class="site-page child" target="_blank" rel="noopener" href="https://ittools.o0w0b.top"><i class="fa-fw fas fa-screwdriver-wrench"></i><span> 工具</span></a></li></ul></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-link"></i><span> Link</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/link/"><i class="fa-fw fas fa-lines-leaning"></i><span> 链接</span></a></li><li><a class="site-page child" href="/navigation/"><i class="fa-fw fas fa-signs-post"></i><span> 导航</span></a></li></ul></div><div class="menus_item"><span class="site-page group hide"><i class="fa-fw fas fa-network-wired"></i><span> 路由器</span><i class="fas fa-chevron-down"></i></span><ul class="menus_item_child"><li><a class="site-page child" href="/posts/c1af679/"><i class="fa-fw fas fa-wifi"></i><span> 主路由</span></a></li><li><a class="site-page child" href="/posts/1d668335/"><i class="fa-fw fas fa-wifi"></i><span> 旁路由</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="/music/"><i class="fa-fw fas fa-music"></i><span> 音乐</span></a></div><div class="menus_item"><a class="site-page" href="/shuoshuo/"><i class="fa-fw fas fa-comment"></i><span> 说说</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://ysqd.o0w0b.top"><i class="fa-fw fas fa-heart"></i><span> 关于</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">为 Butterfly 主题添加音乐页面和全局吸底 APlayer 播放器</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-11-30T08:34:16.000Z" title="发表于 2025-11-30 16:34:16">2025-11-30</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2026-05-25T13:32:25.190Z" title="更新于 2026-05-25 21:32:25">2026-05-25</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Hexo%E6%8F%92%E4%BB%B6/">Hexo插件</a><i class="fas fa-angle-right post-meta-separator"></i><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Hexo%E6%8F%92%E4%BB%B6/Butterfly%E9%AD%94%E6%94%B9%E6%95%99%E7%A8%8B/">Butterfly魔改教程</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">总字数:</span><span class="word-count">2.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>8分钟</span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><div id="post-outdate-notice" data="{&quot;limitDay&quot;:365,&quot;messagePrev&quot;:&quot;已经过了&quot;,&quot;messageNext&quot;:&quot;天自上次更新，文章内容可能已过时。&quot;,&quot;postUpdate&quot;:&quot;2026-05-25 21:32:25&quot;}" hidden></div><h2 id="适配-MetingJS-v2-0-2-版本"><a href="#适配-MetingJS-v2-0-2-版本" class="headerlink" title="适配 MetingJS v2.0.2 版本"></a>适配 MetingJS v2.0.2 版本</h2><h3 id="修改-aplayer-pug"><a href="#修改-aplayer-pug" class="headerlink" title="修改 aplayer.pug"></a>修改 aplayer.pug</h3><p>将<code>[blogroot]/themes/butterfly/layout/includes/third-party</code>中<code>aplayer.pug</code>文件的内容整体替换为</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br></pre></td><td class="code"><pre><span class="line">//- MetingJS v2.0.2 适配</span><br><span class="line">link(rel=&#x27;stylesheet&#x27; href=url_for(theme.asset.aplayer_css) media=&quot;print&quot; onload=&quot;this.media=&#x27;all&#x27;&quot;)</span><br><span class="line">script(src=url_for(theme.asset.aplayer_js))</span><br><span class="line">script(src=url_for(theme.asset.meting_js))</span><br><span class="line"></span><br><span class="line">// 兼容 hexo-tag-aplayer 插件的 MetingTag</span><br><span class="line">script.</span><br><span class="line">  document.addEventListener(&#x27;DOMContentLoaded&#x27;, () =&gt; &#123;</span><br><span class="line">    document.querySelectorAll(&#x27;div.meting-tag-marker&#x27;).forEach(div =&gt; &#123;</span><br><span class="line">      const meting = document.createElement(&#x27;meting-js&#x27;);</span><br><span class="line"></span><br><span class="line">      [&#x27;id&#x27;, &#x27;server&#x27;, &#x27;type&#x27;, &#x27;autoplay&#x27;, &#x27;mutex&#x27;, &#x27;listmaxheight&#x27;, </span><br><span class="line">       &#x27;preload&#x27;, &#x27;theme&#x27;, &#x27;fixed&#x27;, &#x27;mini&#x27;, &#x27;loop&#x27;, &#x27;order&#x27;, &#x27;volume&#x27;,</span><br><span class="line">       &#x27;lrctype&#x27;, &#x27;listfolded&#x27;, &#x27;storagename&#x27;, &#x27;mode&#x27;].forEach(attr =&gt; &#123;</span><br><span class="line">        const value = div.dataset[attr];</span><br><span class="line">        if (value !== undefined) meting.setAttribute(attr, value);</span><br><span class="line">      &#125;);</span><br><span class="line"></span><br><span class="line">      div.parentNode.replaceChild(meting, div);</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br><span class="line">if theme.pjax.enable</span><br><span class="line">  script.</span><br><span class="line">    (() =&gt; &#123;</span><br><span class="line">      const destroyAplayer = () =&gt; &#123;</span><br><span class="line">        document.querySelectorAll(&#x27;meting-js&#x27;).forEach(el =&gt; &#123;</span><br><span class="line">          //- 只保留 fixed 播放器，其他的让 disconnectedCallback 处理</span><br><span class="line">          if (el.aplayer &amp;&amp; !el.aplayer.options.fixed) &#123;</span><br><span class="line">            el.aplayer.destroy()</span><br><span class="line">            el._initialized = false</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      const runMetingJS = () =&gt; &#123;</span><br><span class="line">        //- Pjax 后的新元素会自动触发 connectedCallback</span><br><span class="line">        //- 如果状态不一致（已初始化但实例丢失），重置并重新初始化</span><br><span class="line">        document.querySelectorAll(&#x27;meting-js&#x27;).forEach(el =&gt; &#123;</span><br><span class="line">          if (el._initialized &amp;&amp; !el.aplayer) &#123;</span><br><span class="line">            el._initialized = false</span><br><span class="line">            el.connectedCallback()</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      btf.addGlobalFn(&#x27;pjaxSend&#x27;, destroyAplayer, &#x27;destroyAplayer&#x27;)</span><br><span class="line">      btf.addGlobalFn(&#x27;pjaxComplete&#x27;, runMetingJS, &#x27;runMetingJS&#x27;)</span><br><span class="line">    &#125;)()</span><br></pre></td></tr></table></figure>
+<h3 id="修改-plugins-yml"><a href="#修改-plugins-yml" class="headerlink" title="修改 plugins.yml"></a>修改 plugins.yml</h3><p>在<code>[blogroot]/themes/butterfly</code>中<code>plugins.yml</code>找到对应内容，如下：</p>
+<ul>
+<li>修改前</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">meting_js:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">butterfly-extsrc</span></span><br><span class="line">  <span class="attr">file:</span> <span class="string">metingjs/dist/Meting.min.js</span></span><br><span class="line">  <span class="attr">version:</span> <span class="number">1.1</span><span class="number">.6</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>修改后</li>
+</ul>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">meting_js:</span></span><br><span class="line">  <span class="attr">name:</span> <span class="string">meting</span></span><br><span class="line">  <span class="attr">file:</span> <span class="string">dist/Meting.min.js</span></span><br><span class="line">  <span class="attr">version:</span> <span class="number">2.0</span><span class="number">.2</span></span><br></pre></td></tr></table></figure>
+<h2 id="hexo-tag-aplayer-插件的安装和配置"><a href="#hexo-tag-aplayer-插件的安装和配置" class="headerlink" title="hexo-tag-aplayer 插件的安装和配置"></a>hexo-tag-aplayer 插件的安装和配置</h2><h3 id="安装插件"><a href="#安装插件" class="headerlink" title="安装插件"></a>安装插件</h3><p>执行命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-tag-aplayer</span><br></pre></td></tr></table></figure>
 <h3 id="配置插件"><a href="#配置插件" class="headerlink" title="配置插件"></a>配置插件</h3><p>在 Hexo 的配置文件<code>_config.yml</code>中添加如下内容</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">aplayer:</span></span><br><span class="line">  <span class="attr">meting:</span> <span class="literal">true</span></span><br><span class="line">  <span class="attr">asset_inject:</span> <span class="literal">false</span></span><br></pre></td></tr></table></figure>
 <p>将主题的配置文件<code>_config.butterfly.yml</code>进行如下修改，开启主题的 aplayerInject</p>
@@ -176,7 +187,7 @@
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new page music</span><br></pre></td></tr></table></figure>
 <p>运行后会在<code>[blogroot]\source\</code>下生成<code>music</code>文件夹，打开<code>music</code>文件夹下的<code>index.md</code>文件，按照如下格式修改内容</p>
 <figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line">title: 音乐</span><br><span class="line">date: 2025-11-30 10:52:20</span><br><span class="line">aside: false</span><br><span class="line"><span class="section">aplayer: true</span></span><br><span class="line"><span class="section">---</span></span><br><span class="line">&#123;% meting &quot;7419903487&quot; &quot;netease&quot; &quot;playlist&quot; &quot;autoplay&quot; &quot;mutex:true&quot; &quot;listmaxheight:1000px&quot; &quot;preload:auto&quot; &quot;theme:#ad7a86&quot;%&#125;</span><br></pre></td></tr></table></figure>
-<p>有关 <code>&#123;% meting %&#125;</code> 的参数解释，见如下列表</p>
+<p>有关 <code>&#123;% meting %&#125;</code> 的参数说明，见如下列表</p>
 <div class="table-container">
 <table>
 <thead>
@@ -274,221 +285,136 @@
 </div>
 <div class="note info flat"><p>建议使用网易云音乐</p>
 </div>
-<h3 id="查询自己歌单的id号"><a href="#查询自己歌单的id号" class="headerlink" title="查询自己歌单的id号"></a>查询自己歌单的id号</h3><p>打开网页版网易云后，打开自己要使用的歌单</p>
+<h3 id="查询自己歌单的-id-号"><a href="#查询自己歌单的-id-号" class="headerlink" title="查询自己歌单的 id 号"></a>查询自己歌单的 id 号</h3><p>打开网页版网易云后，打开自己要使用的歌单</p>
 <p>通过歌单的链接：<code>https://music.163.com/#/my/m/music/playlist?id=</code><mark class="hl-label default">7419903487</mark>，就能知道歌单的id号了</p>
 <h3 id="将页面添加到导航栏"><a href="#将页面添加到导航栏" class="headerlink" title="将页面添加到导航栏"></a>将页面添加到导航栏</h3><p>修改主题的配置文件<code>_config.butterfly.yml</code>中的 menu，在menu中添加<code>音乐: /music/ || fas fa-music</code></p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">menu:</span></span><br><span class="line">  <span class="comment"># 首页: / || fas fa-home</span></span><br><span class="line">  <span class="comment"># 列表||fas fa-list:</span></span><br><span class="line">  <span class="comment">#   音乐: /music/ || fas fa-music</span></span><br><span class="line">  <span class="comment">#   电影: /movies/ || fas fa-video</span></span><br><span class="line">  <span class="string">音乐:</span> <span class="string">/music/</span> <span class="string">||</span> <span class="string">fas</span> <span class="string">fa-music</span></span><br></pre></td></tr></table></figure>
-<h2 id="添加全局吸底APlayer播放器"><a href="#添加全局吸底APlayer播放器" class="headerlink" title="添加全局吸底APlayer播放器"></a>添加全局吸底APlayer播放器</h2><h3 id="效果预览-1"><a href="#效果预览-1" class="headerlink" title="效果预览"></a>效果预览</h3><p><img src="https://gitee.com/o0w0b/typora_pic/raw/master/img/2025/2/11/image-20251130191329877.png" alt=""></p>
-<p><strong>如果不排除刚刚添加的音乐页面上添加Aplayer播放器，直接跳转到<a href="#添加真·全局吸底APlayer播放器">添加真·全局吸底APlayer播放器</a></strong></p>
-<p>为了不在刚刚添加的音乐页面上添加APlayer播放器，在<code>[blogroot]\themes\butterfly\scripts\</code>下新建文件<code>aplayer.js</code>并粘贴如下代码</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* themes/butterfly/scripts/aplayer.js */</span></span><br><span class="line">hexo.<span class="property">extend</span>.<span class="property">filter</span>.<span class="title function_">register</span>(<span class="string">&#x27;after_render:html&#x27;</span>, <span class="keyword">function</span> (<span class="params">html, data</span>) &#123;</span><br><span class="line">    <span class="keyword">const</span> urlObj = <span class="keyword">new</span> <span class="title function_">URL</span>(data.<span class="property">url</span>);          <span class="comment">// 把绝对 URL 转成 URL 对象</span></span><br><span class="line">    <span class="keyword">const</span> path = urlObj.<span class="property">pathname</span>;            <span class="comment">// 去除域名，提取路径部分</span></span><br><span class="line">    <span class="keyword">if</span> (path.<span class="title function_">startsWith</span>(<span class="string">&#x27;/music/&#x27;</span>)) <span class="keyword">return</span> html;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">const</span> aplayer = <span class="string">`</span></span><br><span class="line"><span class="string">    &lt;div class=&quot;aplayer no-destroy&quot;</span></span><br><span class="line"><span class="string">         data-id=&quot;7419903487&quot;</span></span><br><span class="line"><span class="string">         data-server=&quot;netease&quot;</span></span><br><span class="line"><span class="string">         data-type=&quot;playlist&quot;</span></span><br><span class="line"><span class="string">         data-fixed=&quot;true&quot;</span></span><br><span class="line"><span class="string">         data-mini=&quot;true&quot;</span></span><br><span class="line"><span class="string">         data-autoplay=&quot;true&quot;&gt;</span></span><br><span class="line"><span class="string">    &lt;/div&gt;</span></span><br><span class="line"><span class="string">  `</span>;</span><br><span class="line">    <span class="keyword">return</span> html.<span class="title function_">replace</span>(<span class="string">&#x27;&lt;/body&gt;&#x27;</span>, aplayer + <span class="string">&#x27;\n&lt;/body&gt;&#x27;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>根据自己的需求修改相应内容</p>
-<p>参数解释，见如下列表</p>
+<h2 id="添加吸底-APlayer-播放器"><a href="#添加吸底-APlayer-播放器" class="headerlink" title="添加吸底 APlayer 播放器"></a>添加吸底 APlayer 播放器</h2><h3 id="效果预览-1"><a href="#效果预览-1" class="headerlink" title="效果预览"></a>效果预览</h3><p><img src="https://gitee.com/o0w0b/typora_pic/raw/master/img/2025/2/11/image-20251130191329877.png" alt=""></p>
+<p><strong>如果在音乐页面上也保留吸底 Aplayer 播放器，直接跳转到<a href="#添加全局吸底 APlayer 播放器">添加全局吸底 APlayer 播放器</a></strong></p>
+<p>为了不在音乐页面上加载吸底 APlayer 播放器，在<code>[blogroot]\themes\butterfly\scripts\</code>下新建文件<code>aplayer.js</code>并粘贴如下代码</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* themes/butterfly/scripts/aplayer.js */</span></span><br><span class="line">hexo.<span class="property">extend</span>.<span class="property">filter</span>.<span class="title function_">register</span>(<span class="string">&#x27;after_render:html&#x27;</span>, <span class="keyword">function</span> (<span class="params">html, data</span>) &#123;</span><br><span class="line">  <span class="keyword">const</span> urlObj = <span class="keyword">new</span> <span class="title function_">URL</span>(data.<span class="property">url</span>);          <span class="comment">// 把绝对 URL 转成 URL 对象</span></span><br><span class="line">  <span class="keyword">const</span> path = urlObj.<span class="property">pathname</span>;            <span class="comment">// 去除域名，提取路径部分</span></span><br><span class="line">  <span class="keyword">if</span> (path.<span class="title function_">startsWith</span>(<span class="string">&#x27;/music/&#x27;</span>)) <span class="keyword">return</span> html;  <span class="comment">// 如果路径以 /music/ 开头，直接返回原 HTML，不添加播放器</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">const</span> aplayer = <span class="string">`</span></span><br><span class="line"><span class="string">    &lt;meting-js</span></span><br><span class="line"><span class="string">      api=&quot;https://meting.o0w0b.top/api?server=netease&amp;type=playlist&amp;id=7419903487&quot;</span></span><br><span class="line"><span class="string">      fixed=&quot;true&quot;</span></span><br><span class="line"><span class="string">      mini=&quot;true&quot;</span></span><br><span class="line"><span class="string">      autoplay=&quot;true&quot;&gt;</span></span><br><span class="line"><span class="string">    &lt;/meting-js&gt;</span></span><br><span class="line"><span class="string">  `</span>;</span><br><span class="line">  <span class="keyword">return</span> html.<span class="title function_">replace</span>(<span class="string">&#x27;&lt;/body&gt;&#x27;</span>, aplayer + <span class="string">&#x27;\n&lt;/body&gt;&#x27;</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><span id="metingjs-options"></span></p>
+<p>有关<code>meting-js</code>的参数说明，见如下列表</p>
 <div class="table-container">
 <table>
 <thead>
 <tr>
-<th>选项</th>
-<th>默认值</th>
-<th>描述</th>
+<th style="text-align:left">参数</th>
+<th style="text-align:center">默认值</th>
+<th style="text-align:left">说明</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>data-id</td>
-<td><strong>必须值</strong></td>
-<td>歌曲 id / 播放列表 id / 相册 id / 搜索关键字</td>
+<td style="text-align:left">id</td>
+<td style="text-align:center"><strong>必填</strong></td>
+<td style="text-align:left">歌曲 ID / 歌单 ID / 专辑 ID / 搜索关键词</td>
 </tr>
 <tr>
-<td>data-server</td>
-<td><strong>必须值</strong></td>
-<td>音乐平台: <code>netease</code>(网易云音乐), <code>tencent</code>(QQ音乐), <code>kugou</code>(酷狗音乐), <code>xiami</code>(虾米音乐), <code>baidu</code>(百度音乐)</td>
+<td style="text-align:left">server</td>
+<td style="text-align:center"><strong>必填</strong></td>
+<td style="text-align:left">音乐平台：<code>netease</code>、<code>tencent</code>、<code>kugou</code>、<code>xiami</code>、<code>baidu</code></td>
 </tr>
 <tr>
-<td>data-type</td>
-<td><strong>必须值</strong></td>
-<td><code>song</code>(歌曲), <code>playlist</code>(歌单), <code>album</code>(专辑), <code>search</code>(搜索关键字), <code>artist</code>(歌手)</td>
+<td style="text-align:left">type</td>
+<td style="text-align:center"><strong>必填</strong></td>
+<td style="text-align:left"><code>song</code>（歌曲）、<code>playlist</code>（歌单）、<code>album</code>（专辑）、<code>search</code>（搜索）、<code>artist</code>（艺术家）</td>
 </tr>
 <tr>
-<td>data-fixed</td>
-<td><code>false</code></td>
-<td>开启固定模式</td>
+<td style="text-align:left">auto</td>
+<td style="text-align:center">可选</td>
+<td style="text-align:left">音乐链接，支持：<code>netease</code>、<code>tencent</code>、<code>xiami</code></td>
 </tr>
 <tr>
-<td>data-mini</td>
-<td><code>false</code></td>
-<td>开启迷你模式</td>
+<td style="text-align:left">api</td>
+<td style="text-align:center">可选</td>
+<td style="text-align:left">自定义 API 地址，支持自建 <a target="_blank" rel="noopener" href="https://github.com/metowolf/Meting">Meting API</a></td>
 </tr>
 <tr>
-<td>data-loop</td>
-<td><code>all</code></td>
-<td>列表循环模式：<code>all</code>, <code>one</code>,<code>none</code></td>
+<td style="text-align:left">fixed</td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">启用固定模式</td>
 </tr>
 <tr>
-<td>data-order</td>
-<td><code>list</code></td>
-<td>列表播放模式： <code>list</code>, <code>random</code></td>
+<td style="text-align:left">mini</td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">启用迷你模式</td>
 </tr>
 <tr>
-<td>data-volume</td>
-<td>0.7</td>
-<td>播放器音量</td>
+<td style="text-align:left">autoplay</td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">音频自动播放</td>
 </tr>
 <tr>
-<td>data-lrctype</td>
-<td>0</td>
-<td>歌词格式类型</td>
+<td style="text-align:left">theme</td>
+<td style="text-align:center"><code>#2980b9</code></td>
+<td style="text-align:left">主题主颜色</td>
 </tr>
 <tr>
-<td>data-listfolded</td>
-<td><code>false</code></td>
-<td>指定音乐播放列表是否折叠</td>
+<td style="text-align:left">loop</td>
+<td style="text-align:center"><code>all</code></td>
+<td style="text-align:left">播放器循环模式，可选值：<code>all</code>、<code>one</code>、<code>none</code></td>
 </tr>
 <tr>
-<td>data-storagename</td>
-<td><code>metingjs</code></td>
-<td>LocalStorage 中存储播放器设定的键名</td>
+<td style="text-align:left">order</td>
+<td style="text-align:center"><code>list</code></td>
+<td style="text-align:left">播放顺序，可选值：<code>list</code>（列表顺序）、<code>random</code>（随机）</td>
 </tr>
 <tr>
-<td>data-autoplay</td>
-<td><code>true</code></td>
-<td>自动播放，移动端浏览器暂时不支持此功能</td>
+<td style="text-align:left">preload</td>
+<td style="text-align:center"><code>auto</code></td>
+<td style="text-align:left">预加载模式，可选值：<code>none</code>、<code>metadata</code>、<code>auto</code></td>
 </tr>
 <tr>
-<td>data-mutex</td>
-<td><code>true</code></td>
-<td>该选项开启时，如果同页面有其他 aplayer 播放，该播放器会暂停</td>
+<td style="text-align:left">volume</td>
+<td style="text-align:center"><code>0.7</code></td>
+<td style="text-align:left">默认音量。播放器会记住用户设置，因此用户修改过音量后，该默认值将不再生效</td>
 </tr>
 <tr>
-<td>data-listmaxheight</td>
-<td><code>340px</code></td>
-<td>播放列表的最大长度</td>
+<td style="text-align:left">mutex</td>
+<td style="text-align:center"><code>true</code></td>
+<td style="text-align:left">防止多个播放器同时播放，当当前播放器开始播放时会暂停其他播放器</td>
 </tr>
 <tr>
-<td>data-preload</td>
-<td><code>auto</code></td>
-<td>音乐文件预载入模式，可选项： <code>none</code>, <code>metadata</code>, <code>auto</code></td>
+<td style="text-align:left">lrc-type</td>
+<td style="text-align:center"><code>0</code></td>
+<td style="text-align:left">歌词类型</td>
 </tr>
 <tr>
-<td>data-theme</td>
-<td><code>#2980b9</code></td>
-<td>播放器风格色彩设置</td>
+<td style="text-align:left">list-folded</td>
+<td style="text-align:center"><code>false</code></td>
+<td style="text-align:left">是否默认折叠播放列表</td>
+</tr>
+<tr>
+<td style="text-align:left">list-max-height</td>
+<td style="text-align:center"><code>340px</code></td>
+<td style="text-align:left">播放列表最大高度</td>
+</tr>
+<tr>
+<td style="text-align:left">storage-name</td>
+<td style="text-align:center"><code>metingjs</code></td>
+<td style="text-align:left">用于存储播放器设置的 localStorage 键名</td>
 </tr>
 </tbody>
 </table>
 </div>
-<div class="note info flat"><p><code>data-fixed</code> 和 <code>data-mini</code> 也必须配置，配置为 true</p>
-<p>使用 Pjax后，还要在 class 里添加 <code>no-destroy</code>才能防止切换页面时 APlayer 被销毁</p>
+<p>APlayer 的完整参数可参考：<a target="_blank" rel="noopener" href="https://aplayer.js.org/#/zh-Hans/?id=%E5%8F%82%E6%95%B0">https://aplayer.js.org/#/zh-Hans/?id=%E5%8F%82%E6%95%B0</a></p>
+<div class="note info flat"><p><code>fixed（吸底）</code>和 <code>mini （最小化）</code>也必须配置，配置为 true</p>
 </div>
 <div class="note flat"><p>PJAX 是一种网页技术，用于实现“局部页面刷新”，可以让网站在用户点击链接时只加载页面改变的部分，而不是整个网页重新加载，从而提高网页访问速度和用户体验</p>
 </div>
 <p>为了在切换页面时，音乐不会中断，把主题配置文件<code>_config.butterfly.yml</code>中的 pjax修改为true</p>
 <p>并且排除在刚刚添加的音乐页面不使用pjax</p>
 <figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># https://github.com/MoOx/pjax</span></span><br><span class="line"><span class="attr">pjax:</span></span><br><span class="line">  <span class="comment"># 是否启用 pjax</span></span><br><span class="line">  <span class="attr">enable:</span> <span class="literal">true</span></span><br><span class="line">  <span class="comment"># 排除指定页面不使用 pjax，如 &#x27;/music/&#x27;</span></span><br><span class="line">  <span class="attr">exclude:</span></span><br><span class="line">    <span class="comment"># - /xxxxxx/</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">/music/</span></span><br></pre></td></tr></table></figure>
-<p>由于音乐页面未包含APlayer播放器，当通过 PJAX 局部加载目标页面时，Hexo 的 after_render:html 钩子不会再次执行，导致播放器 DOM 无法被动态插入，因此跳转完成后页面始终缺失 APlayer 实例。</p>
-<p>只要从音乐页面跳转时触发整页刷新，让浏览器重新请求完整 HTML，APlayer 就能正常初始化并显示。</p>
-<p>在<code>[blogroot]\themes\butterfly\layout\includes\additional-js.pug</code>内容的最下方粘贴如下代码（注意正确对齐）</p>
+<p>由于 <code>after_render:html</code> 钩子不会在 PJAX 局部跳转时重新执行，由于音乐页面未加载吸底 APlayer 播放器，后续跳转到其他页面时将缺失吸底 APlayer 播放器</p>
+<p>只要从音乐页面跳转时触发整页刷新，让浏览器重新请求完整 HTML，吸底 APlayer 播放器就能正常初始化并显示</p>
+<p>在<code>[blogroot]\themes\butterfly\layout\includes\additional-js.pug</code>内容的最下方粘贴如下代码</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">script.</span><br><span class="line">  (function () &#123;</span><br><span class="line">    // 拦截任何后续点击</span><br><span class="line">    document.addEventListener(&#x27;click&#x27;, function (e) &#123;</span><br><span class="line">      var link = e.target.closest(&#x27;a&#x27;);</span><br><span class="line">      if (!link) return;</span><br><span class="line">      if (e.ctrlKey || e.metaKey || e.shiftKey || e.button === 1) return; // 忽略新标签/中键</span><br><span class="line">      if (link.origin !== location.origin) return;                       // 只处理同域</span><br><span class="line">      var fromMusic = location.pathname.startsWith(&#x27;/music/&#x27;);</span><br><span class="line">      var toMusic   = link.pathname.startsWith(&#x27;/music/&#x27;);</span><br><span class="line">      if (fromMusic &amp;&amp; !toMusic) &#123;        // 真正离开 music</span><br><span class="line">        e.preventDefault();</span><br><span class="line">        window.location.href = link.href; // 强制整页刷新</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;);</span><br><span class="line">  &#125;)();</span><br></pre></td></tr></table></figure>
 <p>这样就添加好了</p>
-<h3 id="添加真·全局吸底APlayer播放器"><a href="#添加真·全局吸底APlayer播放器" class="headerlink" title="添加真·全局吸底APlayer播放器"></a>添加真·全局吸底APlayer播放器</h3><p>把<code>aplayer代码</code>插入到主题配置文件<code>_config.butterfly.yml</code>的<code>inject.bottom</code>中</p>
-<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">inject:</span></span><br><span class="line">  <span class="attr">head:</span></span><br><span class="line">  <span class="attr">bottom:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&lt;div</span> <span class="string">class=&quot;aplayer</span> <span class="literal">no</span><span class="string">-destroy&quot;</span> <span class="string">data-id=&quot;7419903487&quot;</span> <span class="string">data-server=&quot;netease&quot;</span> <span class="string">data-type=&quot;playlist&quot;</span> <span class="string">data-fixed=&quot;true&quot;</span> <span class="string">data-mini=&quot;true&quot;</span> <span class="string">data-autoplay=&quot;true&quot;&gt;</span> <span class="string">&lt;/div&gt;</span></span><br></pre></td></tr></table></figure>
-<p>根据自己的需求修改相应内容</p>
-<p>参数解释，见如下列表</p>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th>选项</th>
-<th>默认值</th>
-<th>描述</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>data-id</td>
-<td><strong>必须值</strong></td>
-<td>歌曲 id / 播放列表 id / 相册 id / 搜索关键字</td>
-</tr>
-<tr>
-<td>data-server</td>
-<td><strong>必须值</strong></td>
-<td>音乐平台: <code>netease</code>(网易云音乐), <code>tencent</code>(QQ音乐), <code>kugou</code>(酷狗音乐), <code>xiami</code>(虾米音乐), <code>baidu</code>(百度音乐)</td>
-</tr>
-<tr>
-<td>data-type</td>
-<td><strong>必须值</strong></td>
-<td><code>song</code>(歌曲), <code>playlist</code>(歌单), <code>album</code>(专辑), <code>search</code>(搜索关键字), <code>artist</code>(歌手)</td>
-</tr>
-<tr>
-<td>data-fixed</td>
-<td><code>false</code></td>
-<td>开启固定模式</td>
-</tr>
-<tr>
-<td>data-mini</td>
-<td><code>false</code></td>
-<td>开启迷你模式</td>
-</tr>
-<tr>
-<td>data-loop</td>
-<td><code>all</code></td>
-<td>列表循环模式：<code>all</code>, <code>one</code>,<code>none</code></td>
-</tr>
-<tr>
-<td>data-order</td>
-<td><code>list</code></td>
-<td>列表播放模式： <code>list</code>, <code>random</code></td>
-</tr>
-<tr>
-<td>data-volume</td>
-<td>0.7</td>
-<td>播放器音量</td>
-</tr>
-<tr>
-<td>data-lrctype</td>
-<td>0</td>
-<td>歌词格式类型</td>
-</tr>
-<tr>
-<td>data-listfolded</td>
-<td><code>false</code></td>
-<td>指定音乐播放列表是否折叠</td>
-</tr>
-<tr>
-<td>data-storagename</td>
-<td><code>metingjs</code></td>
-<td>LocalStorage 中存储播放器设定的键名</td>
-</tr>
-<tr>
-<td>data-autoplay</td>
-<td><code>true</code></td>
-<td>自动播放，移动端浏览器暂时不支持此功能</td>
-</tr>
-<tr>
-<td>data-mutex</td>
-<td><code>true</code></td>
-<td>该选项开启时，如果同页面有其他 aplayer 播放，该播放器会暂停</td>
-</tr>
-<tr>
-<td>data-listmaxheight</td>
-<td><code>340px</code></td>
-<td>播放列表的最大长度</td>
-</tr>
-<tr>
-<td>data-preload</td>
-<td><code>auto</code></td>
-<td>音乐文件预载入模式，可选项： <code>none</code>, <code>metadata</code>, <code>auto</code></td>
-</tr>
-<tr>
-<td>data-theme</td>
-<td><code>#2980b9</code></td>
-<td>播放器风格色彩设置</td>
-</tr>
-</tbody>
-</table>
-</div>
-<div class="note info flat"><p><code>data-fixed</code> 和 <code>data-mini</code> 也必须配置，配置为 true</p>
-<p>使用 Pjax后，还要在 class 里添加 <code>no-destroy</code>才能防止切换页面时 APlayer 被销毁</p>
+<h3 id="添加全局吸底-APlayer-播放器"><a href="#添加全局吸底-APlayer-播放器" class="headerlink" title="添加全局吸底 APlayer 播放器"></a>添加全局吸底 APlayer 播放器</h3><p>把<code>aplayer代码</code>插入到主题配置文件<code>_config.butterfly.yml</code>的<code>inject.bottom</code>中</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">inject:</span></span><br><span class="line">  <span class="attr">head:</span></span><br><span class="line">  <span class="attr">bottom:</span></span><br><span class="line">    <span class="bullet">-</span> <span class="string">&lt;meting-js</span> <span class="string">api=&quot;https://meting.o0w0b.top/api?server=netease&amp;type=playlist&amp;id=7419903487&quot;</span></span><br><span class="line">      <span class="string">fixed=&quot;true&quot;</span></span><br><span class="line">      <span class="string">mini=&quot;true&quot;</span></span><br><span class="line">      <span class="string">autoplay=&quot;true&quot;&gt;</span></span><br><span class="line">      <span class="string">&lt;/meting-js&gt;</span></span><br></pre></td></tr></table></figure>
+<p>有关<code>meting-js</code>的参数说明，<a href="#metingjs-options">点击此处查看</a></p>
+<div class="note info flat"><p><code>fixed（吸底）</code>和 <code>mini （最小化）</code>也必须配置，配置为 true</p>
 </div>
 <div class="note flat"><p>PJAX 是一种网页技术，用于实现“局部页面刷新”，可以让网站在用户点击链接时只加载页面改变的部分，而不是整个网页重新加载，从而提高网页访问速度和用户体验</p>
 </div>
@@ -502,7 +428,7 @@
                     <div class="link_desc">MoePlayer</div>
                 </div>
             </a>
-</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Hexo/">Hexo</a><a class="post-meta__tags" href="/tags/%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90/">插件推荐</a></div><div class="post-share"><div class="social-share" data-image="https://img.o0w0b.top/cover?5daec988-5f49-4761-95a3-1e5df33fa38b" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/posts/30c14d36/" title="Hexo | Butterfly 主题 标签外挂"><img class="cover" src="https://img.o0w0b.top/cover?9cccd33c-d965-4486-84c8-99a30b03168a" onerror="onerror=null;src='https://gitee.com/o0w0b/typora_pic/raw/master/img/load_failed.png'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">Hexo | Butterfly 主题 标签外挂</div></div><div class="info-2"><div class="info-item-1">本文介绍多个Butterfly主题的标签外挂</div></div></div></a><a class="pagination-related" href="/posts/e71dc10/" title="为 Butterfly 主题添加新的页面类型，导航页面"><img class="cover" src="https://img.o0w0b.top/cover?e3cfe5ec-3016-41a5-ae79-d2c9b7778d67" onerror="onerror=null;src='https://gitee.com/o0w0b/typora_pic/raw/master/img/load_failed.png'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">为 Butterfly 主题添加新的页面类型，导航页面</div></div><div class="info-2"><div class="info-item-1">本文通过举添加导航页面类型的例子，介绍为主题添加新的页面类型的方法</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/posts/a620d0c8/" title="Hexo 插件推荐"><img class="cover" src="https://img.o0w0b.top/cover?74f3d682-26e8-40ee-bc07-5d0d28ea8764" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="fas fa-history fa-fw"></i> 2025-12-17</div><div class="info-item-2">Hexo 插件推荐</div></div><div class="info-2"><div class="info-item-1">本文推荐多个实用的 Hexo 插件</div></div></div></a><a class="pagination-related" href="/posts/e71dc10/" title="为 Butterfly 主题添加新的页面类型，导航页面"><img class="cover" src="https://img.o0w0b.top/cover?e3cfe5ec-3016-41a5-ae79-d2c9b7778d67" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="fas fa-history fa-fw"></i> 2026-01-01</div><div class="info-item-2">为 Butterfly 主题添加新的页面类型，导航页面</div></div><div class="info-2"><div class="info-item-1">本文通过举添加导航页面类型的例子，介绍为主题添加新的页面类型的方法</div></div></div></a><a class="pagination-related" href="/posts/765576/" title="为博客背景添加星空特效"><img class="cover" src="https://img.o0w0b.top/cover?1cde28e3-2148-4e2e-aeba-0997bfd3c7c1" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="fas fa-history fa-fw"></i> 2025-12-28</div><div class="info-item-2">为博客背景添加星空特效</div></div><div class="info-2"><div class="info-item-1">让博客背景在深色模式下有星空和流星的特效</div></div></div></a><a class="pagination-related" href="/posts/b3ae01d1/" title="自定义 Butterfly 主题的样式"><img class="cover" src="https://img.o0w0b.top/cover?a2a480b8-556a-4aa0-b277-bb05cd2d349b" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="fas fa-history fa-fw"></i> 2025-12-31</div><div class="info-item-2">自定义 Butterfly 主题的样式</div></div><div class="info-2"><div class="info-item-1">更改为“渐变”+“模糊”的样式</div></div></div></a><a class="pagination-related" href="/posts/8e44b064/" title="为 Butterfly 主题添加“诗词推荐-侧边栏卡片”"><img class="cover" src="https://img.o0w0b.top/cover?3e914acc-cf63-4a53-99eb-c20e7836c4f2" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="fas fa-history fa-fw"></i> 2026-05-23</div><div class="info-item-2">为 Butterfly 主题添加“诗词推荐-侧边栏卡片”</div></div><div class="info-2"><div class="info-item-1">调用今日诗词 API 显示推荐诗词的侧边栏卡片</div></div></div></a><a class="pagination-related" href="/posts/d5d18b1/" title="Hexo | Butterfly 使用自定义右键菜单"><img class="cover" src="https://img.o0w0b.top/cover?5f12b3ac-bb54-4239-a619-0bef44d19591" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="fas fa-history fa-fw"></i> 2025-12-20</div><div class="info-item-2">Hexo | Butterfly 使用自定义右键菜单</div></div><div class="info-2"><div class="info-item-1">本文介绍了如何更换博客的右键菜单</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="card-info-avatar"><div class="avatar-img"><img src="https://imgbed.o0w0b.top/file/1766886546010_favicon.png" onerror="this.onerror=null;this.src='https://gitee.com/o0w0b/typora_pic/raw/master/img/friend_404.gif'" alt="avatar"/></div><div class="author-status-box"><div class="author-status"><img src="https://imgbed.o0w0b.top/file/1767234183911_hoshino.png" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"/><div class="emoji">🍀</div><div class="text">2026-05-25</div></div></div></div><div class="author-info-name">o0w0b</div><div class="author-info-description">「Ctrl+C、Ctrl+V」好き</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/o0w0b"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://o0w0b.top" target="_blank" title="主页"><i class="fas fa-paper-plane"></i></a><a class="social-icon" href="mailto:2362760448@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://github.com/o0w0b" target="_blank" title="GitHub"><i class="fab fa-github"></i></a><a class="social-icon" href="https://www.bilibili.com/" target="_blank" title="哔哩哔哩"><i class="fab fa-bilibili"></i></a><a class="social-icon" href="/eject" target="_blank" title="弹出"><i class="fas fa-eject"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#hexo-tag-aplayer%E6%8F%92%E4%BB%B6%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE"><span class="toc-number">1.</span> <span class="toc-text">hexo-tag-aplayer插件的安装和配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6"><span class="toc-number">1.1.</span> <span class="toc-text">安装插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%8F%92%E4%BB%B6"><span class="toc-number">1.2.</span> <span class="toc-text">配置插件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E9%9F%B3%E4%B9%90%E9%A1%B5%E9%9D%A2"><span class="toc-number">2.</span> <span class="toc-text">添加音乐页面</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%88%E6%9E%9C%E9%A2%84%E8%A7%88"><span class="toc-number">2.1.</span> <span class="toc-text">效果预览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E8%87%AA%E5%B7%B1%E6%AD%8C%E5%8D%95%E7%9A%84id%E5%8F%B7"><span class="toc-number">2.2.</span> <span class="toc-text">查询自己歌单的id号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%86%E9%A1%B5%E9%9D%A2%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%AF%BC%E8%88%AA%E6%A0%8F"><span class="toc-number">2.3.</span> <span class="toc-text">将页面添加到导航栏</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E5%85%A8%E5%B1%80%E5%90%B8%E5%BA%95APlayer%E6%92%AD%E6%94%BE%E5%99%A8"><span class="toc-number">3.</span> <span class="toc-text">添加全局吸底APlayer播放器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%88%E6%9E%9C%E9%A2%84%E8%A7%88-1"><span class="toc-number">3.1.</span> <span class="toc-text">效果预览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E7%9C%9F%C2%B7%E5%85%A8%E5%B1%80%E5%90%B8%E5%BA%95APlayer%E6%92%AD%E6%94%BE%E5%99%A8"><span class="toc-number">3.2.</span> <span class="toc-text">添加真·全局吸底APlayer播放器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#More-info"><span class="toc-number">4.</span> <span class="toc-text">More info</span></a></li></ol></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2022 - 2026 By o0w0b</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.3</a></span></div><div class="footer_custom_text"><div id="runningTime"></div>
+</article><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Hexo/">Hexo</a><a class="post-meta__tags" href="/tags/%E6%8F%92%E4%BB%B6%E6%8E%A8%E8%8D%90/">插件推荐</a></div><div class="post-share"><div class="social-share" data-image="https://img.o0w0b.top/cover?fbd843df-55a4-4b46-a12d-6f4cdef0d91e" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related" href="/posts/30c14d36/" title="Hexo | Butterfly 主题 标签外挂"><img class="cover" src="https://img.o0w0b.top/cover?8dc204c6-6118-49ad-915f-9a52ea5523a0" onerror="onerror=null;src='https://gitee.com/o0w0b/typora_pic/raw/master/img/load_failed.png'" alt="cover of previous post"><div class="info"><div class="info-1"><div class="info-item-1">上一篇</div><div class="info-item-2">Hexo | Butterfly 主题 标签外挂</div></div><div class="info-2"><div class="info-item-1">本文介绍多个Butterfly主题的标签外挂</div></div></div></a><a class="pagination-related" href="/posts/e71dc10/" title="为 Butterfly 主题添加新的页面类型，导航页面"><img class="cover" src="https://img.o0w0b.top/cover?01e7a28a-af3f-495a-92da-903558837686" onerror="onerror=null;src='https://gitee.com/o0w0b/typora_pic/raw/master/img/load_failed.png'" alt="cover of next post"><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">为 Butterfly 主题添加新的页面类型，导航页面</div></div><div class="info-2"><div class="info-item-1">本文通过举添加导航页面类型的例子，介绍为主题添加新的页面类型的方法</div></div></div></a></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><a class="pagination-related" href="/posts/a620d0c8/" title="Hexo 插件推荐"><img class="cover" src="https://img.o0w0b.top/cover?b7a63001-ead5-49ae-8f2e-fe1f20097aa4" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="fas fa-history fa-fw"></i> 2025-12-17</div><div class="info-item-2">Hexo 插件推荐</div></div><div class="info-2"><div class="info-item-1">本文推荐多个实用的 Hexo 插件</div></div></div></a><a class="pagination-related" href="/posts/f5bfcff5/" title="为 Butterfly 主题添加“天气-侧边栏卡片”"><img class="cover" src="https://img.o0w0b.top/cover?f4aabae1-4b00-487c-85dc-0d9423a5decc" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="fas fa-history fa-fw"></i> 2026-05-25</div><div class="info-item-2">为 Butterfly 主题添加“天气-侧边栏卡片”</div></div><div class="info-2"><div class="info-item-1">调用 OpenWeather API 的支持实时天气与未来天气预报展示的侧边栏天气卡片</div></div></div></a><a class="pagination-related" href="/posts/e71dc10/" title="为 Butterfly 主题添加新的页面类型，导航页面"><img class="cover" src="https://img.o0w0b.top/cover?01e7a28a-af3f-495a-92da-903558837686" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="fas fa-history fa-fw"></i> 2026-01-01</div><div class="info-item-2">为 Butterfly 主题添加新的页面类型，导航页面</div></div><div class="info-2"><div class="info-item-1">本文通过举添加导航页面类型的例子，介绍为主题添加新的页面类型的方法</div></div></div></a><a class="pagination-related" href="/posts/8e44b064/" title="为 Butterfly 主题添加“诗词推荐-侧边栏卡片”"><img class="cover" src="https://img.o0w0b.top/cover?75f23c1c-fa5c-4b9a-9173-038e0d3635b9" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="fas fa-history fa-fw"></i> 2026-05-25</div><div class="info-item-2">为 Butterfly 主题添加“诗词推荐-侧边栏卡片”</div></div><div class="info-2"><div class="info-item-1">调用今日诗词 API 显示推荐诗词的侧边栏卡片</div></div></div></a><a class="pagination-related" href="/posts/30c14d36/" title="Hexo | Butterfly 主题 标签外挂"><img class="cover" src="https://img.o0w0b.top/cover?8dc204c6-6118-49ad-915f-9a52ea5523a0" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="fas fa-history fa-fw"></i> 2025-12-29</div><div class="info-item-2">Hexo | Butterfly 主题 标签外挂</div></div><div class="info-2"><div class="info-item-1">本文介绍多个Butterfly主题的标签外挂</div></div></div></a><a class="pagination-related" href="/posts/a9f206cb/" title="Hexo | Butterfly 使用自定义光标"><img class="cover" src="https://img.o0w0b.top/cover?cf176543-6444-4259-a506-ce0a6c912228" alt="cover"><div class="info text-center"><div class="info-1"><div class="info-item-1"><i class="fas fa-history fa-fw"></i> 2025-12-30</div><div class="info-item-2">Hexo | Butterfly 使用自定义光标</div></div><div class="info-2"><div class="info-item-1">本文介绍了两种方式更换博客的光标</div></div></div></a></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="card-info-avatar"><div class="avatar-img"><img src="https://imgbed.o0w0b.top/file/1766886546010_favicon.png" onerror="this.onerror=null;this.src='https://gitee.com/o0w0b/typora_pic/raw/master/img/friend_404.gif'" alt="avatar"/></div><div class="author-status-box"><div class="author-status"><img src="https://imgbed.o0w0b.top/file/1767234183911_hoshino.png" onerror="this.style.display='none';this.nextElementSibling.style.display='flex';"/><div class="emoji">🍀</div><div class="text">2026-05-25</div></div></div></div><div class="author-info-name">o0w0b</div><div class="author-info-description">「Ctrl+C、Ctrl+V」好き</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">15</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">11</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/o0w0b"><i class="fab fa-github"></i><span>Follow Me</span></a><div class="card-info-social-icons"><a class="social-icon" href="https://o0w0b.top" target="_blank" title="主页"><i class="fas fa-paper-plane"></i></a><a class="social-icon" href="mailto:2362760448@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="https://github.com/o0w0b" target="_blank" title="GitHub"><i class="fab fa-github"></i></a><a class="social-icon" href="https://www.bilibili.com/" target="_blank" title="哔哩哔哩"><i class="fab fa-bilibili"></i></a><a class="social-icon" href="/eject" target="_blank" title="弹出"><i class="fas fa-eject"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content is-expand"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%80%82%E9%85%8D-MetingJS-v2-0-2-%E7%89%88%E6%9C%AC"><span class="toc-number">1.</span> <span class="toc-text">适配 MetingJS v2.0.2 版本</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9-aplayer-pug"><span class="toc-number">1.1.</span> <span class="toc-text">修改 aplayer.pug</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BF%AE%E6%94%B9-plugins-yml"><span class="toc-number">1.2.</span> <span class="toc-text">修改 plugins.yml</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#hexo-tag-aplayer-%E6%8F%92%E4%BB%B6%E7%9A%84%E5%AE%89%E8%A3%85%E5%92%8C%E9%85%8D%E7%BD%AE"><span class="toc-number">2.</span> <span class="toc-text">hexo-tag-aplayer 插件的安装和配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6"><span class="toc-number">2.1.</span> <span class="toc-text">安装插件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E6%8F%92%E4%BB%B6"><span class="toc-number">2.2.</span> <span class="toc-text">配置插件</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E9%9F%B3%E4%B9%90%E9%A1%B5%E9%9D%A2"><span class="toc-number">3.</span> <span class="toc-text">添加音乐页面</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%88%E6%9E%9C%E9%A2%84%E8%A7%88"><span class="toc-number">3.1.</span> <span class="toc-text">效果预览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E8%AF%A2%E8%87%AA%E5%B7%B1%E6%AD%8C%E5%8D%95%E7%9A%84-id-%E5%8F%B7"><span class="toc-number">3.2.</span> <span class="toc-text">查询自己歌单的 id 号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B0%86%E9%A1%B5%E9%9D%A2%E6%B7%BB%E5%8A%A0%E5%88%B0%E5%AF%BC%E8%88%AA%E6%A0%8F"><span class="toc-number">3.3.</span> <span class="toc-text">将页面添加到导航栏</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E5%90%B8%E5%BA%95-APlayer-%E6%92%AD%E6%94%BE%E5%99%A8"><span class="toc-number">4.</span> <span class="toc-text">添加吸底 APlayer 播放器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%95%88%E6%9E%9C%E9%A2%84%E8%A7%88-1"><span class="toc-number">4.1.</span> <span class="toc-text">效果预览</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E5%85%A8%E5%B1%80%E5%90%B8%E5%BA%95-APlayer-%E6%92%AD%E6%94%BE%E5%99%A8"><span class="toc-number">4.2.</span> <span class="toc-text">添加全局吸底 APlayer 播放器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#More-info"><span class="toc-number">5.</span> <span class="toc-text">More info</span></a></li></ol></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2022 - 2026 By o0w0b</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 8.1.1</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.5.3</a></span></div><div class="footer_custom_text"><div id="runningTime"></div>
 <script>
   function updateTime() {
     var start = new Date("2024/09/01 22:33:11");
@@ -589,23 +515,44 @@
 
   btf.addGlobalFn('encrypt', loadMermaid, 'mermaid')
   window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
-})()</script></div><script defer src="https://cloud.umami.is/script.js" data-website-id="174e0835-cad7-43b8-929d-b92da20b54c9"></script><script src="/js/location.js"></script><script src="/js/universe.js"></script><script src="/js/rightmenu.js"></script><script src="/js/footer.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer-vite@1.0.4/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/aplayer-vite@1.0.4/dist/APlayer.umd.min.js"></script><script src="https://cdn.jsdelivr.net/gh/o0w0b/blog_o0w0b@main/js/Meting.js"></script><script>(() => {
+})()</script></div><script defer src="https://cloud.umami.is/script.js" data-website-id="174e0835-cad7-43b8-929d-b92da20b54c9"></script><script src="/js/location.js"></script><script src="/js/universe.js"></script><script src="/js/rightmenu.js"></script><script src="/js/footer.js"></script><script defer="defer" id="fluttering_ribbon" mobile="true" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/canvas-fluttering-ribbon.min.js"></script><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vite-aplayer/dist/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/vite-aplayer/dist/APlayer.umd.min.js"></script><script src="https://cdn.jsdelivr.net/npm/meting/dist/Meting.min.js"></script><!-- 兼容 hexo-tag-aplayer 插件的 MetingTag--><script>document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('div.meting-tag-marker').forEach(div => {
+    const meting = document.createElement('meting-js');
+
+    ['id', 'server', 'type', 'autoplay', 'mutex', 'listmaxheight', 
+     'preload', 'theme', 'fixed', 'mini', 'loop', 'order', 'volume',
+     'lrctype', 'listfolded', 'storagename', 'mode'].forEach(attr => {
+      const value = div.dataset[attr];
+      if (value !== undefined) meting.setAttribute(attr, value);
+    });
+
+    div.parentNode.replaceChild(meting, div);
+  });
+});
+</script><script>(() => {
   const destroyAplayer = () => {
-    if (window.aplayers) {
-      for (let i = 0; i < window.aplayers.length; i++) {
-        if (!window.aplayers[i].options.fixed) {
-          window.aplayers[i].destroy()
-        }
+    document.querySelectorAll('meting-js').forEach(el => {
+      //- 只保留 fixed 播放器，其他的让 disconnectedCallback 处理
+      if (el.aplayer && !el.aplayer.options.fixed) {
+        el.aplayer.destroy()
+        el._initialized = false
       }
-    }
+    })
   }
 
   const runMetingJS = () => {
-    typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+    //- Pjax 后的新元素会自动触发 connectedCallback
+    //- 如果状态不一致（已初始化但实例丢失），重置并重新初始化
+    document.querySelectorAll('meting-js').forEach(el => {
+      if (el._initialized && !el.aplayer) {
+        el._initialized = false
+        el.connectedCallback()
+      }
+    })
   }
 
   btf.addGlobalFn('pjaxSend', destroyAplayer, 'destroyAplayer')
-  btf.addGlobalFn('pjaxComplete', loadMeting, 'runMetingJS')
+  btf.addGlobalFn('pjaxComplete', runMetingJS, 'runMetingJS')
 })()</script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js" defer="defer"></script><script>document.addEventListener('DOMContentLoaded', () => {
   const pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
 
@@ -680,13 +627,11 @@
 <script src="/js/lunar.js"></script>
 <script src="/js/festival.js"></script>
 <!-- hexo injector body_end end -->
-    <div class="aplayer no-destroy"
-         data-id="7419903487"
-         data-server="netease"
-         data-type="playlist"
-         data-fixed="true"
-         data-mini="true"
-         data-autoplay="true">
-    </div>
+    <meting-js
+      api="https://meting.o0w0b.top/api?server=netease&type=playlist&id=7419903487"
+      fixed="true"
+      mini="true"
+      autoplay="true">
+    </meting-js>
   
 </body></html>
