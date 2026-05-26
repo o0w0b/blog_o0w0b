@@ -1,44 +1,44 @@
 // card_weather.js
+(() => {
+    let hourlyPage = 0;
 
-let hourlyPage = 0;
+    let ITEMS_NUM = 8; // 小时预报总数量，实际显示数量由ITEMS_PER_PAGE控制
+    let ITEMS_PER_PAGE = 4; // 每页显示的小时预报最大数量，实际显示数量根据窗口宽度动态计算
+    const DAILY_DAYS = 6; // 每日预报的最大天数，包含当天
 
-let ITEMS_NUM = 8; // 小时预报总数量，实际显示数量由ITEMS_PER_PAGE控制
-let ITEMS_PER_PAGE = 4; // 每页显示的小时预报最大数量，实际显示数量根据窗口宽度动态计算
-const DAILY_DAYS = 6; // 每日预报的最大天数，包含当天
+    let hourlyData = [];
+    let timezoneOffset = 0;
 
-let hourlyData = [];
-let timezoneOffset = 0;
+    // =========================
+    // Meteocons icon
+    // =========================
 
-// =========================
-// Meteocons icon
-// =========================
+    function getWeatherIcon(
+        weatherId,
+        iconCode,
+        description = ''
+    ) {
 
-function getWeatherIcon(
-    weatherId,
-    iconCode,
-    description = ''
-) {
+        const entry =
+            window.WEATHER_ICON_MAP[
+            String(weatherId)
+            ];
 
-    const entry =
-        window.WEATHER_ICON_MAP[
-        String(weatherId)
-        ];
+        if (!entry) {
 
-    if (!entry) {
+            return '';
 
-        return '';
+        }
 
-    }
+        const isNight =
+            iconCode.endsWith('n');
 
-    const isNight =
-        iconCode.endsWith('n');
+        const iconName =
+            isNight
+                ? entry.night
+                : entry.day;
 
-    const iconName =
-        isNight
-            ? entry.night
-            : entry.day;
-
-    return `
+        return `
         <img
             src="https://cdn.meteocons.com/3.0.0-next.10/svg/fill/${iconName}.svg"
             alt="${description}"
@@ -48,99 +48,99 @@ function getWeatherIcon(
         />
     `;
 
-}
+    }
 
-// =========================
-// 天气严重程度评分（0-100）
-// =========================
+    // =========================
+    // 天气严重程度评分（0-100）
+    // =========================
 
-function getWeatherSeverity(id) {
-    if (id >= 900 && id <= 906) return 100;
-    if (id === 781) return 95;
-    if (id === 771) return 90;
-    if (id === 762) return 88;
-    if (id === 602) return 85;
-    if (id === 504) return 80;
-    if (id === 503) return 78;
-    if (id === 502 || id === 622) return 75;
-    if (id === 511) return 70;
-    if (id === 501) return 65;
-    if (id === 621) return 60;
-    if (id === 500) return 55;
-    if (id >= 520 && id <= 531) return 50;
-    if (id >= 300 && id <= 321) return 40;
-    if (id >= 200 && id <= 232) return 35;
-    if (id === 600 || id === 601) return 30;
-    if (id >= 701 && id <= 761) return 25;
-    if (id === 804) return 15;
-    if (id === 803) return 12;
-    if (id === 802) return 10;
-    if (id === 801) return 8;
-    if (id === 800) return 5;
-    return 0;
-}
+    function getWeatherSeverity(id) {
+        if (id >= 900 && id <= 906) return 100;
+        if (id === 781) return 95;
+        if (id === 771) return 90;
+        if (id === 762) return 88;
+        if (id === 602) return 85;
+        if (id === 504) return 80;
+        if (id === 503) return 78;
+        if (id === 502 || id === 622) return 75;
+        if (id === 511) return 70;
+        if (id === 501) return 65;
+        if (id === 621) return 60;
+        if (id === 500) return 55;
+        if (id >= 520 && id <= 531) return 50;
+        if (id >= 300 && id <= 321) return 40;
+        if (id >= 200 && id <= 232) return 35;
+        if (id === 600 || id === 601) return 30;
+        if (id >= 701 && id <= 761) return 25;
+        if (id === 804) return 15;
+        if (id === 803) return 12;
+        if (id === 802) return 10;
+        if (id === 801) return 8;
+        if (id === 800) return 5;
+        return 0;
+    }
 
-// =========================
-// 时间格式化
-// =========================
+    // =========================
+    // 时间格式化
+    // =========================
 
-function formatHour(dt, tz = 0) {
+    function formatHour(dt, tz = 0) {
 
-    const d = new Date((dt + tz) * 1000);
+        const d = new Date((dt + tz) * 1000);
 
-    return `${String(d.getUTCHours()).padStart(2, "0")}:00`;
+        return `${String(d.getUTCHours()).padStart(2, "0")}:00`;
 
-}
+    }
 
-function formatDate(dt, tz = 0) {
+    function formatDate(dt, tz = 0) {
 
-    const d = new Date((dt + tz) * 1000);
+        const d = new Date((dt + tz) * 1000);
 
-    const weekdays = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
+        const weekdays = ["星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六"];
 
-    return {
-        date: `${d.getUTCMonth() + 1}月${d.getUTCDate()}日`,
-        week: weekdays[d.getUTCDay()]
-    };
+        return {
+            date: `${d.getUTCMonth() + 1}月${d.getUTCDate()}日`,
+            week: weekdays[d.getUTCDay()]
+        };
 
-}
+    }
 
-// =========================
-// hourly render
-// =========================
+    // =========================
+    // hourly render
+    // =========================
 
-function updateHourlyItemsPerPage() {
+    function updateHourlyItemsPerPage() {
 
-    const hourlyCol =
-        document.querySelector(".hourly-col");
+        const hourlyCol =
+            document.querySelector(".hourly-col");
 
-    if (!hourlyCol) return;
+        if (!hourlyCol) return;
 
-    // 每个hour-item实际占用宽度
-    const itemWidth = 46;
+        // 每个hour-item实际占用宽度
+        const itemWidth = 46;
 
-    ITEMS_PER_PAGE = Math.max(
-        1,
-        Math.floor(
-            hourlyCol.clientWidth / itemWidth
-        )
-    );
+        ITEMS_PER_PAGE = Math.max(
+            1,
+            Math.floor(
+                hourlyCol.clientWidth / itemWidth
+            )
+        );
 
-}
+    }
 
-function renderHourly() {
+    function renderHourly() {
 
-    const track =
-        document.getElementById("hourlyTrack");
+        const track =
+            document.getElementById("hourlyTrack");
 
-    if (!track) return;
+        if (!track) return;
 
-    const visible = hourlyData.slice(
-        hourlyPage,
-        hourlyPage + ITEMS_PER_PAGE
-    );
+        const visible = hourlyData.slice(
+            hourlyPage,
+            hourlyPage + ITEMS_PER_PAGE
+        );
 
-    track.innerHTML = visible.map(item => `
+        track.innerHTML = visible.map(item => `
         <div class="hour-item">
 
             <div class="hour-time">
@@ -158,199 +158,199 @@ function renderHourly() {
         </div>
     `).join("");
 
-    const prevArrow =
-        document.getElementById("prevArrow");
+        const prevArrow =
+            document.getElementById("prevArrow");
 
-    const nextArrow =
-        document.getElementById("nextArrow");
+        const nextArrow =
+            document.getElementById("nextArrow");
 
-    if (prevArrow) {
+        if (prevArrow) {
 
-        prevArrow.disabled =
-            hourlyPage === 0;
-
-    }
-
-    if (nextArrow) {
-
-        nextArrow.disabled =
-            hourlyPage >=
-            hourlyData.length - ITEMS_PER_PAGE;
-
-    }
-
-}
-
-function nextHourly() {
-
-    if (
-        hourlyPage <
-        hourlyData.length - ITEMS_PER_PAGE
-    ) {
-
-        hourlyPage++;
-
-        renderHourly();
-
-    }
-
-}
-
-function prevHourly() {
-
-    if (hourlyPage > 0) {
-
-        hourlyPage--;
-
-        renderHourly();
-
-    }
-
-}
-
-// =========================
-// 加载天气
-// =========================
-
-async function loadWeather(location) {
-
-    const widget =
-        document.getElementById("widget");
-
-    if (!widget) return;
-
-    try {
-
-        const lat =
-            location.data.lat;
-
-        const lon =
-            location.data.lon;
-
-        const [currentRes, forecastRes] =
-            await Promise.all([
-
-                fetch(
-                    `https://weather-api.o0w0b.top/weather?lat=${lat}&lon=${lon}&units=metric&lang=zh_cn`
-                ),
-
-                fetch(
-                    `https://weather-api.o0w0b.top/forecast?lat=${lat}&lon=${lon}&units=metric&lang=zh_cn`
-                )
-
-            ]);
-
-        const current =
-            await currentRes.json();
-
-        const forecast =
-            await forecastRes.json();
-
-        // =========================
-        // API错误处理
-        // =========================
-
-        if (!current.main) {
-
-            throw new Error(
-                current.message ||
-                "当前天气获取失败"
-            );
+            prevArrow.disabled =
+                hourlyPage === 0;
 
         }
 
-        if (!forecast.list) {
+        if (nextArrow) {
 
-            throw new Error(
-                forecast.message ||
-                "天气预报获取失败"
-            );
+            nextArrow.disabled =
+                hourlyPage >=
+                hourlyData.length - ITEMS_PER_PAGE;
 
         }
 
-        // =========================
-        // hourly
-        // =========================
+    }
 
-        hourlyData =
-            forecast.list.slice(0, ITEMS_NUM);
+    function nextHourly() {
 
-        // =========================
-        // daily
-        // =========================
+        if (
+            hourlyPage <
+            hourlyData.length - ITEMS_PER_PAGE
+        ) {
 
-        const dailyMap = new Map();
+            hourlyPage++;
 
-        timezoneOffset = forecast.city.timezone;
+            renderHourly();
 
-        forecast.list.forEach(item => {
-            const localDt = (item.dt + timezoneOffset) * 1000;
-            const d = new Date(localDt);
-            const key = `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}-${String(d.getUTCDate()).padStart(2, '0')}`;
+        }
 
-            if (!dailyMap.has(key)) {
-                dailyMap.set(key, {
-                    dt: item.dt,
-                    temps: [],
-                    weatherList: []
-                });
+    }
+
+    function prevHourly() {
+
+        if (hourlyPage > 0) {
+
+            hourlyPage--;
+
+            renderHourly();
+
+        }
+
+    }
+
+    // =========================
+    // 加载天气
+    // =========================
+
+    async function loadWeather(location) {
+
+        const weather_widget =
+            document.getElementById("weather_widget");
+
+        if (!weather_widget) return;
+
+        try {
+
+            const lat =
+                location.data.lat;
+
+            const lon =
+                location.data.lon;
+
+            const [currentRes, forecastRes] =
+                await Promise.all([
+
+                    fetch(
+                        `https://weather-api.o0w0b.top/weather?lat=${lat}&lon=${lon}&units=metric&lang=zh_cn`
+                    ),
+
+                    fetch(
+                        `https://weather-api.o0w0b.top/forecast?lat=${lat}&lon=${lon}&units=metric&lang=zh_cn`
+                    )
+
+                ]);
+
+            const current =
+                await currentRes.json();
+
+            const forecast =
+                await forecastRes.json();
+
+            // =========================
+            // API错误处理
+            // =========================
+
+            if (!current.main) {
+
+                throw new Error(
+                    current.message ||
+                    "当前天气获取失败"
+                );
+
             }
 
-            const day = dailyMap.get(key);
-            day.temps.push(item.main.temp);
-            day.weatherList.push({
-                id: item.weather[0].id,
-                icon: item.weather[0].icon,
-                pop: item.pop,
-                description: item.weather[0].description,
-                hour: d.getUTCHours()
-            });
-        });
+            if (!forecast.list) {
 
-        const daily = Array.from(dailyMap.values())
-            .slice(0, DAILY_DAYS)
-            .filter(day => day.temps.length >= 1)
-            .map(day => {
-                const worstWeather = day.weatherList.reduce((worst, current) => {
-                    return getWeatherSeverity(current.id) > getWeatherSeverity(worst.id) ? current : worst;
-                });
+                throw new Error(
+                    forecast.message ||
+                    "天气预报获取失败"
+                );
 
-                // 修正白天黑夜图标
-                let icon = worstWeather.icon;
-                const isActuallyNight = worstWeather.hour < 6 || worstWeather.hour >= 18;
-                if (isActuallyNight && icon.endsWith('d')) {
-                    icon = icon.slice(0, -1) + 'n';
-                } else if (!isActuallyNight && icon.endsWith('n')) {
-                    icon = icon.slice(0, -1) + 'd';
+            }
+
+            // =========================
+            // hourly
+            // =========================
+
+            hourlyData =
+                forecast.list.slice(0, ITEMS_NUM);
+
+            // =========================
+            // daily
+            // =========================
+
+            const dailyMap = new Map();
+
+            timezoneOffset = forecast.city.timezone;
+
+            forecast.list.forEach(item => {
+                const localDt = (item.dt + timezoneOffset) * 1000;
+                const d = new Date(localDt);
+                const key = `${d.getUTCFullYear()}-${String(d.getUTCMonth() + 1).padStart(2, '0')}-${String(d.getUTCDate()).padStart(2, '0')}`;
+
+                if (!dailyMap.has(key)) {
+                    dailyMap.set(key, {
+                        dt: item.dt,
+                        temps: [],
+                        weatherList: []
+                    });
                 }
 
-                // 时段范围处理
-                const startHourNum = worstWeather.hour;
-                const endHourNum = startHourNum + 3;
-                const startHour = String(startHourNum).padStart(2, '0') + ':00';
-                const endHour = endHourNum >= 24
-                    ? String(endHourNum - 24).padStart(2, '0') + ':00'
-                    : String(endHourNum).padStart(2, '0') + ':00';
-                const worstTime = endHourNum >= 24
-                    ? `${startHour}~${endHour}(次日)`
-                    : `${startHour}~${endHour}`;
-
-                return {
-                    dt: day.dt,
-                    temps: day.temps,
-                    id: worstWeather.id,
-                    icon: icon,
-                    worstWeatherTime: worstTime,
-                    pop: Math.round(worstWeather.pop * 100),
-                    description: worstWeather.description
-                };
+                const day = dailyMap.get(key);
+                day.temps.push(item.main.temp);
+                day.weatherList.push({
+                    id: item.weather[0].id,
+                    icon: item.weather[0].icon,
+                    pop: item.pop,
+                    description: item.weather[0].description,
+                    hour: d.getUTCHours()
+                });
             });
 
-        // =========================
-        // render
-        // =========================
+            const daily = Array.from(dailyMap.values())
+                .slice(0, DAILY_DAYS)
+                .filter(day => day.temps.length >= 1)
+                .map(day => {
+                    const worstWeather = day.weatherList.reduce((worst, current) => {
+                        return getWeatherSeverity(current.id) > getWeatherSeverity(worst.id) ? current : worst;
+                    });
 
-        widget.innerHTML = `
+                    // 修正白天黑夜图标
+                    let icon = worstWeather.icon;
+                    const isActuallyNight = worstWeather.hour < 6 || worstWeather.hour >= 18;
+                    if (isActuallyNight && icon.endsWith('d')) {
+                        icon = icon.slice(0, -1) + 'n';
+                    } else if (!isActuallyNight && icon.endsWith('n')) {
+                        icon = icon.slice(0, -1) + 'd';
+                    }
+
+                    // 时段范围处理
+                    const startHourNum = worstWeather.hour;
+                    const endHourNum = startHourNum + 3;
+                    const startHour = String(startHourNum).padStart(2, '0') + ':00';
+                    const endHour = endHourNum >= 24
+                        ? String(endHourNum - 24).padStart(2, '0') + ':00'
+                        : String(endHourNum).padStart(2, '0') + ':00';
+                    const worstTime = endHourNum >= 24
+                        ? `${startHour}~${endHour}(次日)`
+                        : `${startHour}~${endHour}`;
+
+                    return {
+                        dt: day.dt,
+                        temps: day.temps,
+                        id: worstWeather.id,
+                        icon: icon,
+                        worstWeatherTime: worstTime,
+                        pop: Math.round(worstWeather.pop * 100),
+                        description: worstWeather.description
+                    };
+                });
+
+            // =========================
+            // render
+            // =========================
+
+            weather_widget.innerHTML = `
 
             <div class="main-row">
 
@@ -468,20 +468,20 @@ async function loadWeather(location) {
 
                 ${daily.map((day, index) => {
 
-            const f =
-                formatDate(day.dt, timezoneOffset);
+                const f =
+                    formatDate(day.dt, timezoneOffset);
 
-            const max =
-                Math.round(
-                    Math.max(...day.temps)
-                );
+                const max =
+                    Math.round(
+                        Math.max(...day.temps)
+                    );
 
-            const min =
-                Math.round(
-                    Math.min(...day.temps)
-                );
+                const min =
+                    Math.round(
+                        Math.min(...day.temps)
+                    );
 
-            return `
+                return `
                         <div class="daily-item">
 
                             <div class="daily-left">
@@ -515,108 +515,109 @@ async function loadWeather(location) {
                         </div>
                     `;
 
-        }).join("")}
+            }).join("")}
 
             </div>
         `;
 
-        // =========================
-        // bind
-        // =========================
+            // =========================
+            // bind
+            // =========================
 
-        const prevArrow =
-            document.getElementById("prevArrow");
+            const prevArrow =
+                document.getElementById("prevArrow");
 
-        const nextArrow =
-            document.getElementById("nextArrow");
+            const nextArrow =
+                document.getElementById("nextArrow");
 
-        if (prevArrow) {
+            if (prevArrow) {
 
-            prevArrow.addEventListener(
-                "click",
-                prevHourly
-            );
+                prevArrow.addEventListener(
+                    "click",
+                    prevHourly
+                );
 
-        }
+            }
 
-        if (nextArrow) {
+            if (nextArrow) {
 
-            nextArrow.addEventListener(
-                "click",
-                nextHourly
-            );
+                nextArrow.addEventListener(
+                    "click",
+                    nextHourly
+                );
 
-        }
+            }
 
-        updateHourlyItemsPerPage();
+            updateHourlyItemsPerPage();
 
-        renderHourly();
+            renderHourly();
 
-    } catch (err) {
+        } catch (err) {
 
-        widget.innerHTML = `
+            weather_widget.innerHTML = `
             <div class="error">
                 获取天气失败：${err.message}
             </div>
         `;
 
-        console.error(err);
+            console.error(err);
+
+        }
 
     }
 
-}
+    // =========================
+    // 初始化
+    // =========================
 
-// =========================
-// 初始化
-// =========================
+    function initWeather() {
 
-function initWeather() {
+        getLocationSmart()
+            .then(location => {
 
-    getLocationSmart()
-        .then(location => {
+                loadWeather(location);
 
-            loadWeather(location);
+            })
+            .catch(err => {
 
-        })
-        .catch(err => {
-
-            widget.innerHTML = `
+                weather_widget.innerHTML = `
                 <div class="error">
                     定位失败：${err.message}
                 </div>
             `;
 
-            console.error(err);
+                console.error(err);
 
-        });
+            });
 
-}
+    }
 
-// =========================
-// 首次加载
-// =========================
+    // =========================
+    // 首次加载
+    // =========================
 
-window.addEventListener(
-    "load",
-    initWeather
-);
+    document.addEventListener(
+        "DOMContentLoaded",
+        initWeather
+    );
 
-// =========================
-// PJAX
-// =========================
+    // =========================
+    // PJAX
+    // =========================
 
-document.addEventListener(
-    "pjax:complete",
-    initWeather
-);
+    document.addEventListener(
+        "pjax:complete",
+        initWeather
+    );
 
-let lastWidth = window.innerWidth;
+    let lastWidth = window.innerWidth;
 
-window.addEventListener("resize", () => {
-    const currentWidth = window.innerWidth;
-    if (currentWidth === lastWidth) return; // 宽度没变，不处理
-    lastWidth = currentWidth;
+    window.addEventListener("resize", () => {
+        const currentWidth = window.innerWidth;
+        if (currentWidth === lastWidth) return; // 宽度没变，不处理
+        lastWidth = currentWidth;
 
-    updateHourlyItemsPerPage();
-    renderHourly();
-});
+        updateHourlyItemsPerPage();
+        renderHourly();
+    });
+})();

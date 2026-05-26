@@ -5443,13 +5443,13 @@ figure.highlight pre .javascript .function {
 .card-welcome .item-content {
   margin: 0px;
 }
-.card-welcome #welcome-info {
+.card-welcome .welcome-info {
   text-align: center;
   background: none;
   border-radius: 8px;
   padding: 8px;
 }
-.card-welcome #welcome-info .error-message {
+.card-welcome .welcome-info .error-message {
   height: 200px;
   display: -webkit-box;
   display: -moz-box;
@@ -5470,30 +5470,30 @@ figure.highlight pre .javascript .function {
   -webkit-align-items: center;
   align-items: center;
 }
-.card-welcome #welcome-info .error-message p {
+.card-welcome .welcome-info .error-message p {
   text-align: center;
 }
-.card-welcome #welcome-info .error-message p .emoji {
+.card-welcome .welcome-info .error-message p .emoji {
   font-size: 40px;
 }
-.card-welcome #welcome-info .error-message p .text {
+.card-welcome .welcome-info .error-message p .text {
   font-size: 16px;
   color: var(--text-highlight-color);
 }
-.card-welcome #welcome-info p {
+.card-welcome .welcome-info p {
   margin: 0px;
 }
-.card-welcome #welcome-info .user-location {
+.card-welcome .welcome-info .user-location {
   font-size: 16px;
   color: var(--default-bg-color);
   font-weight: bold;
 }
-.card-welcome #welcome-info .distance {
+.card-welcome .welcome-info .distance {
   font-size: 16px;
   color: var(--default-bg-color);
   font-weight: bold;
 }
-.card-welcome #welcome-info .ip-address {
+.card-welcome .welcome-info .ip-address {
   filter: blur(5px);
   font-size: 16px;
   color: var(--default-bg-color);
@@ -5503,11 +5503,11 @@ figure.highlight pre .javascript .function {
   -ms-transition: filter 0.5s;
   transition: filter 0.5s;
 }
-.card-welcome #welcome-info .ip-address:hover {
+.card-welcome .welcome-info .ip-address:hover {
   filter: none;
   font-weight: bold;
 }
-.card-welcome #welcome-info .time-greeting {
+.card-welcome .welcome-info .time-greeting {
   font-size: 15px;
   color: var(--text-highlight-color);
   font-weight: bold;
