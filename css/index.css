@@ -5095,6 +5095,7 @@ figure.highlight pre .javascript .function {
   flex-direction: column;
   -webkit-flex-shrink: 0;
   flex-shrink: 0;
+  margin-right: 20px;
 }
 .card-weather .detail-item {
   display: -webkit-box;
